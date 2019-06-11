@@ -4,9 +4,17 @@ import java.sql.Date;
 
 public class Meta {
 	private Date data_inicio, data_fim;
-	private String nome;
+	private String nome, descricao;
 	
 	
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
 	public String getNome() {
 		return nome;
 	}

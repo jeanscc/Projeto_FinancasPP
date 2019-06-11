@@ -1,6 +1,7 @@
 package dto;
 
 public class ContaDTO {
+	
 	private int numero;
 	private double valor;
 
