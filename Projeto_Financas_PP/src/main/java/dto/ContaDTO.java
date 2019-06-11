@@ -4,6 +4,17 @@ public class ContaDTO {
 	
 	private int numero;
 	private double valor;
+	private int id;
+	
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public int getNumero() {
 		return numero;
