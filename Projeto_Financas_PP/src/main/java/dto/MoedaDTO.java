@@ -7,6 +7,15 @@ public class MoedaDTO {
 	private String nome;
 	private double valor;
 	private ArrayList<MoedaDTO> todasMoedas;
+	private int id;
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public ArrayList<MoedaDTO> getTodasMoedas() {
 		return todasMoedas;

@@ -7,9 +7,25 @@ public class MetaDTO {
 	private Date data_inicio, data_fim;
 	private String nome;
 	private ArrayList<MetaDTO> todasMetas;
+	private int id, idUsuario;
 	
 	
-	
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public ArrayList<MetaDTO> getTodasMetas() {
 		return todasMetas;
 	}

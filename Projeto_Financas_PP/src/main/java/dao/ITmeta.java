@@ -4,7 +4,7 @@ import dto.MetaDTO;
 
 public interface ITmeta {
 
-	public boolean salvar(MetaDTO obj) throws Exception;
+	public int salvar(MetaDTO obj) throws Exception;
 	
 	public MetaDTO listar() throws Exception;
 	

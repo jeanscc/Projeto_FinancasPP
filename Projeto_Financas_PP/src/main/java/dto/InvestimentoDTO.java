@@ -8,6 +8,32 @@ public class InvestimentoDTO {
 	private double valor;
 	private Date data_inicio, data_fim;
 	private ArrayList<InvestimentoDTO> todosInvetismento;
+	private int idMeta, idMoeda, id;
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getIdMeta() {
+		return idMeta;
+	}
+
+	public void setIdMeta(int idMeta) {
+		this.idMeta = idMeta;
+	}
+
+	public int getIdMoeda() {
+		return idMoeda;
+	}
+
+	public void setIdMoeda(int idMoeda) {
+		this.idMoeda = idMoeda;
+	}
 
 	public ArrayList<InvestimentoDTO> getTodosInvetismento() {
 		return todosInvetismento;

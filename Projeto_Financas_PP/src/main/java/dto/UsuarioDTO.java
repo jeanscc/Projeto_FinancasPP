@@ -1,11 +1,26 @@
 package dto;
 
-import model.Conta;
+import java.util.ArrayList;
 
 public class UsuarioDTO {
 	private String nome, cpf, telefone, email;
 	private ContaDTO conta;
+	private int id;
+	private ArrayList<UsuarioDTO> usuariosCadastrados;
 	
+	
+	public ArrayList<UsuarioDTO> getUsuariosCadastrados() {
+		return usuariosCadastrados;
+	}
+	public void setUsuariosCadastrados(ArrayList<UsuarioDTO> usuariosCadastrados) {
+		this.usuariosCadastrados = usuariosCadastrados;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getNome() {
 		return nome;
 	}

@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import bd.ConnectionFactory;
 import dto.UsuarioDTO;
@@ -42,13 +43,40 @@ public class UsuarioDAO implements ITusuario {
 	}
 
 	public boolean atualizar(UsuarioDTO obj) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			pst = con.prepareStatement("UPDATE usuario SET nome = ?, cpf = ?, email = ?, telefone = ? WHERE id = ?");
+			pst.setString(1, obj.getNome());
+			pst.setString(2, obj.getCpf());
+			pst.setString(3, obj.getEmail());
+			pst.setString(4, obj.getTelefone());
+			pst.setInt(5, obj.getId());
+			pst.execute();
+			return true;
+		} catch (Exception e) {
+			throw new Exception("Erro ao atualizar usuario. " + e.getMessage());
+		}
 	}
 
 	public UsuarioDTO listar() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		UsuarioDTO retorno = new UsuarioDTO();
+		ArrayList<UsuarioDTO> lista = new ArrayList<UsuarioDTO>();
+		
+		try {
+			pst = con.prepareStatement("SELECT *FROM usuario");
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				UsuarioDTO user = new UsuarioDTO();
+				user.setNome(rs.getString("nome"));
+				user.setCpf(rs.getString("cpf"));
+				user.setEmail(rs.getString("email"));
+				user.setId(rs.getInt("id"));
+				lista.add(user);
+			}
+			retorno.setUsuariosCadastrados(lista);
+			return retorno;
+		} catch (Exception e) {
+			throw new Exception("Erro ao atualizar usuario. " + e.getMessage());
+		}
 	}
 
 }
