@@ -24,7 +24,7 @@ public class ContaDAO implements ITconta{
 		try {
 			pst = con.prepareStatement("INSERT INTO conta (numero,saldo) VALUES (?,?)");
 			pst.setInt(1, obj.getNumero());
-			pst.setDouble(2, obj.getValor());
+			pst.setDouble(2, obj.getSaldo());
 			pst.execute();
 			return true;
 			
@@ -47,7 +47,7 @@ public class ContaDAO implements ITconta{
 	public boolean atualizar(ContaDTO nova) throws Exception {
 		try {
 			pst = con.prepareStatement("UPDATE conta SET saldo = ? WHERE id = ?");
-			pst.setDouble(1, nova.getValor());
+			pst.setDouble(1, nova.getSaldo());
 			pst.setInt(2, nova.getId());
 			pst.execute();
 			return true;

@@ -1,13 +1,20 @@
 package dto;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class UsuarioDTO {
 	private String nome, cpf, telefone, email;
 	private ContaDTO conta;
 	private int id;
 	private ArrayList<UsuarioDTO> usuariosCadastrados;
+	private Random gerador = new Random();
 	
+	public UsuarioDTO() {
+		conta = new ContaDTO();
+		conta.setSaldo(0);
+		conta.setNumero(gerador.nextInt(1000000));
+	}
 	
 	public ArrayList<UsuarioDTO> getUsuariosCadastrados() {
 		return usuariosCadastrados;

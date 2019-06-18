@@ -3,7 +3,7 @@ package dto;
 public class ContaDTO {
 	
 	private int numero;
-	private double valor;
+	private double saldo;
 	private int id;
 	
 	
@@ -24,11 +24,11 @@ public class ContaDTO {
 		this.numero = numero;
 	}
 
-	public double getValor() {
-		return valor;
+	public double getSaldo() {
+		return saldo;
 	}
 
-	public void setValor(double valor) {
-		this.valor = valor;
+	public void setSaldo(double valor) {
+		this.saldo = valor;
 	}
 }
