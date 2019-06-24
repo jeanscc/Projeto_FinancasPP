@@ -1,8 +1,11 @@
 package model;
 
-public class Moeda {
+public class Moeda extends TipoInvestimento{
 	private String nome;
 	private double valor;
+	
+	
+	
 	
 	public String getNome() {
 		return nome;
