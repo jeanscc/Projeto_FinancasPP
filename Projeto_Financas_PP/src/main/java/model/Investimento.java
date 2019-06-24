@@ -7,7 +7,7 @@ public class Investimento {
 	private Status status;
 	private double lucro;
 	private double margemLucro;
-	private  double valorInvestido;
+	private double valorInvestido;
 	private double valorInvestimento;
 	private Date data_inicio, data_fim;
 	

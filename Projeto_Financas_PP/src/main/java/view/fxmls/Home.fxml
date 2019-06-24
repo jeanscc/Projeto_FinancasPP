@@ -2,8 +2,13 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -15,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1214.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1214.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.ControllerHome">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -137,106 +142,201 @@
       </VBox>
       <StackPane layoutX="258.0" prefHeight="639.0" prefWidth="956.0" style="-fx-background-color: #02030A;">
          <children>
-            <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
-            <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
-            <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
-            <Pane fx:id="pnlOverview" prefHeight="639.0" prefWidth="956.0">
+            <Pane fx:id="pnlHome" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="pnlFinancas" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="pnlGraficos" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="pnlPerfil" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="pnlMetas" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="pnlInvestimentos" prefHeight="639.0" prefWidth="956.0">
                <children>
-                  <TextField layoutX="706.0" layoutY="105.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
-                  <Label layoutX="372.0" layoutY="37.0" text="Meus Investimentos" textFill="#e7e5e5">
+                  <Label layoutX="372.0" layoutY="14.0" text="Meus Investimentos" textFill="#e7e5e5">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <HBox alignment="CENTER_LEFT" layoutX="45.0" layoutY="72.0" prefHeight="92.0" prefWidth="661.0" spacing="50.0">
-                     <children>
-                        <VBox alignment="CENTER" prefHeight="92.0" prefWidth="134.0">
-                           <children>
-                              <Label fx:id="lbLucro" text="22000" textFill="#2a73ff">
-                                 <font>
-                                    <Font name="System Bold" size="26.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="17.0" prefWidth="68.0" text="Lucro Total" textFill="#e7e5e5" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label fx:id="lbGasto" text="1500" textFill="#26bfbc">
-                                 <font>
-                                    <Font name="System Bold" size="26.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Gasto Total" textFill="#e7e5e5" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="92.0" prefWidth="142.0">
-                           <children>
-                              <Label fx:id="lbPendente" text="1000" textFill="#fa5f7e">
-                                 <font>
-                                    <Font name="System Bold" size="26.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Investimentos Pendentes" textFill="#e7e5e5" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label fx:id="lbPerca" text="780" textFill="#de0000">
-                                 <font>
-                                    <Font name="System Bold" size="26.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Percas" textFill="#e7e5e5" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutY="176.0" prefHeight="42.0" prefWidth="956.0" spacing="50.0" style="-fx-background-color: #02030A;">
-                     <children>
-                        <Label text="Nome do Investimento" textFill="#e7e5e5">
-                           <HBox.margin>
-                              <Insets left="50.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label text="Data de Inicio" textFill="#e7e5e5">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Label text="Data de Encerramento" textFill="#e7e5e5">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Label text="Valor Investido" textFill="#e7e5e5">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Label text="Lucro Total" textFill="#e7e5e5">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Label layoutX="694.0" layoutY="23.0" text="Margem de Lucro" textFill="#e7e5e5" />
-                        <Label layoutX="694.0" layoutY="23.0" text="Status" textFill="#e7e5e5" />
-                     </children>
-                  </HBox>
-                  <ScrollPane layoutY="232.0" prefHeight="407.0" prefWidth="956.0" stylesheets="@style.css">
-                     <content>
-                        <VBox fx:id="pnItems" prefHeight="405.0" prefWidth="954.0" spacing="5.0" style="-fx-background-color: #02030A;">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </VBox>
-                     </content>
-                  </ScrollPane>
-                  <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="865.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../images/icons8_Search_52px.png" />
-                     </image>
-                  </ImageView>
+                  <TabPane layoutY="54.0" prefHeight="586.0" prefWidth="956.0" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab closable="false" text="Histórico">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" layoutX="3.0" layoutY="140.0" prefHeight="42.0" prefWidth="956.0" spacing="45.0" style="-fx-background-color: #02030A;">
+                                       <children>
+                                          <Label text="Tipo do Investimento" textFill="#e7e5e5">
+                                             <HBox.margin>
+                                                <Insets left="50.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="Data de Inicio" textFill="#e7e5e5">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="Data de Encerramento" textFill="#e7e5e5">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="Valor Investido" textFill="#e7e5e5">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="Lucro Total" textFill="#e7e5e5">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label layoutX="694.0" layoutY="23.0" text="Margem de Lucro" textFill="#e7e5e5" />
+                                          <ComboBox prefHeight="30.0" prefWidth="95.0" promptText="Status" styleClass="my-list-cell" />
+                                       </children>
+                                    </HBox>
+                                    <ScrollPane layoutY="182.0" prefHeight="361.0" prefWidth="956.0" stylesheets="@style.css">
+                                       <content>
+                                          <VBox fx:id="pnItems" prefHeight="358.0" prefWidth="954.0" spacing="5.0" style="-fx-background-color: #02030A;">
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </padding>
+                                          </VBox>
+                                       </content>
+                                    </ScrollPane>
+                                    <TextField fx:id="txPesquisaH" layoutX="737.0" layoutY="92.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+                                    <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="889.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/icons8_Search_52px.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab closable="false" text="Novo">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="770.0">
+                                 <children>
+                                    <HBox layoutX="147.0" layoutY="130.0" prefHeight="228.0" prefWidth="667.0">
+                                       <children>
+                                          <VBox prefHeight="355.0" prefWidth="210.0" spacing="30.0">
+                                             <children>
+                                                <Label text="Tipo do Investimento:" textFill="#e7e5e5">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="30.0" layoutY="67.0" text="Fonte do Investimento:" textFill="#e7e5e5">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="80.0" layoutY="10.0" text="Data de Inicio:" textFill="#e7e5e5">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="80.0" layoutY="27.0" text="Valor Investido:" textFill="#e7e5e5">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets left="20.0" />
+                                             </padding>
+                                          </VBox>
+                                          <VBox fillWidth="false" layoutX="10.0" layoutY="10.0" prefHeight="355.0" prefWidth="431.0" spacing="30.0">
+                                             <children>
+                                                <ComboBox fx:id="cbTtipo" prefHeight="30.0" prefWidth="306.0" promptText="Selecione o Tipo" styleClass="my-list-cell" />
+                                                <ComboBox fx:id="cbFonte" layoutX="40.0" layoutY="10.0" prefHeight="30.0" prefWidth="306.0" promptText="Selecione a Fonte" styleClass="my-list-cell" />
+                                                <DatePicker fx:id="dtPicker" editable="false" prefHeight="25.0" prefWidth="341.0" promptText="Selecione a Data" styleClass="date-picker" />
+                                                <TextField fx:id="txValor" layoutX="40.0" layoutY="124.0" prefHeight="27.0" prefWidth="347.0" promptText="R$" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="30.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <Button fx:id="btCadastro" layoutX="373.0" layoutY="401.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="216.0" text="Cadastrar" />
+                                    <Label layoutX="405.0" layoutY="55.0" text="Novo Investimento" textFill="#e7e5e5">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab closable="false" text="Gerenciar">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" layoutX="3.0" layoutY="240.0" prefHeight="42.0" prefWidth="956.0" spacing="50.0" style="-fx-background-color: #02030A;">
+                                       <children>
+                                          <Label text="Tipo do Investimento" textFill="#e7e5e5">
+                                             <HBox.margin>
+                                                <Insets left="50.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="Data de Inicio" textFill="#e7e5e5">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="Data de Encerramento" textFill="#e7e5e5">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="Valor Investido" textFill="#e7e5e5">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label text="Lucro Total" textFill="#e7e5e5">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label layoutX="694.0" layoutY="23.0" text="Margem de Lucro" textFill="#e7e5e5" />
+                                          <Label layoutX="694.0" layoutY="23.0" text="Status" textFill="#e7e5e5" />
+                                       </children>
+                                    </HBox>
+                                    <ScrollPane layoutX="3.0" layoutY="282.0" prefHeight="249.0" prefWidth="956.0" stylesheets="@style.css">
+                                       <content>
+                                          <VBox fx:id="pnItems111" prefHeight="247.0" prefWidth="954.0" spacing="5.0" style="-fx-background-color: #02030A;">
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </padding>
+                                          </VBox>
+                                       </content>
+                                    </ScrollPane>
+                                    <TextField fx:id="txPesquisaG" layoutX="186.0" layoutY="96.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+                                    <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="337.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/icons8_Search_52px.png" />
+                                       </image>
+                                    </ImageView>
+                                    <CheckBox fx:id="checkAno" layoutX="173.0" layoutY="144.0" mnemonicParsing="false" text="Ano" textFill="#e7e5e5" />
+                                    <CheckBox fx:id="checkMes" layoutX="173.0" layoutY="176.0" mnemonicParsing="false" text="Mês" textFill="#e7e5e5" />
+                                    <ComboBox fx:id="cbAno" layoutX="227.0" layoutY="137.0" prefHeight="30.0" prefWidth="155.0" promptText="Selecione o ano" styleClass="my-list-cell" />
+                                    <ComboBox fx:id="cbMes" layoutX="226.0" layoutY="170.0" prefHeight="30.0" prefWidth="157.0" promptText="Selecione o mês" styleClass="my-list-cell" />
+                                    <Label layoutX="89.0" layoutY="44.0" prefHeight="52.0" prefWidth="104.0" text="Filtrar por:" textFill="#e7e5e5">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox layoutX="193.0" layoutY="55.0" prefHeight="30.0" prefWidth="168.0" promptText="Selecione o Filtro" styleClass="my-list-cell" />
+                                    <CheckBox fx:id="checkDia" layoutX="173.0" layoutY="210.0" mnemonicParsing="false" text="Mês" textFill="#e7e5e5" />
+                                    <ComboBox fx:id="cbDdia" layoutX="226.0" layoutY="204.0" prefHeight="30.0" prefWidth="157.0" promptText="Selecione o mês" styleClass="my-list-cell" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                    </tabs>
+                     <padding>
+                        <Insets left="-5.0" />
+                     </padding>
+                  </TabPane>
                </children>
             </Pane>
          </children>

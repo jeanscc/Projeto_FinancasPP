@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="pnlInvestimentos" prefHeight="639.0" prefWidth="956.0" style="-fx-background-color: #02030A;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.ControllerFinancas">
+   <children>
+      <Label layoutX="391.0" layoutY="24.0" text="Minhas Finanças" textFill="#e7e5e5">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER_LEFT" layoutX="57.0" layoutY="185.0" prefHeight="92.0" prefWidth="845.0" spacing="10.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="92.0" prefWidth="174.0">
+               <children>
+                  <Label fx:id="lbBalanco" text="0" textFill="#2a73ff">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label text="Balanço Total" textFill="#e7e5e5" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="92.0" prefWidth="169.0">
+               <children>
+                  <Label fx:id="lbRetorno" text="0" textFill="#ffec2b">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label text="Retorno Total" textFill="#e7e5e5" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="92.0" prefWidth="168.0">
+               <children>
+                  <Label fx:id="lbLucro" text="0" textFill="#2bff6e">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label text="Lucro Total" textFill="#e7e5e5" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="92.0" prefWidth="181.0">
+               <children>
+                  <Label fx:id="lbInvestido" text="0" textFill="#26bfbc">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label text="Total Investido" textFill="#e7e5e5" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="92.0" prefWidth="154.0">
+               <children>
+                  <Label fx:id="lbPendentes" text="0" textFill="#fa5f7e">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="17.0" prefWidth="59.0" text="Pendentes" textFill="#e7e5e5" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="293.0" layoutY="277.0" prefHeight="92.0" prefWidth="370.0" spacing="50.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="92.0" prefWidth="169.0">
+               <children>
+                  <Label fx:id="lbPercas" text="0" textFill="#de0000">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label text="Percas" textFill="#e7e5e5" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="92.0" prefWidth="197.0">
+               <children>
+                  <Label fx:id="lbGastos" text="0" textFill="#de6f00">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label text="Gastos em Metas" textFill="#e7e5e5" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <BarChart layoutX="99.0" layoutY="356.0" prefHeight="269.0" prefWidth="757.0">
+        <xAxis>
+          <CategoryAxis fx:id="lnTemporal" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis label="Valor" side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <Label layoutX="310.0" layoutY="71.0" text="Balanço" textFill="#e7e5e5">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dtFinal" layoutX="489.0" layoutY="129.0" promptText="Data Final" />
+      <DatePicker fx:id="dtInicial" layoutX="238.0" layoutY="129.0" promptText="Data Inicial" />
+      <ComboBox fx:id="cbBalanco" layoutX="396.0" layoutY="70.0" prefHeight="30.0" prefWidth="230.0" promptText="Selecione o Tipo de Balanço" styleClass="my-list-cell" />
+   </children>
+</Pane>
