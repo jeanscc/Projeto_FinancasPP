@@ -3,21 +3,60 @@ package model;
 import java.util.Date;
 
 public class Investimento {
-	private String status;
-	private  double valor;
+	private String nome;
+	private Status status;
+	private double lucro;
+	private double margemLucro;
+	private  double valorInvestido;
+	private double valorInvestimento;
 	private Date data_inicio, data_fim;
 	
-	public String getStatus() {
+	
+	
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public double getLucro() {
+		return lucro;
+	}
+
+	public void setLucro(double lucro) {
+		this.lucro = lucro;
+	}
+
+	public double getMargemLucro() {
+		return margemLucro;
+	}
+
+	public void setMargemLucro(double margemLucro) {
+		this.margemLucro = margemLucro;
+	}
+
+	public Status getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	
+	public void setStatus(Status status) {
 		this.status = status;
 	}
-	public double getValor() {
-		return valor;
+	public double getValorInvestido() {
+		return valorInvestido;
 	}
-	public void setValor(double valor) {
-		this.valor = valor;
+	
+	public double getValorInvestimento() {
+		return valorInvestimento;
+	}
+	public void setValorInvestimento(double valorInvestimento) {
+		this.valorInvestimento = valorInvestimento;
+	}
+	public void setValorInvestido(double valor) {
+		this.valorInvestido = valor;
 	}
 	public Date getData_inicio() {
 		return data_inicio;
