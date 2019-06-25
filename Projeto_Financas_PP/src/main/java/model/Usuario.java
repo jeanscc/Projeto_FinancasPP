@@ -1,8 +1,21 @@
 package model;
 
+import java.awt.Image;
+
 public class Usuario {
 	private String nome, cpf, telefone, email;
 	private Conta conta;
+	private Image foto;
+	
+	
+
+	public Image getFoto() {
+		return foto;
+	}
+
+	public void setFoto(Image foto) {
+		this.foto = foto;
+	}
 
 	public String getNome() {
 		return nome;
