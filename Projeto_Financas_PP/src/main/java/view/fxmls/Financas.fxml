@@ -27,7 +27,7 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label text="Balanço Total" textFill="#e7e5e5" />
+                  <Label text="Balan�o Total" textFill="#e7e5e5" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="92.0" prefWidth="169.0">
@@ -111,6 +111,6 @@
       </Label>
       <DatePicker fx:id="dtFinal" layoutX="489.0" layoutY="129.0" promptText="Data Final" />
       <DatePicker fx:id="dtInicial" layoutX="238.0" layoutY="129.0" promptText="Data Inicial" />
-      <ComboBox fx:id="cbBalanco" layoutX="396.0" layoutY="70.0" prefHeight="30.0" prefWidth="230.0" promptText="Selecione o Tipo de Balanço" styleClass="my-list-cell" />
+      <ComboBox fx:id="cbBalanco" layoutX="396.0" layoutY="70.0" prefHeight="30.0" prefWidth="230.0" promptText="Selecione o Tipo de Balan�o" styleClass="my-list-cell" />
    </children>
 </Pane>
