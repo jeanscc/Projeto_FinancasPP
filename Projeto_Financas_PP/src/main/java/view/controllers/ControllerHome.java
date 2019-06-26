@@ -1,10 +1,12 @@
 package view.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -17,7 +19,7 @@ import javafx.scene.layout.VBox;
 
 public class ControllerHome implements Initializable{
 
-    @FXML
+	@FXML
     private Label lbUsuario;
 
     @FXML
@@ -34,9 +36,6 @@ public class ControllerHome implements Initializable{
 
     @FXML
     private Button btConsultas;
-
-    @FXML
-    private Button btGraficos;
 
     @FXML
     private Button btPerfil;
@@ -61,24 +60,6 @@ public class ControllerHome implements Initializable{
 
     @FXML
     private Pane pnlInvestimentos;
-
-    @FXML
-    private Label lbLucro;
-
-    @FXML
-    private Label lbGasto;
-
-    @FXML
-    private Label lbPendente;
-
-    @FXML
-    private Label lbCrescimento;
-
-    @FXML
-    private Label lbPerca;
-
-    @FXML
-    private Label lb;
 
     @FXML
     private VBox pnItems;
@@ -111,12 +92,6 @@ public class ControllerHome implements Initializable{
     private CheckBox checkAno;
 
     @FXML
-    private Button btExcluir;
-
-    @FXML
-    private Button btEditar;
-
-    @FXML
     private CheckBox checkMes;
 
     @FXML
@@ -126,8 +101,74 @@ public class ControllerHome implements Initializable{
     private ComboBox<?> cbMes;
 
     @FXML
-    void handleClicks(ActionEvent event) {
+    private CheckBox checkDia;
 
+    @FXML
+    private ComboBox<?> cbDdia;
+    @FXML
+    private Pane pnlConsultas;
+
+
+    @FXML
+    void handleClicks(ActionEvent event) {
+    	if (event.getSource()==btInicio) {
+			try {
+				Pane pane = FXMLLoader.load(getClass().getResource("TelaInicial.fxml"));
+				pnlHome.getChildren().add(pane);
+				pnlHome.toFront();
+			} catch (IOException e5) {
+				e5.printStackTrace();
+			}}
+		else if (event.getSource()==btFinancas) {
+			try {
+				Pane pane=  FXMLLoader.load(getClass().getResource("Financas.fxml"));
+				pnlFinancas.getChildren().add(pane);
+				pnlFinancas.toFront();
+			} catch (IOException e4) {
+				// TODO Auto-generated catch block
+				e4.printStackTrace();
+			}}
+		else if (event.getSource()==btMetas) {
+			try {
+				Pane pane =  FXMLLoader.load(getClass().getResource("Metas.fxml"));
+				pnlMetas.getChildren().add(pane);
+				pnlMetas.toFront();
+			} catch (IOException e3) {
+				// TODO Auto-generated catch block
+				e3.printStackTrace();
+			}}
+		else if (event.getSource()==btConsultas) {
+			try {
+				Pane pane=  FXMLLoader.load(getClass().getResource("Consultas.fxml"));
+				pnlConsultas.getChildren().add(pane);
+				pnlConsultas.toFront();
+			} catch (IOException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}}
+		else if (event.getSource()==btInicio) {
+			try {
+				Pane pane=  FXMLLoader.load(getClass().getResource("TelaInicial.fxml"));
+				pnlHome.getChildren().add(pane);
+				pnlHome.toFront();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}}
+		else if (event.getSource()==btPerfil) {
+			try {
+				Pane pane =  FXMLLoader.load(getClass().getResource("Perfil.fxml"));
+				pnlPerfil.getChildren().add(pane);
+				pnlPerfil.toFront();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}}
+		else if (event.getSource()==btInvestimentos)
+    		pnlInvestimentos.toFront();
+    	else if (event.getSource()==btDeslogar)
+    		System.exit(0);
+    		
     }
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
