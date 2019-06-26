@@ -1,11 +1,12 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Investimento {
 	private String nome;
 	private Status status;
-	private double lucro;
+	private ArrayList <Lucro> lucro;
 	private double margemLucro;
 	private double valorInvestido;
 	private double valorInvestimento;
@@ -22,11 +23,11 @@ public class Investimento {
 		this.nome = nome;
 	}
 
-	public double getLucro() {
+	public ArrayList<Lucro> getLucro() {
 		return lucro;
 	}
 
-	public void setLucro(double lucro) {
+	public void setLucro(ArrayList<Lucro> lucro) {
 		this.lucro = lucro;
 	}
 
