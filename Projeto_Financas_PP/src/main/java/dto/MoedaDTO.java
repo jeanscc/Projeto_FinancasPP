@@ -2,11 +2,26 @@ package dto;
 
 import java.util.ArrayList;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class MoedaDTO {
 
+	@Column(name = "nome")
 	private String nome;
+	
+	@Column(name = "valor")
 	private double valor;
+	
 	private ArrayList<MoedaDTO> todasMoedas;
+	
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
 	public int getId() {

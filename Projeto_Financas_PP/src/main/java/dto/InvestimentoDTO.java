@@ -3,12 +3,35 @@ package dto;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class InvestimentoDTO {
+	
+	@Column(name = "status")
 	private String status;
+	
+	@Column(name = "valor")
 	private double valor;
-	private Date data_inicio, data_fim;
+	
+	private Date data_inicio;
+	private Date data_fim;
+	
 	private ArrayList<InvestimentoDTO> todosInvetismento;
-	private int idMeta, idMoeda, id;
+	
+	@Column(name = "idMeta")
+	private int idMeta;
+	@Column(name = "idMoeda")
+	private int idMoeda;
+	
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 	
 	
 	public int getId() {

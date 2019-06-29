@@ -3,10 +3,36 @@ package dto;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class UsuarioDTO {
-	private String nome, cpf, telefone, email;
+	
+	@Column(name = "nome")
+	private String nome;
+	
+	@Column(name = "cpf")
+	private String cpf;
+
+	@Column(name = "telefone")
+	private String telefone;
+	
+	@Column(name = "email")
+	private String email;
+	
+	@Column(name = "conta")
 	private ContaDTO conta;
+	
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	
 	private ArrayList<UsuarioDTO> usuariosCadastrados;
 	private Random gerador = new Random();
 	
