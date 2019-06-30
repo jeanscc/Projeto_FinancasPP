@@ -1,4 +1,4 @@
-package dao;
+package daoJPA;
 
 import dto.ContaDTO;
 
