@@ -19,14 +19,14 @@
 
 	<build>
 		<resources>
-        <resource>
-            <filtering>false</filtering>
-            <directory>src/main/java</directory>
-            <includes>
-                <include>**/*.fxml</include>
-            </includes>             
-        </resource>
-    </resources>
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.fxml</include>
+				</includes>
+			</resource>
+		</resources>
 
 	</build>
 
@@ -70,6 +70,13 @@
 			<artifactId>fontawesomefx</artifactId>
 			<version>8.9</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20180813</version>
+		</dependency>
+
 	</dependencies>
 
 

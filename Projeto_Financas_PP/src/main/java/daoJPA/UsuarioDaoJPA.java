@@ -4,17 +4,16 @@ import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
 
-import bd.ConnectionEntityManager;
 import dto.UsuarioDTO;
 
-public class UsuarioDaoJPA implements ITusuario{
+public class UsuarioDaoJPA extends FactoryEntity implements ITusuario{
 	
 	private EntityManager entidade;
 	
 	
 	public boolean salvar(UsuarioDTO obj) throws Exception {
 		try {
-			entidade = ConnectionEntityManager.getIntity();
+			entidade = super.getIntity();
 			entidade.getTransaction().begin();
 			entidade.persist(obj);
 			entidade.getTransaction().commit();
@@ -31,7 +30,7 @@ public class UsuarioDaoJPA implements ITusuario{
 		UsuarioDTO achado = null;
 		try {
 			achado = entidade.find(UsuarioDTO.class, id);
-			entidade = ConnectionEntityManager.getIntity();
+			entidade = super.getIntity();
 			entidade.getTransaction().begin();
 			entidade.remove(achado);
 			entidade.getTransaction().commit();
@@ -47,7 +46,7 @@ public class UsuarioDaoJPA implements ITusuario{
 
 	public UsuarioDTO atualizar(UsuarioDTO obj) throws Exception {
 		try {
-			entidade = ConnectionEntityManager.getIntity();
+			entidade = super.getIntity();
 			entidade.getTransaction().begin();
 			obj = entidade.merge(obj);
 			entidade.getTransaction().commit();
@@ -65,8 +64,7 @@ public class UsuarioDaoJPA implements ITusuario{
 		UsuarioDTO retorno = new UsuarioDTO();
 		ArrayList<UsuarioDTO> lista;
 		try {
-			entidade = ConnectionEntityManager.getIntity();
-		
+			entidade = super.getIntity();
 			lista = (ArrayList<UsuarioDTO>) entidade.createQuery("from UsuarioDTO").getResultList();
 			retorno.setUsuariosCadastrados(lista);
 			
@@ -82,7 +80,7 @@ public class UsuarioDaoJPA implements ITusuario{
 		UsuarioDTO retorno = null;
 		ArrayList<UsuarioDTO> lista;
 		try {
-			entidade = ConnectionEntityManager.getIntity();
+			entidade = super.getIntity();
 			retorno = entidade.find(UsuarioDTO.class, id);
 		}catch(Exception e) {
 			throw new Exception(e.getMessage());
