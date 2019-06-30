@@ -9,7 +9,7 @@ import java.net.URL;
 
 import org.json.JSONObject;
 
-public abstract class RequisicaoHttp implements ITrequeste{
+public abstract class RequisicaoHttpCripto implements ITrequeste{
 	
 	
 	public Object request(String moeda,String tipoRetorno) throws Exception {

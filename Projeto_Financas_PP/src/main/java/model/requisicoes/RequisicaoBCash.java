@@ -1,6 +1,6 @@
 package model.requisicoes;
 
-public class RequisicaoBCash extends RequisicaoHttp{
+public class RequisicaoBCash extends RequisicaoHttpCripto{
 
 	@Override
 	public String consultarValor(String moeda) throws Exception {
