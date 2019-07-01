@@ -20,14 +20,15 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import strategy.StrategyGenerico;
 
 public class ControllerLogin implements Initializable {
-	private ControlerUsuario controlerUs;
+	private StrategyGenerico controlerUs;
 	private FactoryUsuario fabricaUsuario;
 
 	public ControllerLogin() {
-		controlerUs = new ControlerUsuario();
 		fabricaUsuario = new FactoryUsuario();
+		controlerUs = (ControlerUsuario) fabricaUsuario.gerar("control");
 	}
 
 	@FXML
@@ -77,21 +78,21 @@ public class ControllerLogin implements Initializable {
 			// Pegando os dados digitado pelo usuário.
 			String email = txEmail.getText();
 			String senha = txSenha.getText();
+			// populando o objeto DTO.
+			usuario.setEmail(email);
+			usuario.setSenha(senha);
+			
 			if (email.equalsIgnoreCase("admin@admin.com") && senha.equalsIgnoreCase("admin")) {
 				this.novaTela("TelaInicial");
 				
 			} else {
-				// populando o objeto DTO.
-				usuario.setEmail(email);
-				usuario.setSenha(senha);
-
-				if (controlerUs.buscar(usuario) != null) {
-
+				if (controlerUs.logar(usuario) != null) {
+					this.novaTela("TelaInicial");
 				}
 			}
 
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Erro ao logar.  " + e.getMessage());
+			JOptionPane.showMessageDialog(null, "Erro ao entrar.  " + e.getMessage());
 		}
 	}
 

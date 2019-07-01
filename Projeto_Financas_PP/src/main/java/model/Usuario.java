@@ -79,13 +79,7 @@ public class Usuario {
 	
 	
 	public UsuarioDTO logar(UsuarioDTO obj) throws Exception{
-		UsuarioDTO encontrado = usuarioDAO.logar(obj);
-		if(encontrado.getEmail().equalsIgnoreCase(obj.getEmail()) && encontrado.getSenha().equalsIgnoreCase(obj.getSenha())) {
-			return encontrado;
-		}else {
-			return null;
-		}
-		
+		return usuarioDAO.logar(obj);
 	}
 	
 	public UsuarioDTO listar() throws Exception{

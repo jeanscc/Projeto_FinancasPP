@@ -29,7 +29,7 @@ public class ControlerInvestimento implements StrategyGenerico{
 		return null;
 	}
 
-	public Object buscar(Object obj) throws Exception {
+	public Object logar(Object obj) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

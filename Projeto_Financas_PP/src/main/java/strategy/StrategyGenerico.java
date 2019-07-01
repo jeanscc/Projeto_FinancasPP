@@ -12,6 +12,6 @@ public interface StrategyGenerico {
 	
 	public Object buscar(int id) throws Exception;
 	
-	public Object buscar(Object obj) throws Exception;
+	public Object logar(Object obj) throws Exception;
 }
 

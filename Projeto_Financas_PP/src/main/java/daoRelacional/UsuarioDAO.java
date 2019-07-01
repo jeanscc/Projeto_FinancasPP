@@ -14,7 +14,6 @@ public class UsuarioDAO implements ITusuario {
 	private PreparedStatement pst;
 
 	public UsuarioDAO() {
-		// TODO Auto-generated constructor stub
 		try {
 			con = ConnectionFactory.getInstance().conectar();
 		} catch (Exception e) {
@@ -80,19 +79,23 @@ public class UsuarioDAO implements ITusuario {
 	}
 
 	public UsuarioDTO logar(UsuarioDTO obj) throws Exception {
-		UsuarioDTO retorno = new UsuarioDTO();
+		UsuarioDTO retorno = null;
 		try {
-			pst = con.prepareStatement("SELECT *FROM usuario");
+			pst = con.prepareStatement("SELECT *FROM usuario WHERE email = ? AND senha = ?");
+			pst.setString(1, obj.getEmail());
+			pst.setString(2, obj.getSenha());
 			rs = pst.executeQuery();
 			while(rs.next()) {
+				retorno = new UsuarioDTO();
 				retorno.setNome(rs.getString("nome"));
 				retorno.setCpf(rs.getString("cpf"));
 				retorno.setEmail(rs.getString("email"));
 				retorno.setId(rs.getInt("id"));
+				retorno.setSenha(rs.getString("senha"));
 			}
 			return retorno;
 		} catch (Exception e) {
-			throw new Exception("Erro ao atualizar usuario. " + e.getMessage());
+			throw new Exception("Erro ao logar no sistema. " + e.getMessage());
 		}
 	}
 

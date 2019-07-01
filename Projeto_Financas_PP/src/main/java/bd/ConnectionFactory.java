@@ -4,12 +4,12 @@ import java.sql.*;
 public class ConnectionFactory{
     private final static  String   USER = "postgres";
     private final static  String   PASS = "root";
-    private final static  String   URL = "jdbc:mypostgresql://localhost:5432/db_financas";
+    private final static  String   URL = "jdbc:postgresql://localhost:5432/db_financas";
 
 
     public Connection conectar() throws Exception{
         try{
-            Class.forName("org.postgresql.jdbc.Driver");
+            Class.forName("org.postgresql.Driver");
             return DriverManager.getConnection(URL,USER,PASS);
         }catch(Exception e){
         	throw new Exception("erro ao fechar conexão. " + e.getMessage());
