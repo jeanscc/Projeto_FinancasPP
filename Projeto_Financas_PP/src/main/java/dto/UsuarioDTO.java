@@ -13,20 +13,17 @@ import javax.persistence.OneToMany;
 @Entity
 public class UsuarioDTO {
 	
-	@Column(name = "nome")
 	private String nome;
 	
-	@Column(name = "cpf")
 	private String cpf;
 
-	@Column(name = "telefone")
 	private String telefone;
 	
-	@Column(name = "email")
 	private String email;
 	
-	@Column(name = "conta")
 	private ContaDTO conta;
+	
+	private String senha;
 	
 	@Id
 	@Column(name = "id")
@@ -42,6 +39,17 @@ public class UsuarioDTO {
 		conta.setNumero(gerador.nextInt(1000000));
 	}
 	
+	
+	public String getSenha() {
+		return senha;
+	}
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+
 	public ArrayList<UsuarioDTO> getUsuariosCadastrados() {
 		return usuariosCadastrados;
 	}

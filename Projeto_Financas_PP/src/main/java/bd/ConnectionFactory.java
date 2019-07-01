@@ -3,7 +3,7 @@ import java.sql.*;
 
 public class ConnectionFactory{
     private final static  String   USER = "postgres";
-    private final static  String   PASS = "postgres";
+    private final static  String   PASS = "root";
     private final static  String   URL = "jdbc:mypostgresql://localhost:5432/db_financas";
 
 

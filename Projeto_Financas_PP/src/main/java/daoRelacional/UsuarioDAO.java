@@ -79,4 +79,21 @@ public class UsuarioDAO implements ITusuario {
 		}
 	}
 
+	public UsuarioDTO logar(UsuarioDTO obj) throws Exception {
+		UsuarioDTO retorno = new UsuarioDTO();
+		try {
+			pst = con.prepareStatement("SELECT *FROM usuario");
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				retorno.setNome(rs.getString("nome"));
+				retorno.setCpf(rs.getString("cpf"));
+				retorno.setEmail(rs.getString("email"));
+				retorno.setId(rs.getInt("id"));
+			}
+			return retorno;
+		} catch (Exception e) {
+			throw new Exception("Erro ao atualizar usuario. " + e.getMessage());
+		}
+	}
+
 }

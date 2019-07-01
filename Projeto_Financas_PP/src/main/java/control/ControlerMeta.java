@@ -9,17 +9,27 @@ public class ControlerMeta implements StrategyGenerico{
 		return false;
 	}
 
-	public boolean excluir(int id) throws Exception {
+	public Object excluir(int id) throws Exception {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public boolean atualizar(Object novo) throws Exception {
+	public Object atualizar(Object novo) throws Exception {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public Object listar() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object buscar(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object buscar(Object obj) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

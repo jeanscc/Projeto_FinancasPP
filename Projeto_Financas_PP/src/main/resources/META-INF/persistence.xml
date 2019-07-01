@@ -12,7 +12,7 @@
     <class>dto.UsuarioDTO</class>
     <properties>
       <!-- Configurações do JDBC -->
-      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/banco_financas?useUnicode=true&amp;characterEncoding=utf8&amp;createDatabaseIfNotExist=true&amp;useSSL=false&amp;serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.password" value="root"/>

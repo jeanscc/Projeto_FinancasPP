@@ -90,4 +90,17 @@ public class UsuarioDaoJPA extends FactoryEntity implements ITusuario{
 		return retorno;
 	}
 
+	public UsuarioDTO logar(UsuarioDTO usuario) throws Exception {
+		UsuarioDTO retorno = null;
+		ArrayList<UsuarioDTO> lista;
+		try {
+			entidade = super.getIntity();
+			retorno = entidade.find(UsuarioDTO.class, usuario.getEmail());
+		}catch(Exception e) {
+			throw new Exception(e.getMessage());
+		}finally {
+			entidade.close();
+		}
+		return retorno;
+	}
 }

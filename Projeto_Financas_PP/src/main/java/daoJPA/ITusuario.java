@@ -1,5 +1,7 @@
 package daoJPA;
 
+import java.util.ArrayList;
+
 import dto.UsuarioDTO;
 
 public interface ITusuario {
@@ -13,4 +15,7 @@ public interface ITusuario {
 	public UsuarioDTO listar() throws Exception;
 
 	public UsuarioDTO buscar(int id) throws Exception;
+	
+	public UsuarioDTO logar(UsuarioDTO usuario) throws Exception;
+	
 }

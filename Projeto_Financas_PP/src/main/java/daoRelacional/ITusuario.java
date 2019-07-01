@@ -11,5 +11,7 @@ public interface ITusuario {
 	public boolean atualizar(UsuarioDTO obj) throws Exception;
 
 	public UsuarioDTO listar() throws Exception;
+	
+	public UsuarioDTO logar(UsuarioDTO obj) throws Exception;
 
 }
