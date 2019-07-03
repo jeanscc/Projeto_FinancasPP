@@ -8,29 +8,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class InvestimentoDTO {
 	
-	@Column(name = "status")
 	private String status;
 	
-	@Column(name = "valor")
 	private double valor;
 	
 	private Date data_inicio;
 	private Date data_fim;
 	
+	@Transient
 	private ArrayList<InvestimentoDTO> todosInvetismento;
 	
-	@Column(name = "idMeta")
 	private int idMeta;
-	@Column(name = "idMoeda")
 	private int idMoeda;
 	
 	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	

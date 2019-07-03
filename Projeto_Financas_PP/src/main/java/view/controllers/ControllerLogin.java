@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -83,11 +84,12 @@ public class ControllerLogin implements Initializable {
 			usuario.setSenha(senha);
 			
 			if (email.equalsIgnoreCase("admin@admin.com") && senha.equalsIgnoreCase("admin")) {
-				this.novaTela("TelaInicial");
+				this.novaTela("Home", event);
+				
 				
 			} else {
 				if (controlerUs.logar(usuario) != null) {
-					this.novaTela("TelaInicial");
+					this.novaTela("Home", event);
 				}
 			}
 
@@ -102,17 +104,24 @@ public class ControllerLogin implements Initializable {
 
 	}
 
-	private void novaTela(String tela) {
+	private void novaTela(String tela, ActionEvent evento) {
 		try {
 			Stage stage = new Stage();
 			Parent root = FXMLLoader.load(getClass().getResource("/view/fxmls/" + tela + ".fxml"));
 			Scene scene = new Scene(root);
-
+			
 			stage.setScene(scene);
 			stage.show();
+			
+
+			Node node = (Node) evento.getSource();
+			Stage estagio = (Stage) node.getScene().getWindow();
+			estagio.close();
+			
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Erro ao iniciar FXML.");
 		}
 
 	}
+	
 }

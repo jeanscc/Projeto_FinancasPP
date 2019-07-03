@@ -8,7 +8,7 @@ public interface ITmoeda {
 	
 	public MoedaDTO listar() throws Exception;
 	
-	public boolean atualizar(MoedaDTO novo) throws Exception;
+	public MoedaDTO atualizar(MoedaDTO novo) throws Exception;
 	
 	public boolean excluir(int id) throws Exception;
 }

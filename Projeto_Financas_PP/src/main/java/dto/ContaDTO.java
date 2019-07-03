@@ -9,13 +9,10 @@ import javax.persistence.Id;
 @Entity
 public class ContaDTO {
 	
-	@Column(name = "numero")
 	private int numero;
-	@Column(name = "saldo")
 	private double saldo;
-	@Column(name = "id")
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	

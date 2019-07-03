@@ -3,32 +3,28 @@ package dto;
 import java.sql.Date;
 import java.util.ArrayList;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class MetaDTO {
 	
-	@Column(name = "data_inicio")
 	private Date data_inicio;
 	
-	@Column(name = "data_fim")
 	private Date data_fim;
 	
-	@Column(name = "nome")
 	private String nome;
 	
+	@Transient
 	private ArrayList<MetaDTO> todasMetas;
-	
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private int id;
 	
-	@Column(name = "idUsuario")
 	private int idUsuario;
 	
 	

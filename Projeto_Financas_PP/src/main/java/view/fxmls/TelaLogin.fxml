@@ -14,7 +14,7 @@
 <AnchorPane prefHeight="454.0" prefWidth="603.0" style="-fx-background-color: #05071F;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="view.controllers.ControllerLogin">
    <children>
       <Line endX="150.0" layoutX="301.0" layoutY="95.0" startX="-150.0" stroke="LIGHTGRAY" />
-      <Label layoutX="234.0" layoutY="111.0" text="Logue-se com Sua Conta" textFill="LIGHTGRAY" />
+      <Label layoutX="234.0" layoutY="111.0" text="Logue com sua conta" textFill="LIGHTGRAY" />
       <TextField fx:id="txEmail" layoutX="180.0" layoutY="153.0" prefHeight="28.0" prefWidth="277.0" promptText="                                E-mail" style="-fx-background-color: #14173d;" />
       <PasswordField fx:id="txSenha" layoutX="180.0" layoutY="217.0" prefHeight="28.0" prefWidth="277.0" promptText="                                 Senha" style="-fx-background-color: #14173d;" />
       <Pane layoutX="133.0" layoutY="153.0" prefHeight="28.0" prefWidth="47.0" style="-fx-background-color: #0000FF;">
@@ -28,7 +28,7 @@
          </children>
       </Pane>
       <Button fx:id="btLogin" layoutX="216.0" layoutY="270.0" mnemonicParsing="false" onAction="#lsLogin" prefHeight="35.0" prefWidth="191.0" style="-fx-background-color: #0000FF;" text="Logar-se" textFill="LIGHTGRAY" />
-      <Label layoutX="203.0" layoutY="330.0" text="Não Tem Uma Conta?" textFill="LIGHTGRAY" />
+      <Label layoutX="203.0" layoutY="330.0" text="Não tem uma conta?" textFill="LIGHTGRAY" />
       <Button fx:id="btCadastrar" layoutX="323.0" layoutY="324.0" mnemonicParsing="false" onAction="#lsCadastro" onMouseEntered="#lsFocus" onMouseExited="#lsExit" prefHeight="30.0" prefWidth="98.0" style="-fx-background-color: #05071F;" text="Cadastre-se" textFill="ROYALBLUE">
          <font>
             <Font size="14.0" />

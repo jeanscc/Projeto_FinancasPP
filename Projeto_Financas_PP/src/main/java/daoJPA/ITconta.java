@@ -8,5 +8,5 @@ public interface ITconta {
 	
 	public boolean excluir(int id) throws Exception;
 	
-	public boolean atualizar(ContaDTO nova) throws Exception;
+	public ContaDTO atualizar(ContaDTO nova) throws Exception;
 }
