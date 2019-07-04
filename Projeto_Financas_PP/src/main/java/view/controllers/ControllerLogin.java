@@ -25,8 +25,9 @@ import javafx.stage.Stage;
 import strategy.StrategyGenerico;
 
 public class ControllerLogin implements Initializable {
+	private ControlerUsuario controlerUs;
+	private ITfabrica fabricaUsuario;
 
-	
 	@FXML
 	private TextField txEmail;
 
@@ -67,6 +68,14 @@ public class ControllerLogin implements Initializable {
 
 	}
 
+	public void initialize(URL location, ResourceBundle resources) {
+		txEmail.setStyle("-fx-text-fill: lightgray; -fx-font-size: 12px;-fx-background-color:#14173d;");
+		txSenha.setStyle("-fx-text-fill: lightgray; -fx-font-size: 12px;-fx-background-color:#14173d;");
+		fabricaUsuario = new FactoryUsuario();
+		controlerUs = (ControlerUsuario) fabricaUsuario.gerar("control");
+
+	}
+
 	@FXML
 	void lsLogin(ActionEvent event) {
 		try {
@@ -77,11 +86,10 @@ public class ControllerLogin implements Initializable {
 			// populando o objeto DTO.
 			usuario.setEmail(email);
 			usuario.setSenha(senha);
-			
+
 			if (email.equalsIgnoreCase("admin@admin.com") && senha.equalsIgnoreCase("admin")) {
 				this.novaTela("Home", event);
-				
-				
+
 			} else {
 				if (controlerUs.logar(usuario) != null) {
 					this.novaTela("Home", event);
@@ -93,35 +101,23 @@ public class ControllerLogin implements Initializable {
 		}
 	}
 
-	private ControlerUsuario controlerUs;
-	private ITfabrica fabricaUsuario;
-	
-	public void initialize(URL location, ResourceBundle resources) {
-		txEmail.setStyle("-fx-text-fill: lightgray; -fx-font-size: 12px;-fx-background-color:#14173d;");
-		txSenha.setStyle("-fx-text-fill: lightgray; -fx-font-size: 12px;-fx-background-color:#14173d;");
-		fabricaUsuario = new FactoryUsuario();
-		controlerUs = (ControlerUsuario) fabricaUsuario.gerar("control");
-
-	}
-
 	private void novaTela(String tela, ActionEvent evento) {
 		try {
 			Stage stage = new Stage();
 			Parent root = FXMLLoader.load(getClass().getResource("/view/fxmls/" + tela + ".fxml"));
 			Scene scene = new Scene(root);
-			
+
 			stage.setScene(scene);
 			stage.show();
-			
 
 			Node node = (Node) evento.getSource();
 			Stage estagio = (Stage) node.getScene().getWindow();
 			estagio.close();
-			
+
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Erro ao iniciar FXML.");
 		}
 
 	}
-	
+
 }

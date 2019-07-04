@@ -37,21 +37,11 @@ public class MetaDaoJPA extends FactoryEntity implements ITmeta{
 		return metas;
 	}
 
-<<<<<<< Updated upstream
-	public boolean excluir(MetaDTO dto) throws Exception {
-		entidade = super.getIntity();
-		try {
-			entidade.getTransaction().begin();
-			MetaDTO achada = entidade.find(MetaDTO.class, dto.getId());
-			entidade.getTransaction().begin();
-			entidade.remove(achada);
-=======
 	public boolean excluir(MetaDTO obj) throws Exception {
 		entidade = super.getIntity();
 		try {
 			entidade.getTransaction().begin();
 			entidade.remove(obj);
->>>>>>> Stashed changes
 			entidade.getTransaction().commit();
 			return true;
 		}catch(Exception e) {
