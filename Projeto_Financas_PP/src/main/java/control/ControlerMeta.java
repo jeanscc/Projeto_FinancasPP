@@ -1,37 +1,59 @@
 package control;
 
+import dto.MetaDTO;
+import model.Meta;
 import strategy.StrategyGenerico;
 
-public class ControlerMeta implements StrategyGenerico{
+public class ControlerMeta{
 
-	public boolean salvar(Object obj) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+	Meta meta = new Meta();
+	
+	public boolean salvar(MetaDTO dto) throws Exception {
+		try {
+			return meta.salvar(dto);
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
-	public Object excluir(int id) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+	public MetaDTO excluir(MetaDTO dto) throws Exception {
+		try {
+			return meta.excluir(dto);
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
-	public Object atualizar(Object novo) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+	public MetaDTO atualizar(MetaDTO dto) throws Exception {
+		try {
+			return meta.atualizar(dto);
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
-	public Object listar() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public MetaDTO listar() throws Exception {
+		try {
+			return meta.listar();
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
-	public Object buscar(int id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Object logar(Object obj) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public Object buscar(MetaDTO dto) throws Exception {
+//		try {
+//			return meta.buscar(dto);
+//		} catch (Exception e) {
+//			throw e;
+//		}
+//	}
+//
+//	public Object logar(MetaDTO dto) throws Exception {
+//		try {
+//			return meta.logar(dto);
+//		} catch (Exception e) {
+//			throw e;
+//		}
+//	}
 
 }
