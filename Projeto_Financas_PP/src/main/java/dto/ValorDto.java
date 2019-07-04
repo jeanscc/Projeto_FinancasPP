@@ -2,9 +2,15 @@ package dto;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+@Entity
 public class ValorDto {
 	
 	private double valor;
+	
+	@Temporal(TemporalType.DATE)
 	private Date data;
 	
 	

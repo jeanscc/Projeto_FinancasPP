@@ -5,9 +5,10 @@
     <!-- Implementação do hibernate -->
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <!--Entidades -->
-    <class>dto.ContaDTO</class>
     <class>dto.InvestimentoDTO</class>
     <class>dto.MetaDTO</class>
+    <class>dto.LucroDto</class>
+    <class>dto.ValorDTO</class>
     <class>dto.MoedaDTO</class>
     <class>dto.UsuarioDTO</class>
     <properties>
