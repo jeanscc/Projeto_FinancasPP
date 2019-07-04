@@ -1,8 +1,11 @@
 package model;
 
-public class Moeda extends TipoInvestimento{
+import java.util.ArrayList;
+
+public class Moeda  {
 	private String nome;
-	private double valor;
+	private TipoMoeda tipo;
+	private ArrayList<Valor> historico = new ArrayList<Valor>();
 	
 	
 	
@@ -13,12 +16,22 @@ public class Moeda extends TipoInvestimento{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public double getValor() {
-		return valor;
+	public TipoMoeda getTipo() {
+		return tipo;
 	}
-	public void setValor(double valor) {
-		this.valor = valor;
+	public void setTipo(TipoMoeda tipo) {
+		this.tipo = tipo;
 	}
+	public ArrayList<Valor> getHistorico() {
+		return historico;
+	}
+	public void setHistorico(ArrayList<Valor> historico) {
+		this.historico = historico;
+	}
+	
+	
+	
+	
 	
 	
 	

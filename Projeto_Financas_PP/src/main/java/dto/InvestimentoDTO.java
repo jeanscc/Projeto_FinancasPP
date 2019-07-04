@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+import model.Moeda;
+
 @Entity
 public class InvestimentoDTO {
 	
@@ -23,8 +25,8 @@ public class InvestimentoDTO {
 	@Transient
 	private ArrayList<InvestimentoDTO> todosInvetismento;
 	
-	private int idMeta;
-	private int idMoeda;
+
+	private MoedaDTO moeda;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,20 +41,14 @@ public class InvestimentoDTO {
 		this.id = id;
 	}
 
-	public int getIdMeta() {
-		return idMeta;
+	
+
+	public MoedaDTO getMoedaDTO() {
+		return moeda;
 	}
 
-	public void setIdMeta(int idMeta) {
-		this.idMeta = idMeta;
-	}
-
-	public int getIdMoeda() {
-		return idMoeda;
-	}
-
-	public void setIdMoeda(int idMoeda) {
-		this.idMoeda = idMoeda;
+	public void setMoeda(MoedaDTO moeda) {
+		this.moeda = moeda;
 	}
 
 	public ArrayList<InvestimentoDTO> getTodosInvetismento() {

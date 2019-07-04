@@ -1,6 +1,10 @@
 package view.controllers;
 
 import java.net.URL;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 
@@ -56,12 +60,54 @@ public class ControllerFinancas implements Initializable{
 
     @FXML
     void lsBuscar(ActionEvent event) {
-
+    	LocalDate localDate = dtInicial.getValue();
+    	Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+    	Date dateI = Date.from(instant);
+    	LocalDate localDate2 = dtInicial.getValue();
+    	Instant instant2 = Instant.from(localDate2.atStartOfDay(ZoneId.systemDefault()));
+    	Date dateF = Date.from(instant2);
+    	
+    	carregarData(dateI,dateF);
     }
 
     @FXML
     void lsCb(ActionEvent event) {
-
+    	if(cbBalanco.getSelectionModel().getSelectedItem().equals("Geral")) {
+    		carregarGeral();
+    	}
+    	else {
+    		dtFinal.setVisible(true);
+    		dtInicial.setVisible(true);
+    		btBuscar.setVisible(true);
+    	}
+    }
+    
+    
+    private void carregarGeral() {
+    	//falta a fachada
+    	dtFinal.setVisible(false);
+		dtInicial.setVisible(false);
+		btBuscar.setVisible(false);
+		lbBalanco.setText(null);
+		lbInvestido.setText(null);
+		lbLucro.setText(null);
+		lbPendentes.setText(null);
+		lbPercas.setText(null);
+		lbRetorno.setText(null);
+		
+		
+    }
+    
+    private void carregarData(Date inicial,Date dFinal) {
+		//falta fachada
+    	lbBalanco.setText(null);
+		lbInvestido.setText(null);
+		lbLucro.setText(null);
+		lbPendentes.setText(null);
+		lbPercas.setText(null);
+		lbRetorno.setText(null);
+		
+		
     }
     
     private void carregarCb() {

@@ -92,7 +92,7 @@
           <CategoryAxis side="BOTTOM" />
         </xAxis>
         <yAxis>
-          <NumberAxis label="Valor" side="LEFT" />
+          <NumberAxis label="Valor" prefHeight="228.0" prefWidth="55.0" side="LEFT" upperBound="5000.0" />
         </yAxis>
       </BarChart>
       <Label layoutX="310.0" layoutY="71.0" text="Balanço" textFill="#e7e5e5">
