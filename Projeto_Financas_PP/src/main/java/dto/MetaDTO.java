@@ -25,7 +25,11 @@ public class MetaDTO {
 	@Enumerated(EnumType.STRING)
 	private Status status;
 	
+	private String descricao;
+	
 	private String nome;
+	
+	private double valor;
 	
 	@Transient
 	private ArrayList<MetaDTO> todasMetas;
@@ -39,6 +43,22 @@ public class MetaDTO {
 	
 	
 	
+
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
 	public UsuarioDTO getUsuario() {
 		return usuario;

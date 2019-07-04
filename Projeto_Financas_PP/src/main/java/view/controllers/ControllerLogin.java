@@ -22,7 +22,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import strategy.StrategyGenerico;
+
 
 public class ControllerLogin implements Initializable {
 	private ControlerUsuario controlerUs;

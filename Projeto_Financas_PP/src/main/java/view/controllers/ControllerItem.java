@@ -46,7 +46,13 @@ public class ControllerItem implements Initializable{
     @FXML
     void lsExcluir(ActionEvent event) {
     	ControlerInvestimento controler = new ControlerInvestimento();
-    //	controler.excluir(dto);
+    	try {
+			controler.excluir(dto);
+			con.carregarTabela();
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
     	con.carregarTabela();
     }
     
