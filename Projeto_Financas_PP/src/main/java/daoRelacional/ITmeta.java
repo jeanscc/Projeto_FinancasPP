@@ -11,4 +11,5 @@ public interface ITmeta {
 	public boolean excluir(int id) throws Exception;
 	
 	public boolean atualizar(MetaDTO novo) throws Exception;
+	
 }

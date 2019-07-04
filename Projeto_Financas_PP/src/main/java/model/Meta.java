@@ -7,6 +7,7 @@ import daoJPA.ITmoeda;
 import daoJPA.MetaDaoJPA;
 import daoJPA.MoedaDaoJPA;
 import dto.MetaDTO;
+import iterator.IteratorMeta;
 
 public class Meta {
 	private Date data_inicio, data_fim;
@@ -72,6 +73,19 @@ public class Meta {
 
 		return metaDAO.atualizar(dto);
 
+	}
+
+	public int quantidadeFinalizados() throws Exception {
+		int count = 0;
+		MetaDTO registro = metaDAO.listar();
+		IteratorMeta iterator = new IteratorMeta(registro.getTodasMetas());
+		while (iterator.hasNext()) {
+			MetaDTO atual = (MetaDTO) iterator.next();
+			if (atual.getStatus().name().equalsIgnoreCase("FINALIZADO")) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 }

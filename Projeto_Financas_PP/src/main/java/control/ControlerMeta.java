@@ -1,3 +1,4 @@
+
 package control;
 
 import dto.MetaDTO;
@@ -35,6 +36,10 @@ public class ControlerMeta {
 
 		return meta.listar();
 
+	}
+	
+	public int metasFinalizadas() throws Exception {
+		return meta.quantidadeFinalizados();
 	}
 //
 //	public Object buscar(MetaDTO dto) throws Exception {
