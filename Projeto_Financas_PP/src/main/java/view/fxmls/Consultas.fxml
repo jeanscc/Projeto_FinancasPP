@@ -33,7 +33,7 @@
           <CategoryAxis label="Hora" side="BOTTOM" />
         </xAxis>
         <yAxis>
-          <NumberAxis label="Preço" side="LEFT" />
+          <NumberAxis label="Preço" side="LEFT" upperBound="6.0" />
         </yAxis>
       </LineChart>
       <Button fx:id="btConsultar" layoutX="497.0" layoutY="157.0" mnemonicParsing="false" onAction="#lsConsultar" prefHeight="41.0" prefWidth="231.0" text="Consultar" />

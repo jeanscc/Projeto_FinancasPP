@@ -3,30 +3,43 @@ package dto;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import model.Lucro;
 import model.Moeda;
 import model.Status;
 
 @Entity
 public class InvestimentoDTO {
-	
+	@Enumerated(EnumType.STRING)
 	private Status status;
 	
-	private double valor;
+	@ManyToMany(cascade = {CascadeType.MERGE},fetch=FetchType.EAGER,targetEntity = LucroDto.class)
+	private ArrayList <Lucro> lucro;
 	
+	private double valor;
+	@Temporal(TemporalType.DATE)
 	private Date data_inicio;
+	@Temporal(TemporalType.DATE)
 	private Date data_fim;
 	
 	@Transient
 	private ArrayList<InvestimentoDTO> todosInvetismento;
 	
-
+	@OneToOne()
 	private MoedaDTO moeda;
 	
 	@Id
