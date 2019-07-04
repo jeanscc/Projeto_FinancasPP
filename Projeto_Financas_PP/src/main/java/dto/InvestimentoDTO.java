@@ -26,6 +26,7 @@ public class InvestimentoDTO {
 	@Enumerated(EnumType.STRING)
 	private Status status;
 	
+	
 	@ManyToMany(cascade = {CascadeType.MERGE},fetch=FetchType.EAGER,targetEntity = LucroDto.class)
 	private ArrayList <Lucro> lucro;
 	
@@ -55,6 +56,7 @@ public class InvestimentoDTO {
 
 	public void setId(int id) {
 		this.id = id;
+	
 	}
 
 	

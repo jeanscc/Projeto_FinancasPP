@@ -1,5 +1,5 @@
 package model;
 
 public enum Status {
-Ativo,Finalizado,Cancelado
+Ativo,Finalizado;
 }
