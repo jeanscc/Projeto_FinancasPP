@@ -3,6 +3,7 @@ package view.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import control.ControlerMeta;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
@@ -55,7 +56,8 @@ public class ControllerMetas implements Initializable{
     private Button btCadastro;
 
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		ControlerMeta controler = new ControlerMeta();
+		pgMetas= new ProgressIndicator();
 		
 	}
 

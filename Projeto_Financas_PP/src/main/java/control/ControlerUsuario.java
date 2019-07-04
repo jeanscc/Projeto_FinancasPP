@@ -1,20 +1,15 @@
 package control;
 
 import dto.UsuarioDTO;
-import dto.UsuarioDTO;
+
 import model.Usuario;
-import strategy.StrategyGenerico;
 
-public class ControlerUsuario {
-<<<<<<< Updated upstream
 
-=======
-	private Usuario usuario;
 
 public class ControlerUsuario{
 
 	
->>>>>>> Stashed changes
+
 	private Usuario usuario;
 
 	public ControlerUsuario() {
