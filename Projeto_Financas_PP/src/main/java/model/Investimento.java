@@ -101,12 +101,12 @@ public class Investimento {
 		
 	}
 	
-//	public InvestimentoDTO excluir(InvestimentoDTO dto) throws Exception {
-//		
-//			return dao.excluir(dto);
-//	
-//		
-//	}
+	public boolean excluir(InvestimentoDTO dto) throws Exception {
+		
+			return investimentoDAO.excluir(dto);
+	
+		
+	}
 	
 	public InvestimentoDTO atualizar(InvestimentoDTO dto) throws Exception {
 		
@@ -120,15 +120,15 @@ public class Investimento {
 	
 	}
 
-//	public InvestimentoDTO buscar(InvestimentoDTO dto) throws Exception {
-//	
-//			return dao.buscar(dto);
-//	
-//	}
+	public InvestimentoDTO buscar(InvestimentoDTO dto) throws Exception {
+	
+			return investimentoDAO.buscar(dto);
+	
+	}
 	
 //	public InvestimentoDTO logar(InvestimentoDTO dto) throws Exception {
 //
-//			return dao.logar(dto);
+//			return investimentoDAO.logar(dto);
 //	
 //	}
 	

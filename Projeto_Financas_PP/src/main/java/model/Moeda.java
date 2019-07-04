@@ -45,7 +45,7 @@ public class Moeda  {
 			return moedaDAO.salvar(dto);
 	}
 
-	public MoedaDTO excluir(MoedaDTO dto) throws Exception {
+	public boolean excluir(MoedaDTO dto) throws Exception {
 			return moedaDAO.excluir(dto);
 	}
 
@@ -58,11 +58,11 @@ public class Moeda  {
 	}
 
 //	public Object buscar(MetaDTO dto) throws Exception {
-//			return meta.buscar(dto);
+//			return metaDAO.buscar(dto);
 //	}
-//
+
 //	public Object logar(MetaDTO dto) throws Exception {
-//			return meta.logar(dto);
+//			return metaDAO.logar(dto);
 //	}
 	
 	

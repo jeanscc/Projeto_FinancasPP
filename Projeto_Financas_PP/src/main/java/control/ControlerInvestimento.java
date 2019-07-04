@@ -18,11 +18,11 @@ public class ControlerInvestimento {
 
 	}
 
-//	public InvestimentoDTO excluir(InvestimentoDTO dto) throws Exception {
-//		
-//			return investimento.excluir(dto);
-//		
-//	}
+	public boolean excluir(InvestimentoDTO dto) throws Exception {
+		
+			return investimento.excluir(dto);
+		
+	}
 
 	public InvestimentoDTO atualizar(InvestimentoDTO dto) throws Exception {
 
@@ -36,11 +36,11 @@ public class ControlerInvestimento {
 
 	}
 
-//	public InvestimentoDTO buscar(InvestimentoDTO dto) throws Exception {
-//		
-//			return investimento.buscar(dto);
-//		
-//	}
+	public InvestimentoDTO buscar(InvestimentoDTO dto) throws Exception {
+		
+			return investimento.buscar(dto);
+		
+	}
 
 //	public InvestimentoDTO logar(InvestimentoDTO dto) throws Exception {
 //		

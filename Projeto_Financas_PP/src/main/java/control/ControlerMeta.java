@@ -19,7 +19,7 @@ public class ControlerMeta {
 
 	}
 
-	public MetaDTO excluir(MetaDTO dto) throws Exception {
+	public boolean excluir(MetaDTO dto) throws Exception {
 
 		return meta.excluir(dto);
 
@@ -36,7 +36,7 @@ public class ControlerMeta {
 		return meta.listar();
 
 	}
-
+//
 //	public Object buscar(MetaDTO dto) throws Exception {
 //	
 //			return meta.buscar(dto);

@@ -77,7 +77,7 @@ public class Usuario {
 		return usuarioDAO.listar();
 	}
 	
-	public UsuarioDTO excluir(Usuario dto) throws Exception {
+	public UsuarioDTO excluir(UsuarioDTO dto) throws Exception {
 		return usuarioDAO.excluir(dto);
 	}
 	

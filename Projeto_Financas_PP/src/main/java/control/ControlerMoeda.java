@@ -17,7 +17,7 @@ public class ControlerMoeda{
 			return moeda.salvar(dto);
 	}
 
-	public MoedaDTO excluir(MoedaDTO dto) throws Exception {
+	public boolean excluir(MoedaDTO dto) throws Exception {
 			return moeda.excluir(dto);
 	}
 
@@ -29,12 +29,12 @@ public class ControlerMoeda{
 			return moeda.listar();
 	}
 
-//	public Object buscar(MetaDTO dto) throws Exception {
-//			return meta.buscar(dto);
+//	public Object buscar(MoedaDTO dto) throws Exception {
+//			return moeda.buscar(dto);
 //	}
-//
-//	public Object logar(MetaDTO dto) throws Exception {
-//			return meta.logar(dto);
+
+//	public Object logar(MoedaDTO dto) throws Exception {
+//			return moeda.logar(dto);
 //	}
 
 }
