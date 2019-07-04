@@ -22,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.Pane;
 import model.requisicoes.ITrequeste;
+import model.requisicoes.RequisicaoBitCoin;
 import model.requisicoes.RequisicaoDolar;
 
 public class ControllerConsultas implements Initializable{
@@ -29,7 +30,7 @@ public class ControllerConsultas implements Initializable{
 	private CategoryAxis linhaX = new CategoryAxis();
 	private NumberAxis linhaY = new NumberAxis();
 	private ScheduledExecutorService scheduledExecutorService;
-	private ITrequeste consulta = new RequisicaoDolar();
+	private ITrequeste consulta = new RequisicaoBitCoin();
 	private Double num = new Double(0);
 	
     @FXML
@@ -70,8 +71,6 @@ public class ControllerConsultas implements Initializable{
 
         // put dummy data onto graph per second
         scheduledExecutorService.scheduleAtFixedRate(() -> {
-            
-        	
 			try {
 				num = Double.parseDouble(consulta.consultarValor());
 			} catch (NumberFormatException e) {

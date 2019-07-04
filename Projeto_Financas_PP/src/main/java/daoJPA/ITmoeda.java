@@ -10,5 +10,5 @@ public interface ITmoeda {
 	
 	public MoedaDTO atualizar(MoedaDTO novo) throws Exception;
 	
-	public boolean excluir(int id) throws Exception;
+	public boolean excluir(MoedaDTO obj) throws Exception;
 }

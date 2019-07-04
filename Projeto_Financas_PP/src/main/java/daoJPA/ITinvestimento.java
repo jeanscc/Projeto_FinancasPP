@@ -9,4 +9,8 @@ public interface ITinvestimento {
 	public InvestimentoDTO atualizar(InvestimentoDTO novo) throws Exception;
 	
 	public InvestimentoDTO listar() throws Exception;
+	
+	public InvestimentoDTO buscar (InvestimentoDTO obj) throws Exception;
+	
+	public boolean excluir(InvestimentoDTO obj) throws Exception;
 }

@@ -50,12 +50,11 @@ public class MoedaDaoJPA extends FactoryEntity implements ITmoeda {
 		return novo;
 	}
 
-	public boolean excluir(int id) throws Exception {
+	public boolean excluir(MoedaDTO obj) throws Exception {
 		entidade = super.getIntity();
 		entidade.getTransaction().begin();
 		try {
-			MoedaDTO achada = entidade.find(MoedaDTO.class, id);
-			entidade.remove(achada);
+			entidade.remove(obj);
 			entidade.getTransaction().commit();
 			return true;
 		}catch(Exception e) {

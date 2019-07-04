@@ -25,12 +25,11 @@ public class UsuarioDaoJPA extends FactoryEntity implements ITusuario {
 		}
 	}
 
-	public UsuarioDTO excluir(int id) throws Exception {
+	public UsuarioDTO excluir(UsuarioDTO obj) throws Exception {
 		UsuarioDTO achado = null;
 		entidade = super.getIntity();
 		entidade.getTransaction().begin();
 		try {
-			achado = entidade.find(UsuarioDTO.class, id);
 			entidade.remove(achado);
 			entidade.getTransaction().commit();
 
@@ -73,12 +72,12 @@ public class UsuarioDaoJPA extends FactoryEntity implements ITusuario {
 		return retorno;
 	}
 
-	public UsuarioDTO buscar(int id) throws Exception {
+	public UsuarioDTO buscar(UsuarioDTO obj) throws Exception {
 		UsuarioDTO retorno = null;
 		ArrayList<UsuarioDTO> lista;
 		entidade = super.getIntity();
 		try {
-			retorno = entidade.find(UsuarioDTO.class, id);
+			retorno = entidade.find(UsuarioDTO.class, obj.getId());
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
@@ -90,7 +89,6 @@ public class UsuarioDaoJPA extends FactoryEntity implements ITusuario {
 		ArrayList<UsuarioDTO> lista;
 		entidade = super.getIntity();
 		try {
-			
 			retorno = entidade.find(UsuarioDTO.class, usuario.getEmail());
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
