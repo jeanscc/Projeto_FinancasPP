@@ -14,6 +14,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -22,6 +26,9 @@ import javafx.scene.layout.Pane;
 
 public class ControllerFinancas implements Initializable{
 
+	private CategoryAxis linhaX = new CategoryAxis();
+	private NumberAxis linhaY = new NumberAxis();
+	
     @FXML
     private Pane pnlInvestimentos;
 
@@ -44,7 +51,7 @@ public class ControllerFinancas implements Initializable{
     private Label lbPercas;
 
     @FXML
-    private BarChart<Number, Number> grFinancas;
+    private BarChart<String, Number> grFinancas = new BarChart<>(linhaX,linhaY);
 
     @FXML
     private DatePicker dtFinal;
@@ -66,8 +73,17 @@ public class ControllerFinancas implements Initializable{
     	LocalDate localDate2 = dtInicial.getValue();
     	Instant instant2 = Instant.from(localDate2.atStartOfDay(ZoneId.systemDefault()));
     	Date dateF = Date.from(instant2);
-    	
+    	if(dateI.before(dateF) || dateF.after(dateI)) {
+    		Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
+            dialogoErro.setTitle("Erro");
+            dialogoErro.setHeaderText("Erro na Data");
+            dialogoErro.setContentText("Selecione um Intervalo Válido");
+            dialogoErro.showAndWait();
+    		
+    	}
+    	else {
     	carregarData(dateI,dateF);
+    	}
     }
 
     @FXML
@@ -114,6 +130,29 @@ public class ControllerFinancas implements Initializable{
     	ObservableList <String> registro = FXCollections.observableArrayList();
     	registro.add("Geral");
     	registro.add("Intervalo de Datas");
+    }
+    
+    private void carregarGrafico() {
+    	//faltaFachada
+    	XYChart.Series <String, Number> balanco = new XYChart.Series<>();
+    	balanco.setName("Balanço Total");
+    	XYChart.Series <String, Number> retorno = new XYChart.Series<>();
+    	retorno.setName("Retorno Total");
+    	XYChart.Series <String, Number> lucro = new XYChart.Series<>();
+    	lucro.setName("Lucro Total");
+    	XYChart.Series <String, Number> investido = new XYChart.Series<>();
+    	investido.setName("Total Investido");
+    	XYChart.Series <String, Number> pendentes = new XYChart.Series<>();
+    	pendentes.setName("Investimentos Pendentes");
+    	XYChart.Series <String, Number> percas = new XYChart.Series<>();
+    	percas.setName("Percas");
+    	//balanco.getData().add("Balanço",fachada.getBalanco);
+    	//retorno.getData().add("Retorno",fachada.getRetorno);
+    	//lucro.getData().add("Lucro",fachada.getLucro);
+    	//investido.getData().add("Investido",fachada.getInvestido);
+    	//pendentes.getData().add("Balanço",fachada.getBalanco);
+    	
+    	
     }
     
     

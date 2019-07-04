@@ -27,6 +27,7 @@ public class InvestimentoDTO {
 	private Status status;
 	
 	private double valor;
+	private String nome;
 	
 	
 	@ManyToMany(cascade = {CascadeType.MERGE},fetch=FetchType.EAGER,targetEntity = LucroDto.class)
@@ -60,7 +61,19 @@ public class InvestimentoDTO {
 		this.id = id;
 	
 	}
+	
+	
+	
+	
 
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
 	public double getValor() {
 		return valor;

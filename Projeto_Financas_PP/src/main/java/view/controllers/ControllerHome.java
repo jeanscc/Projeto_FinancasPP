@@ -87,23 +87,7 @@ public class ControllerHome implements Initializable {
 	@FXML
 	private TextField txPesquisaG;
 
-	@FXML
-	private CheckBox checkAno;
-
-	@FXML
-	private CheckBox checkMes;
-
-	@FXML
-	private ComboBox<?> cbAno;
-
-	@FXML
-	private ComboBox<?> cbMes;
-
-	@FXML
-	private CheckBox checkDia;
-
-	@FXML
-	private ComboBox<?> cbDdia;
+	
 	@FXML
 	private Pane pnlConsultas;
 

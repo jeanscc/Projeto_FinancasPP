@@ -27,11 +27,7 @@ public class ControllerLogin implements Initializable {
 	private StrategyGenerico controlerUs;
 	private FactoryUsuario fabricaUsuario;
 
-	public ControllerLogin() {
-		fabricaUsuario = new FactoryUsuario();
-		controlerUs = (ControlerUsuario) fabricaUsuario.gerar("control");
-	}
-
+	
 	@FXML
 	private TextField txEmail;
 
@@ -101,6 +97,8 @@ public class ControllerLogin implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		txEmail.setStyle("-fx-text-fill: lightgray; -fx-font-size: 12px;-fx-background-color:#14173d;");
 		txSenha.setStyle("-fx-text-fill: lightgray; -fx-font-size: 12px;-fx-background-color:#14173d;");
+		fabricaUsuario = new FactoryUsuario();
+		controlerUs = (ControlerUsuario) fabricaUsuario.gerar("control");
 
 	}
 

@@ -63,6 +63,7 @@ public class ControllerConsultas implements Initializable{
     	series.setName("Testando");
     	grConsulta.getData().add(series);
     	
+    	
     	// setup a scheduled executor to periodically put data into the chart
         
         scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
