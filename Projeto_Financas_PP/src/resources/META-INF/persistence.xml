@@ -7,10 +7,10 @@
     <!--Entidades -->
     <class>dto.InvestimentoDTO</class>
     <class>dto.MetaDTO</class>
-    <class>dto.LucroDto</class>
-    <class>dto.ValorDTO</class>
     <class>dto.MoedaDTO</class>
     <class>dto.UsuarioDTO</class>
+    <class>dto.ValorDto</class>
+    <class>dto.LucroDto</class>
     <properties>
       <!-- Configurações do JDBC -->
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

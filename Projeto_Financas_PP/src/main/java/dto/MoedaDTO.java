@@ -2,21 +2,27 @@ package dto;
 
 import java.util.ArrayList;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+import model.TipoMoeda;
+
 @Entity
 public class MoedaDTO {
 
 	private String nome;
-	
-	private String tipo;
+	@Enumerated(EnumType.STRING)
+	private TipoMoeda tipo;
 	
 	private double valor;
+	
+	@Transient
+	private ArrayList<ValorDto> valores = new ArrayList<ValorDto>();
 	
 	
 	@Transient
@@ -58,13 +64,23 @@ public class MoedaDTO {
 		this.valor = valor;
 	}
 
-	public String getTipo() {
+	public TipoMoeda getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setTipo(TipoMoeda moeda) {
+		this.tipo = moeda;
 	}
+
+	public ArrayList<ValorDto> getValores() {
+		return valores;
+	}
+
+	public void setValores(ArrayList<ValorDto> valores) {
+		this.valores = valores;
+	}
+	
+	
 
 	
 }
