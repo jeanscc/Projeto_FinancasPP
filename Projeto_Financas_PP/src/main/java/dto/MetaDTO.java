@@ -4,17 +4,26 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+
+import model.Status;
 
 @Entity
 public class MetaDTO {
-	
+	@Temporal(TemporalType.DATE)
 	private Date data_inicio;
-	
+	@Temporal(TemporalType.DATE)
 	private Date data_fim;
+	@Enumerated(EnumType.STRING)
+	private Status status;
 	
 	private String nome;
 	
@@ -25,15 +34,18 @@ public class MetaDTO {
 	@Id
 	private int id;
 	
-	private int idUsuario;
+	@OneToOne()
+	private UsuarioDTO usuario;
 	
 	
-	public int getIdUsuario() {
-		return idUsuario;
+	
+
+	public UsuarioDTO getUsuario() {
+		return usuario;
 	}
 
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setUsuario(UsuarioDTO usuario) {
+		this.usuario = usuario;
 	}
 
 	public int getId() {
@@ -75,4 +87,14 @@ public class MetaDTO {
 	public void setData_fim(Date data_fim) {
 		this.data_fim = data_fim;
 	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+	
+	
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -19,8 +18,8 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 import model.Lucro;
-import model.Moeda;
 import model.Status;
+
 
 @Entity
 public class InvestimentoDTO {
@@ -30,7 +29,7 @@ public class InvestimentoDTO {
 	@ManyToMany(cascade = {CascadeType.MERGE},fetch=FetchType.EAGER,targetEntity = LucroDto.class)
 	private ArrayList <Lucro> lucro;
 	
-	private double valor;
+	
 	@Temporal(TemporalType.DATE)
 	private Date data_inicio;
 	@Temporal(TemporalType.DATE)
@@ -46,6 +45,9 @@ public class InvestimentoDTO {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@OneToOne()
+	private UsuarioDTO usuario;
+	
 	
 	public int getId() {
 		return id;
@@ -56,6 +58,28 @@ public class InvestimentoDTO {
 	}
 
 	
+	
+	
+
+	public UsuarioDTO getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(UsuarioDTO usuario) {
+		this.usuario = usuario;
+	}
+
+	public ArrayList<Lucro> getLucro() {
+		return lucro;
+	}
+
+	public void setLucro(ArrayList<Lucro> lucro) {
+		this.lucro = lucro;
+	}
+
+	public MoedaDTO getMoeda() {
+		return moeda;
+	}
 
 	public MoedaDTO getMoedaDTO() {
 		return moeda;
@@ -81,13 +105,7 @@ public class InvestimentoDTO {
 		this.status = status;
 	}
 
-	public double getValor() {
-		return valor;
-	}
-
-	public void setValor(double valor) {
-		this.valor = valor;
-	}
+	
 
 	public Date getData_inicio() {
 		return data_inicio;

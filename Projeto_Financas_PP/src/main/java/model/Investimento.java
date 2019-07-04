@@ -10,6 +10,7 @@ public class Investimento {
 	private double margemLucro;
 	private double valorInvestido;
 	private double valorInvestimento;
+	private Usuario usuario;
 	private Date data_inicio, data_fim;
 	
 	
@@ -71,6 +72,16 @@ public class Investimento {
 	public void setData_fim(Date data_fim) {
 		this.data_fim = data_fim;
 	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
+	
 	
 	
 }
