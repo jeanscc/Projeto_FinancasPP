@@ -30,7 +30,7 @@ public class InvestimentoDTO {
 	private String nome;
 	
 	@OneToMany(mappedBy =  "lucro",cascade = CascadeType.ALL,orphanRemoval = true, targetEntity = InvestimentoDTO.class)	
-	private List<LucroDTO> lucro;
+	private List<LucroDto> lucro;
 	
 	
 	@Temporal(TemporalType.DATE)
@@ -98,11 +98,11 @@ public class InvestimentoDTO {
 		this.usuario = usuario;
 	}
 
-	public List<LucroDTO> getLucro() {
+	public List<LucroDto> getLucro() {
 		return lucro;
 	}
 
-	public void setLucro(List<LucroDTO> lucro) {
+	public void setLucro(List<LucroDto> lucro) {
 		this.lucro = lucro;
 	}
 
