@@ -27,13 +27,15 @@ public class MetaDAO implements ITmeta{
 	}
 	
 	public int salvar(MetaDTO obj) throws Exception {
+		java.sql.Date data_ini = new java.sql.Date (obj.getData_inicio().getTime());
+		java.sql.Date data_fim = new java.sql.Date (obj.getData_fim().getTime());
 		try {
 			pst = con.prepareStatement("INSERT INTO meta (id_usuario, nome, data_inicio,data_fim,valor) VALUES (?,?,?,?,?)",
 					Statement.RETURN_GENERATED_KEYS);
 			pst.setInt(1, obj.getUsuario().getId());
 			pst.setString(2, obj.getNome());
-			pst.setDate(3, obj.getData_inicio());
-			pst.setDate(4, obj.getData_fim());
+			pst.setDate(3, data_ini);
+			pst.setDate(4, data_fim);
 			pst.execute();
 			rs = pst.getGeneratedKeys();
 			while(rs.next()) {
@@ -82,10 +84,11 @@ public class MetaDAO implements ITmeta{
 	}
 
 	public boolean atualizar(MetaDTO novo) throws Exception {
+		java.sql.Date data_fim = new java.sql.Date (novo.getData_fim().getTime());
 		try {
 			pst = con.prepareStatement("UPDATE meta set nome = ?, data_fim = ? WHERE id = ?");
 			pst.setString(1, novo.getNome());
-			pst.setDate(2, novo.getData_fim());
+			pst.setDate(2, data_fim);
 			pst.execute();
 			return true;
 		}catch(Exception e) {
