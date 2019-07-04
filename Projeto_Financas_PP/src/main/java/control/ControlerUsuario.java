@@ -5,33 +5,40 @@ import dto.UsuarioDTO;
 import model.Usuario;
 import strategy.StrategyGenerico;
 
+<<<<<<< Updated upstream
 public class ControlerUsuario {
 	private Usuario usuario;
+=======
+public class ControlerUsuario{
+>>>>>>> Stashed changes
 	
+	private Usuario usuario;
+
 	public ControlerUsuario() {
 		usuario = new Usuario();
 	}
+
 	public boolean salvar(UsuarioDTO dto) throws Exception {
-			return usuario.salvar(dto);
+		return usuario.salvar(dto);
 	}
 
 	public UsuarioDTO excluir(UsuarioDTO dto) throws Exception {
-			return usuario.excluir(dto);
+		return usuario.excluir(dto);
 	}
 
 	public UsuarioDTO atualizar(UsuarioDTO dto) throws Exception {
-			return usuario.atualizar(dto);	
+		return usuario.atualizar(dto);
 	}
 
 	public UsuarioDTO listar() throws Exception {
-			return usuario.listar();
+		return usuario.listar();
 	}
 
 	public UsuarioDTO buscar(UsuarioDTO dto) throws Exception {
-			return usuario.buscar(dto);
+		return usuario.buscar(dto);
 	}
 
 	public UsuarioDTO logar(UsuarioDTO dto) throws Exception {
-			return usuario.logar(dto);
+		return usuario.logar(dto);
 	}
 }

@@ -62,7 +62,7 @@ public class Meta {
 
 	}
 
-	public Boolean excluir(MetaDTO dto) throws Exception {
+	public boolean excluir(MetaDTO dto) throws Exception {
 
 		return metaDAO.excluir(dto);
 
@@ -73,17 +73,5 @@ public class Meta {
 		return metaDAO.atualizar(dto);
 
 	}
-
-//	public MetaDTO buscar(MetaDTO dto) throws Exception {
-//		
-//			return metaDAO.buscar(dto);
-//		
-//	}
-
-//	public MetaDTO logar(MetaDTO dto) throws Exception {
-//		
-//			return metaDAO.logar(dto);
-//		
-//	}
 
 }

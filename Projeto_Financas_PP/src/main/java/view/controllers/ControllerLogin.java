@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import control.ControlerUsuario;
 import dto.UsuarioDTO;
 import factory.FactoryUsuario;
+import factory.ITfabrica;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,8 +25,6 @@ import javafx.stage.Stage;
 import strategy.StrategyGenerico;
 
 public class ControllerLogin implements Initializable {
-	private StrategyGenerico controlerUs;
-	private FactoryUsuario fabricaUsuario;
 
 	
 	@FXML
@@ -94,6 +93,9 @@ public class ControllerLogin implements Initializable {
 		}
 	}
 
+	private ControlerUsuario controlerUs;
+	private ITfabrica fabricaUsuario;
+	
 	public void initialize(URL location, ResourceBundle resources) {
 		txEmail.setStyle("-fx-text-fill: lightgray; -fx-font-size: 12px;-fx-background-color:#14173d;");
 		txSenha.setStyle("-fx-text-fill: lightgray; -fx-font-size: 12px;-fx-background-color:#14173d;");

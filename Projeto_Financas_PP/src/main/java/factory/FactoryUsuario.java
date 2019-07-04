@@ -15,7 +15,7 @@ public class FactoryUsuario implements ITfabrica{
 		}else if(tipo.equalsIgnoreCase("model")) {
 			return new Usuario();
 		}
-		return null;
+		throw new RuntimeException();
 	}
 
 }
