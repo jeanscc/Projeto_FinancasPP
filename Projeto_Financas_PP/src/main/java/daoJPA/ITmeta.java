@@ -8,7 +8,7 @@ public interface ITmeta {
 	
 	public MetaDTO listar() throws Exception;
 	
-	public boolean excluir(int id) throws Exception;
+	public boolean excluir(MetaDTO dto) throws Exception;
 	
 	public MetaDTO atualizar(MetaDTO novo) throws Exception;
 }

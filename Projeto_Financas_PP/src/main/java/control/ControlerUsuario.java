@@ -5,7 +5,7 @@ import dto.UsuarioDTO;
 import model.Usuario;
 import strategy.StrategyGenerico;
 
-public class ControlerUsuario{
+public class ControlerUsuario {
 	private Usuario usuario;
 	
 	public ControlerUsuario() {

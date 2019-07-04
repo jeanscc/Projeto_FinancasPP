@@ -37,11 +37,11 @@ public class MetaDaoJPA extends FactoryEntity implements ITmeta{
 		return metas;
 	}
 
-	public boolean excluir(int id) throws Exception {
+	public boolean excluir(MetaDTO dto) throws Exception {
 		entidade = super.getIntity();
 		try {
 			entidade.getTransaction().begin();
-			MetaDTO achada = entidade.find(MetaDTO.class, id);
+			MetaDTO achada = entidade.find(MetaDTO.class, dto.getId());
 			entidade.getTransaction().begin();
 			entidade.remove(achada);
 			entidade.getTransaction().commit();
@@ -64,5 +64,7 @@ public class MetaDaoJPA extends FactoryEntity implements ITmeta{
 			throw new Exception("Erro o atualizar meta. " + e.getMessage());
 		}
 	}
+
+	
 
 }
