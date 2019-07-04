@@ -3,6 +3,11 @@ package model;
 import java.util.ArrayList;
 import java.util.Date;
 
+import daoJPA.ITinvestimento;
+import daoJPA.InvestimentoDaoJPA;
+import dto.InvestimentoDTO;
+
+
 public class Investimento {
 	private String nome;
 	private Status status;
@@ -13,7 +18,7 @@ public class Investimento {
 	private Usuario usuario;
 	private Date data_inicio, data_fim;
 	
-	
+	ITinvestimento dao = new InvestimentoDaoJPA();
 	
 	
 	public String getNome() {
@@ -82,6 +87,54 @@ public class Investimento {
 	}
 	
 	
+	public boolean salvar(InvestimentoDTO dto) throws Exception {
+		try {
+			return dao.salvar(dto);
+		} catch (Exception e) {
+			throw e;
+		}
+		
+	}
 	
+//	public InvestimentoDTO excluir(InvestimentoDTO dto) throws Exception {
+//		try {
+//			return dao.excluir(dto);
+//		} catch (Exception e) {
+//			throw e;
+//		}
+//		
+//	}
+	
+	public InvestimentoDTO atualizar(InvestimentoDTO dto) throws Exception {
+		try {
+			return dao.atualizar(dto);
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	public InvestimentoDTO listar() throws Exception {
+		try {
+			return dao.listar();
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+//	public InvestimentoDTO buscar(InvestimentoDTO dto) throws Exception {
+//		try {
+//			return dao.buscar(dto);
+//		} catch (Exception e) {
+//			throw e;
+//		}
+//	}
+	
+//	public InvestimentoDTO logar(InvestimentoDTO dto) throws Exception {
+//		try {
+//			return dao.logar(dto);
+//		} catch (Exception e) {
+//			throw e;
+//		}
+//	}
 	
 }

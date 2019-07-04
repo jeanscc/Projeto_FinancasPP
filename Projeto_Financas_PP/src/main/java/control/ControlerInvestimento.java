@@ -1,37 +1,58 @@
 package control;
 
-import strategy.StrategyGenerico;
+import dto.InvestimentoDTO;
+import model.Investimento;
 
-public class ControlerInvestimento implements StrategyGenerico{
 
-	public boolean salvar(Object obj) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+public class ControlerInvestimento{
+	Investimento investimento = new Investimento();
+	
+	public boolean salvar(InvestimentoDTO dto) throws Exception {
+		try {
+			return investimento.salvar(dto);
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
-	public Object excluir(int id) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+//	public InvestimentoDTO excluir(InvestimentoDTO dto) throws Exception {
+//		try {
+//			return investimento.excluir(dto);
+//		} catch (Exception e) {
+//			throw e;
+//		}
+//	}
+
+	public InvestimentoDTO atualizar(InvestimentoDTO dto) throws Exception {
+		try {
+			return investimento.atualizar(dto);
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
-	public Object atualizar(Object novo) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+	public InvestimentoDTO listar() throws Exception {
+		try {
+			return investimento.listar();
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
-	public Object listar() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public InvestimentoDTO buscar(InvestimentoDTO dto) throws Exception {
+//		try {
+//			return investimento.buscar(dto);
+//		} catch (Exception e) {
+//			throw e;
+//		}
+//	}
 
-	public Object buscar(int id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Object logar(Object obj) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public InvestimentoDTO logar(InvestimentoDTO dto) throws Exception {
+//		try {
+//			return investimento.logar(dto);
+//		} catch (Exception e) {
+//			throw e;
+//		}
+//	}
 
 }
