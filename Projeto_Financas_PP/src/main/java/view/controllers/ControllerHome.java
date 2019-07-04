@@ -137,6 +137,8 @@ public class ControllerHome implements Initializable {
 	
 	public void carregarTabela() {
 		InvestimentoDTO investimentos = new InvestimentoDTO ();
+		//Controller
+		//investimentos =
 		pnItems111.getChildren().clear();
 		if(!investimentos.getTodosInvetismento().isEmpty()) {
 			Node[] nodes = new Node[investimentos.getTodosInvetismento().size()];
