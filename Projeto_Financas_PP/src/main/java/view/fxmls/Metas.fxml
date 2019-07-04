@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pnlInvestimentos" prefHeight="639.0" prefWidth="956.0" style="-fx-background-color: #02030A;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.ControllerMetas">
+<Pane fx:id="pnlInvestimentos" prefHeight="639.0" prefWidth="956.0" style="-fx-background-color: #02030A;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.ControllerMetas">
    <children>
       <Label layoutX="446.0" layoutY="41.0" text="Metas" textFill="#e7e5e5">
          <font>
@@ -36,7 +36,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <HBox alignment="CENTER_LEFT" layoutX="127.0" layoutY="44.0" prefHeight="92.0" prefWidth="703.0" spacing="10.0">
+                        <HBox alignment="CENTER_LEFT" layoutX="127.0" layoutY="44.0" prefHeight="92.0" prefWidth="598.0" spacing="10.0">
                            <children>
                               <VBox alignment="CENTER" prefHeight="92.0" prefWidth="174.0">
                                  <children>
@@ -58,7 +58,7 @@
                                     <Label text="Metas a Concluir" textFill="#e7e5e5" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="92.0" prefWidth="168.0">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="92.0" prefWidth="232.0">
                                  <children>
                                     <Label fx:id="lbValor" text="0" textFill="#2bff6e">
                                        <font>
@@ -66,16 +66,6 @@
                                        </font>
                                     </Label>
                                     <Label text="Valor Obtido" textFill="#e7e5e5" />
-                                 </children>
-                              </VBox>
-                              <VBox alignment="CENTER" prefHeight="92.0" prefWidth="154.0">
-                                 <children>
-                                    <Label fx:id="lbCancelados" text="0" textFill="#d31111">
-                                       <font>
-                                          <Font name="System Bold" size="26.0" />
-                                       </font>
-                                    </Label>
-                                    <Label prefHeight="17.0" prefWidth="100.0" text="Metas Canceladas" textFill="#e7e5e5" />
                                  </children>
                               </VBox>
                            </children>
@@ -96,22 +86,22 @@
                                     <Insets left="50.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label prefHeight="17.0" prefWidth="285.0" text="                                                        Descrição" textFill="#e7e5e5">
+                              <Label prefHeight="17.0" prefWidth="285.0" text="    Descrição" textFill="#e7e5e5">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
                               </Label>
-                              <Label prefHeight="17.0" prefWidth="44.0" text="Inicio" textFill="#e7e5e5">
+                              <Label prefHeight="17.0" prefWidth="80.0" text="Inicio" textFill="#e7e5e5">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
                               </Label>
-                              <Label prefHeight="17.0" prefWidth="66.0" text="Valor Total" textFill="#e7e5e5">
+                              <Label prefHeight="17.0" prefWidth="110.0" text="Valor Total" textFill="#e7e5e5">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
                               </Label>
-                              <Label text="Status" textFill="#e7e5e5">
+                              <Label prefHeight="17.0" prefWidth="53.0" text="Status" textFill="#e7e5e5">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -182,7 +172,7 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <Button fx:id="btCadastro" layoutX="395.0" layoutY="339.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="216.0" text="Cadastrar" />
+                        <Button fx:id="btCadastro" layoutX="395.0" layoutY="339.0" mnemonicParsing="false" onAction="#lsCadastrar" prefHeight="38.0" prefWidth="216.0" text="Cadastrar" />
                      </children></AnchorPane>
                </content>
             </Tab>

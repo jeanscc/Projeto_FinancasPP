@@ -1,6 +1,6 @@
 package dto;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -29,9 +29,8 @@ public class InvestimentoDTO {
 	private double margem;
 	private String nome;
 	
-	
-	@OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)	
-	private ArrayList <Lucro> lucro;
+	@OneToMany(mappedBy =  "lucro",cascade = CascadeType.ALL,orphanRemoval = true, targetEntity = InvestimentoDTO.class)	
+	private List<LucroDTO> lucro;
 	
 	
 	@Temporal(TemporalType.DATE)
@@ -40,7 +39,7 @@ public class InvestimentoDTO {
 	private Date data_fim;
 	
 	@Transient
-	private ArrayList<InvestimentoDTO> todosInvetismento;
+	private List<InvestimentoDTO> todosInvetismento;
 	
 	@OneToOne()
 	private MoedaDTO moeda;
@@ -99,11 +98,11 @@ public class InvestimentoDTO {
 		this.usuario = usuario;
 	}
 
-	public ArrayList<Lucro> getLucro() {
+	public List<LucroDTO> getLucro() {
 		return lucro;
 	}
 
-	public void setLucro(ArrayList<Lucro> lucro) {
+	public void setLucro(List<LucroDTO> lucro) {
 		this.lucro = lucro;
 	}
 
@@ -119,11 +118,11 @@ public class InvestimentoDTO {
 		this.moeda = moeda;
 	}
 
-	public ArrayList<InvestimentoDTO> getTodosInvetismento() {
+	public List<InvestimentoDTO> getTodosInvetismento() {
 		return todosInvetismento;
 	}
 
-	public void setTodosInvetismento(ArrayList<InvestimentoDTO> todosInvetismento) {
+	public void setTodosInvetismento(List<InvestimentoDTO> todosInvetismento) {
 		this.todosInvetismento = todosInvetismento;
 	}
 

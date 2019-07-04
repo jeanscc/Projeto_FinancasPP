@@ -2,6 +2,7 @@ package view.controllers;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import control.ControlerInvestimento;
@@ -9,7 +10,9 @@ import dto.InvestimentoDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
@@ -45,6 +48,15 @@ public class ControllerItem implements Initializable{
 
     @FXML
     void lsExcluir(ActionEvent event) {
+    	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    	alert.setTitle("Confirmação");
+    	alert.setHeaderText("Deseja mesmo Excluir o Investimento.");
+    	alert.setResizable(false);
+    	alert.setContentText("Select okay or cancel this alert.");
+    	Optional<ButtonType> result = alert.showAndWait();
+    	if(result.get() == ButtonType.OK) {
+    		
+    	
     	ControlerInvestimento controler = new ControlerInvestimento();
     	try {
 			controler.excluir(dto);
@@ -53,7 +65,7 @@ public class ControllerItem implements Initializable{
 			
 			e.printStackTrace();
 		}
-    	con.carregarTabela();
+    	con.carregarTabela();}
     }
     
     public void carregar (InvestimentoDTO i) {

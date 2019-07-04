@@ -17,19 +17,7 @@
 		</repository>
 	</repositories>
 
-	<build>
-		<resources>
-			<resource>
-				<filtering>false</filtering>
-				<directory>src/main/java</directory>
-				<includes>
-					<include>**/*.fxml</include>
-				</includes>
-			</resource>
-		</resources>
-
-
-	</build>
+	
 
 
 	<dependencies>

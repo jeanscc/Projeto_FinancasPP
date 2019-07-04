@@ -1,5 +1,6 @@
 package view.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -45,7 +46,18 @@ public class ControllerLogin implements Initializable {
 
 	@FXML
 	void lsCadastro(ActionEvent event) {
-
+		Node node = (Node) event.getSource();
+	    Stage stage = (Stage) node.getScene().getWindow();
+	    stage.close();
+	    Scene scene;
+		try {
+			scene = new Scene(FXMLLoader.load(getClass().getResource("/view/fxmls/TelaCadastro.fxml")));
+			stage.setScene(scene);
+		    stage.show();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 
 	@FXML

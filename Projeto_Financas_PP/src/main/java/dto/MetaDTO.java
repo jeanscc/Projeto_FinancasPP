@@ -96,8 +96,8 @@ public class MetaDTO {
 		return data_inicio;
 	}
 
-	public void setData_inicio(Date data_inicio) {
-		this.data_inicio = data_inicio;
+	public void setData_inicio(Date date) {
+		this.data_inicio = date;
 	}
 
 	public Date getData_fim() {

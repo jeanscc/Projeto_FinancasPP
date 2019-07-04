@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import control.ControlerInvestimento;
 import dto.InvestimentoDTO;
 
 import javafx.event.ActionEvent;
@@ -136,9 +137,16 @@ public class ControllerHome implements Initializable {
 	
 	
 	public void carregarTabela() {
-		InvestimentoDTO investimentos = new InvestimentoDTO ();
-		//Controller
-		//investimentos =
+		
+		ControlerInvestimento con = new ControlerInvestimento();
+		InvestimentoDTO investimentos = new InvestimentoDTO();
+		try {
+			investimentos = con.listar();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		pnItems111.getChildren().clear();
 		if(!investimentos.getTodosInvetismento().isEmpty()) {
 			Node[] nodes = new Node[investimentos.getTodosInvetismento().size()];

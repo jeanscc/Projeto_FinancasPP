@@ -2,21 +2,25 @@ package view.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import control.ControlerMeta;
 import dto.MetaDTO;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import model.Status;
 
 public class ControllerMetas implements Initializable{
 
@@ -58,6 +62,49 @@ public class ControllerMetas implements Initializable{
 
     @FXML
     private Button btCadastro;
+    
+    @FXML
+    void lsCadastrar(ActionEvent event) {
+    	MetaDTO meta = new MetaDTO();
+    	if(txNome.getText().isEmpty()||txDescricao.getText().isEmpty()||txValor11.getText().isEmpty()) {
+    		Alert dialogoInfo = new Alert(Alert.AlertType.ERROR);
+            dialogoInfo.setTitle("Erro no cadastro");
+            dialogoInfo.setContentText("Preencha todos os campos!");
+            dialogoInfo.showAndWait();
+    	}
+    	else {
+    	
+    	
+    	meta.setNome(txNome.getText());
+    	java.sql.Date dataSql = new java.sql.Date (new Date().getTime());
+    	meta.setData_inicio(dataSql);
+    	meta.setDescricao(txDescricao.getText());
+    	meta.setStatus(Status.Ativo);
+    	meta.setValor(Double.parseDouble(txValor11.getText()));
+    	
+    	ControlerMeta con = new ControlerMeta();
+    	try {
+			con.salvar(meta);
+			limparCampos();
+			Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
+            dialogoInfo.setTitle("Cadastro de Cliente");
+            dialogoInfo.setContentText("Cadastro Concluido!");
+            dialogoInfo.showAndWait();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	}
+    	
+    }
+    
+    private void limparCampos() {
+    	txDescricao.clear();
+    	txNome.clear();
+    	txPesquisa.clear();
+    	txValor11.clear();
+    }
+    
     
     public void carregarTabela() {
     	ControlerMeta controler = new ControlerMeta();
@@ -102,7 +149,7 @@ public class ControllerMetas implements Initializable{
 		try {
 			int atual = controler.metasFinalizadas();
 			int total = controler.listar().getTodasMetas().size();
-			double porcentagem = total*atual;
+			double porcentagem = (atual*100 )/total;
 			pgMetas= new ProgressIndicator(porcentagem);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
