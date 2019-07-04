@@ -11,11 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.Transient;
 
 import model.Moeda;
+import model.Status;
 
 @Entity
 public class InvestimentoDTO {
 	
-	private String status;
+	private Status status;
 	
 	private double valor;
 	
@@ -59,11 +60,11 @@ public class InvestimentoDTO {
 		this.todosInvetismento = todosInvetismento;
 	}
 
-	public String getStatus() {
+	public Status getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 
