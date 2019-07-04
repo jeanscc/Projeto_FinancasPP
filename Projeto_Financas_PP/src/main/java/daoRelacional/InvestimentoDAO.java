@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.net.ssl.SSLEngineResult.Status;
+
 import bd.ConnectionFactory;
 import dto.InvestimentoDTO;
 
@@ -23,13 +25,11 @@ public class InvestimentoDAO implements ITinvestimento{
 
 	public boolean salvar(InvestimentoDTO obj) throws Exception {
 		try {
-			pst = con.prepareStatement("INSERT INTO investimento (id_meta,id_moeda,status,valor,data_inicio,data_fim) VALUES (?,?,?,?,?,?)");
-			pst.setInt(1, obj.getIdMeta());
-			pst.setInt(2, obj.getIdMoeda());
-			pst.setString(3, obj.getStatus());
-			pst.setDouble(4, obj.getValor());
-			pst.setDate(6, (java.sql.Date) obj.getData_inicio());
-			pst.setDate(7, (java.sql.Date) obj.getData_fim());
+			pst = con.prepareStatement("INSERT INTO investimento (status,valor,data_inicio,data_fim) VALUES (?,?,?,?)");
+			pst.setString(1, obj.getStatus().name());
+			pst.setDouble(2, obj.getValor());
+			pst.setDate(3, (java.sql.Date) obj.getData_inicio());
+			pst.setDate(4, (java.sql.Date) obj.getData_fim());
 			pst.execute();
 			return true;
 		}catch(Exception e) {
@@ -40,7 +40,7 @@ public class InvestimentoDAO implements ITinvestimento{
 	public boolean atualizar(InvestimentoDTO novo) throws Exception {
 		try {
 			pst = con.prepareStatement("UPDATE investimento SET status = ?, valor = ?, data_fim = ? WHERE id = ?");
-			pst.setString(1, novo.getStatus());
+			pst.setString(1, novo.getStatus().name());
 			pst.setDouble(2, novo.getValor());
 			pst.setDate(3, (java.sql.Date) novo.getData_inicio());
 			pst.setInt(4, novo.getId());
@@ -63,8 +63,6 @@ public class InvestimentoDAO implements ITinvestimento{
 				iv.setData_inicio(rs.getDate("data_inicio"));
 				iv.setId(rs.getInt("id"));
 				iv.setValor(rs.getDouble("valor"));
-				iv.setIdMeta(rs.getInt("id_meta"));
-				iv.setIdMoeda(rs.getInt("id_moeda"));
 				lista.add(iv);
 			}
 			retorno.setTodosInvetismento(lista);

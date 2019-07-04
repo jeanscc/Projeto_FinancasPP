@@ -26,6 +26,8 @@ public class InvestimentoDTO {
 	@Enumerated(EnumType.STRING)
 	private Status status;
 	
+	private double valor;
+	
 	
 	@ManyToMany(cascade = {CascadeType.MERGE},fetch=FetchType.EAGER,targetEntity = LucroDto.class)
 	private ArrayList <Lucro> lucro;
@@ -59,9 +61,14 @@ public class InvestimentoDTO {
 	
 	}
 
-	
-	
-	
+
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
 
 	public UsuarioDTO getUsuario() {
 		return usuario;

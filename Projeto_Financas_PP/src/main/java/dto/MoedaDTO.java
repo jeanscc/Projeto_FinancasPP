@@ -12,10 +12,10 @@ import javax.persistence.Transient;
 @Entity
 public class MoedaDTO {
 
-	@Column(name = "nome")
 	private String nome;
 	
-	@Column(name = "valor")
+	private String tipo;
+	
 	private double valor;
 	
 	
@@ -23,7 +23,6 @@ public class MoedaDTO {
 	private ArrayList<MoedaDTO> todasMoedas;
 	
 	@Id
-	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
@@ -59,4 +58,13 @@ public class MoedaDTO {
 		this.valor = valor;
 	}
 
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	
 }

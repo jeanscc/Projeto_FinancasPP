@@ -22,30 +22,20 @@ public class UsuarioDTO {
 	
 	private String email;
 	
-	private ContaDTO conta;
-	
 	private String senha;
 	
 	@Id
-	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Transient
 	private ArrayList<UsuarioDTO> usuariosCadastrados;
 	private Random gerador = new Random();
-	
-	public UsuarioDTO() {
-		conta = new ContaDTO();
-		conta.setSaldo(0);
-		conta.setNumero(gerador.nextInt(1000000));
-	}
-	
+
 	
 	public String getSenha() {
 		return senha;
 	}
-
 
 	public void setSenha(String senha) {
 		this.senha = senha;
@@ -88,11 +78,4 @@ public class UsuarioDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public ContaDTO getConta() {
-		return conta;
-	}
-	public void setConta(ContaDTO conta) {
-		this.conta = conta;
-	}
-	
 }

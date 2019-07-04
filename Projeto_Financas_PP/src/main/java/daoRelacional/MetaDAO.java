@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import bd.ConnectionFactory;
 import dto.MetaDTO;
+import dto.UsuarioDTO;
+import model.Usuario;
 
 public class MetaDAO implements ITmeta{
 	private Connection con;
@@ -27,7 +29,7 @@ public class MetaDAO implements ITmeta{
 		try {
 			pst = con.prepareStatement("INSERT INTO meta (id_usuario, nome, data_inicio,data_fim,valor) VALUES (?,?,?,?,?)",
 					Statement.RETURN_GENERATED_KEYS);
-			pst.setInt(1, obj.getIdUsuario());
+			pst.setInt(1, obj.getUsuario().getId());
 			pst.setString(2, obj.getNome());
 			pst.setDate(3, obj.getData_inicio());
 			pst.setDate(4, obj.getData_fim());
@@ -51,11 +53,13 @@ public class MetaDAO implements ITmeta{
 			rs = pst.executeQuery();
 			while(rs.next()){
 				MetaDTO m = new MetaDTO();
+				UsuarioDTO usuario = new UsuarioDTO();
+				usuario.setId(rs.getInt("id_usuario"));
 				m.setData_fim(rs.getDate("data_fim"));
 				m.setData_inicio(rs.getDate("data_inicio"));
 				m.setId(rs.getInt("id"));
 				m.setNome(rs.getString("nome"));
-				m.setIdUsuario(rs.getInt("id_usuario"));
+				m.setUsuario(usuario);
 				lista.add(m);
 			}
 			retorno.setTodasMetas(lista);

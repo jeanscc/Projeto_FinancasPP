@@ -10,7 +10,6 @@ import dto.UsuarioDTO;
 
 public class Usuario {
 	private String nome, cpf, telefone, email;
-	private Conta conta;
 	private Image foto;
 	
 	private ITusuario usuarioDAO;
@@ -59,16 +58,8 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+ //////////////////////////////////////////////////////////////////////////////////////////////
 
-	public Conta getConta() {
-		return conta;
-	}
-
-	public void setConta(Conta conta) {
-		this.conta = conta;
-	}
-
-	// ÁREA DE ENVIO DE DADOS PRA FACHADA COM JP.
 	public boolean salvar(UsuarioDTO obj) throws Exception{
 		return usuarioDAO.salvar(obj);
 	}

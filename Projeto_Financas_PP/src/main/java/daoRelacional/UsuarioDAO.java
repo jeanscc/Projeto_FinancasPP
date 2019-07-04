@@ -23,12 +23,11 @@ public class UsuarioDAO implements ITusuario {
 
 	public boolean salvar(UsuarioDTO obj) throws Exception {
 		try {
-			pst = con.prepareStatement("INSERT INTO usuario (nome,cpf,email,telefone, id_conta) VALUES (?,?,?,?,?)");
+			pst = con.prepareStatement("INSERT INTO usuario (nome,cpf,email,telefone) VALUES (?,?,?,?)");
 			pst.setString(1, obj.getNome());
 			pst.setString(2, obj.getCpf());
 			pst.setString(3, obj.getEmail());
 			pst.setString(4, obj.getTelefone());
-			pst.setInt(5, obj.getConta().getId());
 			pst.execute();
 			return true;
 		} catch (Exception e) {
