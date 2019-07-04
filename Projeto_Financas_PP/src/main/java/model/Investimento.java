@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import daoJPA.ITinvestimento;
+import daoJPA.ITmoeda;
 import daoJPA.InvestimentoDaoJPA;
+import daoJPA.MoedaDaoJPA;
 import dto.InvestimentoDTO;
 
 
@@ -18,7 +20,12 @@ public class Investimento {
 	private Usuario usuario;
 	private Date data_inicio, data_fim;
 	
-	ITinvestimento dao = new InvestimentoDaoJPA();
+	private ITinvestimento investimentoDAO;
+	
+	public Investimento() {
+		investimentoDAO = new InvestimentoDaoJPA();
+	}
+	
 	
 	
 	public String getNome() {
@@ -88,53 +95,41 @@ public class Investimento {
 	
 	
 	public boolean salvar(InvestimentoDTO dto) throws Exception {
-		try {
-			return dao.salvar(dto);
-		} catch (Exception e) {
-			throw e;
-		}
+		
+			return investimentoDAO.salvar(dto);
+		
 		
 	}
 	
 //	public InvestimentoDTO excluir(InvestimentoDTO dto) throws Exception {
-//		try {
+//		
 //			return dao.excluir(dto);
-//		} catch (Exception e) {
-//			throw e;
-//		}
+//	
 //		
 //	}
 	
 	public InvestimentoDTO atualizar(InvestimentoDTO dto) throws Exception {
-		try {
-			return dao.atualizar(dto);
-		} catch (Exception e) {
-			throw e;
-		}
+		
+			return investimentoDAO.atualizar(dto);
+	
 	}
 	
 	public InvestimentoDTO listar() throws Exception {
-		try {
-			return dao.listar();
-		} catch (Exception e) {
-			throw e;
-		}
+		
+			return investimentoDAO.listar();
+	
 	}
 
 //	public InvestimentoDTO buscar(InvestimentoDTO dto) throws Exception {
-//		try {
+//	
 //			return dao.buscar(dto);
-//		} catch (Exception e) {
-//			throw e;
-//		}
+//	
 //	}
 	
 //	public InvestimentoDTO logar(InvestimentoDTO dto) throws Exception {
-//		try {
+//
 //			return dao.logar(dto);
-//		} catch (Exception e) {
-//			throw e;
-//		}
+//	
 //	}
 	
 }

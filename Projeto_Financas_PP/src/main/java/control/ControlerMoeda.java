@@ -1,37 +1,40 @@
 package control;
 
-import strategy.StrategyGenerico;
+import dto.MoedaDTO;
 
-public class ControlerMoeda implements StrategyGenerico{
+import model.Moeda;
 
-	public boolean salvar(Object obj) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+
+public class ControlerMoeda{
+
+	private Moeda moeda;
+	
+	public ControlerMoeda() {
+		moeda = new Moeda();
+	}
+	
+	public boolean salvar(MoedaDTO dto) throws Exception {
+			return moeda.salvar(dto);
 	}
 
-	public Object excluir(int id) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+	public MoedaDTO excluir(MoedaDTO dto) throws Exception {
+			return moeda.excluir(dto);
 	}
 
-	public Object atualizar(Object novo) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+	public MoedaDTO atualizar(MoedaDTO dto) throws Exception {
+			return moeda.atualizar(dto);
 	}
 
-	public Object listar() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public MoedaDTO listar() throws Exception {
+			return moeda.listar();
 	}
 
-	public Object buscar(int id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Object logar(Object obj) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public Object buscar(MetaDTO dto) throws Exception {
+//			return meta.buscar(dto);
+//	}
+//
+//	public Object logar(MetaDTO dto) throws Exception {
+//			return meta.logar(dto);
+//	}
 
 }

@@ -2,11 +2,22 @@ package model;
 
 import java.util.ArrayList;
 
+import daoJPA.ITmoeda;
+import daoJPA.ITusuario;
+import daoJPA.MoedaDaoJPA;
+import daoJPA.UsuarioDaoJPA;
+import dto.MoedaDTO;
+
 public class Moeda  {
 	private String nome;
 	private TipoMoeda tipo;
 	private ArrayList<Valor> historico = new ArrayList<Valor>();
 	
+	private ITmoeda moedaDAO;
+	
+	public Moeda() {
+		moedaDAO = new MoedaDaoJPA();
+	}
 	
 	
 	
@@ -30,6 +41,29 @@ public class Moeda  {
 	}
 	
 	
+	public boolean salvar(MoedaDTO dto) throws Exception {
+			return moedaDAO.salvar(dto);
+	}
+
+	public MoedaDTO excluir(MoedaDTO dto) throws Exception {
+			return moedaDAO.excluir(dto);
+	}
+
+	public MoedaDTO atualizar(MoedaDTO dto) throws Exception {
+			return moedaDAO.atualizar(dto);
+	}
+
+	public MoedaDTO listar() throws Exception {
+			return moedaDAO.listar();
+	}
+
+//	public Object buscar(MetaDTO dto) throws Exception {
+//			return meta.buscar(dto);
+//	}
+//
+//	public Object logar(MetaDTO dto) throws Exception {
+//			return meta.logar(dto);
+//	}
 	
 	
 	

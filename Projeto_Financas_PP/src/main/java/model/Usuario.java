@@ -3,9 +3,9 @@ package model;
 import java.awt.Image;
 import java.util.ArrayList;
 
+import daoJPA.ITusuario;
 import daoJPA.UsuarioDaoJPA;
-import daoRelacional.ITusuario;
-import daoRelacional.UsuarioDAO;
+
 import dto.UsuarioDTO;
 
 public class Usuario {
@@ -15,7 +15,7 @@ public class Usuario {
 	private ITusuario usuarioDAO;
 	
 	public Usuario() {
-		usuarioDAO = new UsuarioDAO();
+		usuarioDAO = new UsuarioDaoJPA();
 	}
 	
 
@@ -64,7 +64,7 @@ public class Usuario {
 		return usuarioDAO.salvar(obj);
 	}
 	
-	public boolean atualizar(UsuarioDTO novo) throws Exception{
+	public UsuarioDTO atualizar(UsuarioDTO novo) throws Exception{
 		return usuarioDAO.atualizar(novo);
 	}
 	
@@ -77,8 +77,12 @@ public class Usuario {
 		return usuarioDAO.listar();
 	}
 	
-	public boolean excluir(int id) throws Exception {
-		return usuarioDAO.excluir(id);
+	public UsuarioDTO excluir(Usuario dto) throws Exception {
+		return usuarioDAO.excluir(dto);
 	}
+	
+	public UsuarioDTO buscar(UsuarioDTO dto) throws Exception {
+		return usuarioDAO.buscar(dto);
+}
 }
 
