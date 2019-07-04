@@ -27,6 +27,7 @@ public class InvestimentoDTO {
 	private Status status;
 	
 	private double valor;
+	private double margem;
 	private String nome;
 	
 	
@@ -66,6 +67,14 @@ public class InvestimentoDTO {
 	
 	
 
+
+	public double getMargem() {
+		return margem;
+	}
+
+	public void setMargem(double margem) {
+		this.margem = margem;
+	}
 
 	public String getNome() {
 		return nome;

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#lsClick" onMouseEntered="#lsEn" onMouseExited="#lsEx" prefHeight="53.0" prefWidth="954.0" spacing="70.0" style="-fx-background-color: #02030A; -fx-background-radius: 5; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.ControllerItem">
+<HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="956.0" spacing="70.0" style="-fx-background-color: #02030A; -fx-background-radius: 5; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.ControllerItem">
     <children>
         <Label fx:id="lbNome" text="Bolsa" textFill="#b7c3d7">
          <font>
@@ -47,7 +47,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-        <Button fx:id="btStatus" mnemonicParsing="false" prefHeight="10.0" prefWidth="60.0" style="-fx-border-color: #2A73FF; -fx-border-radius: 20; -fx-background-color: transparent;" stylesheets="@style.css">
+        <Button fx:id="btStatus" mnemonicParsing="false" onAction="#lsExcluir" prefHeight="32.0" prefWidth="79.0" style="-fx-border-color: #2A73FF; -fx-border-radius: 20; -fx-background-color: transparent;" stylesheets="@style.css" text="Excluir">
             <HBox.margin>
                 <Insets />
             </HBox.margin>

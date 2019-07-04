@@ -4,19 +4,22 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dto.InvestimentoDTO;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-
+import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
+
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+
 
 
 public class ControllerHome implements Initializable {
@@ -61,19 +64,13 @@ public class ControllerHome implements Initializable {
 	private Pane pnlInvestimentos;
 
 	@FXML
-	private VBox pnItems;
-
-	@FXML
-	private TextField txPesquisaH;
-
-	@FXML
 	private ComboBox<?> cbTtipo;
 
 	@FXML
 	private ComboBox<?> cbFonte;
-
+	
 	@FXML
-	private DatePicker dtPicker;
+    private TextField txNome;
 
 	@FXML
 	private TextField txValor;
@@ -136,9 +133,41 @@ public class ControllerHome implements Initializable {
 			System.exit(0);
 		}
 	}
+	
+	
+	public void carregarTabela() {
+		InvestimentoDTO investimentos = new InvestimentoDTO ();
+		pnItems111.getChildren().clear();
+		if(!investimentos.getTodosInvetismento().isEmpty()) {
+			Node[] nodes = new Node[investimentos.getTodosInvetismento().size()];
+			for (int i = 0; i < nodes.length; i++) {
+	            try {
+
+	                final int j = i;
+	                FXMLLoader fxmlLoader = new FXMLLoader();
+	                nodes[i] = fxmlLoader.load(getClass().getResource("/view/fxmls/Item.fxml").openStream());
+	                ControllerItem controller = (ControllerItem) fxmlLoader.getController(); 
+	                controller.setCon(this);
+	                controller.carregar(investimentos.getTodosInvetismento().get(i));
+
+	                //give the items some effect
+
+	                nodes[i].setOnMouseEntered(event -> {
+	                    nodes[j].setStyle("-fx-background-color : #0A0E3F");
+	                });
+	                nodes[i].setOnMouseExited(event -> {
+	                    nodes[j].setStyle("-fx-background-color : #02030A");
+	                });
+	                pnItems111.getChildren().add(nodes[i]);
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
+		}
+	}
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
+		carregarTabela();
 	}
 
 }
