@@ -1,11 +1,16 @@
 package view.controllers;
-import javafx.fxml.Initializable;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.chart.CategoryAxis;
+import javafx.fxml.Initializable;
+import javafx.scene.chart.BarChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -35,10 +40,7 @@ public class ControllerFinancas implements Initializable{
     private Label lbPercas;
 
     @FXML
-    private Label lbGastos;
-
-    @FXML
-    private CategoryAxis lnTemporal;
+    private BarChart<Number, Number> grFinancas;
 
     @FXML
     private DatePicker dtFinal;
@@ -47,10 +49,32 @@ public class ControllerFinancas implements Initializable{
     private DatePicker dtInicial;
 
     @FXML
-    private ComboBox<?> cbBalanco;
+    private ComboBox<String> cbBalanco;
 
+    @FXML
+    private Button btBuscar;
+
+    @FXML
+    void lsBuscar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void lsCb(ActionEvent event) {
+
+    }
+    
+    private void carregarCb() {
+    	ObservableList <String> registro = FXCollections.observableArrayList();
+    	registro.add("Geral");
+    	registro.add("Intervalo de Datas");
+    }
+    
+    
+
+	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		carregarCb();
 		
 	}
 

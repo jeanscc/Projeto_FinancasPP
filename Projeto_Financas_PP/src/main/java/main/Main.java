@@ -9,10 +9,11 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("/view/fxmls/TelaLogin.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/view/fxmls/Home.fxml"));
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
 		primaryStage.show();
+		
 	}
 
 	public static void main(String[] args) {

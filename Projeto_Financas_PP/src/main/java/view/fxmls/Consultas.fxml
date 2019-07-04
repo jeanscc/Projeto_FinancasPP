@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pnlInvestimentos" prefHeight="639.0" prefWidth="956.0" style="-fx-background-color: #02030A;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.ControllerConsultas">
+<Pane fx:id="pnlInvestimentos" prefHeight="639.0" prefWidth="956.0" style="-fx-background-color: #02030A;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.ControllerConsultas">
    <children>
       <Label layoutX="427.0" layoutY="31.0" text="Consultas" textFill="#e7e5e5">
          <font>
@@ -28,7 +28,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <LineChart fx:id="grConsulta" layoutX="11.0" layoutY="271.0" prefHeight="354.0" prefWidth="919.0">
+      <LineChart fx:id="grConsulta" animated="false" layoutX="11.0" layoutY="271.0" prefHeight="354.0" prefWidth="919.0">
         <xAxis>
           <CategoryAxis label="Hora" side="BOTTOM" />
         </xAxis>
@@ -37,5 +37,6 @@
         </yAxis>
       </LineChart>
       <Button fx:id="btConsultar" layoutX="497.0" layoutY="157.0" mnemonicParsing="false" onAction="#lsConsultar" prefHeight="41.0" prefWidth="231.0" text="Consultar" />
+      <Button fx:id="btParar" layoutX="497.0" layoutY="86.0" mnemonicParsing="false" onAction="#lsParar" prefHeight="41.0" prefWidth="231.0" text="Parar" />
    </children>
 </Pane>

@@ -3,7 +3,12 @@ package model.requisicoes;
 public class RequisicaoLiteCoin extends RequisicaoHttpCripto{
 
 	@Override
-	public String consultarValor(String moeda) throws Exception {
+	public String consultarValor() throws Exception {
+		
+		return consultar("LTC");
+	}
+	
+	private String consultar(String moeda) throws Exception {
 		return (String) super.request("LTC", "vol");
 	}
 

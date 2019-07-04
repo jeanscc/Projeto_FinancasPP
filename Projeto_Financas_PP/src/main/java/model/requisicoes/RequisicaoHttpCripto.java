@@ -51,7 +51,7 @@ public abstract class RequisicaoHttpCripto implements ITrequeste{
 		return sB;
 	}
 
-	public abstract String consultarValor(String moeda) throws Exception;
+	public abstract String consultarValor() throws Exception;
 	
 	public abstract String maiorValor(String moeda) throws Exception;
 	
