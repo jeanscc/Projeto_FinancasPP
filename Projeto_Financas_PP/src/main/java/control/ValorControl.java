@@ -1,5 +1,6 @@
 package control;
 
+import dto.MoedaDTO;
 import dto.ValorDTO;
 import model.Valor;
 
@@ -16,5 +17,9 @@ public class ValorControl {
 	
 	public ValorDTO listar() throws Exception {
 		return valor.listar();
+	}
+	
+	public ValorDTO listarValores(MoedaDTO moeda) throws Exception {
+		return valor.listarValores(moeda);
 	}
 }

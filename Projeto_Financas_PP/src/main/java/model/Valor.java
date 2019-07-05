@@ -135,4 +135,8 @@ public class Valor {
 			}
 		}
 	}
+	
+	public ValorDTO listarValores(MoedaDTO moeda) throws Exception {
+		return valordao.listarValores(moeda);
+	}
 }
