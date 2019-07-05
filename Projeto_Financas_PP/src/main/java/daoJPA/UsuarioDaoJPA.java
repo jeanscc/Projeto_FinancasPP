@@ -3,6 +3,8 @@ package daoJPA;
 import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import antlr.collections.List;
 import dto.UsuarioDTO;
@@ -86,35 +88,32 @@ public class UsuarioDaoJPA extends FactoryEntity implements ITusuario {
 
 	public UsuarioDTO logar(UsuarioDTO usuario) throws Exception {
 		entidade = super.getIntity();
+		UsuarioDTO encontrado = null;
+		String jpql = "select u from UsuarioDTO u where u.email = :email and u.senha = :senha";
+		TypedQuery<UsuarioDTO> query = entidade.createQuery(jpql, UsuarioDTO.class);
+		query.setParameter("email", usuario.getEmail());
+		query.setParameter("senha", usuario.getSenha());
 		try {
-			return entidade.find(UsuarioDTO.class, usuario.getEmail());
+			encontrado = query.getSingleResult();
+			return encontrado;
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
-		} 
+		}
 	}
 
 	@Override
 	public UsuarioDTO buscarPorEmail(UsuarioDTO dto) throws Exception {
 		entidade = super.getIntity();
-		ArrayList<UsuarioDTO> registros = null;
-		UsuarioDTO retorno = new UsuarioDTO();
+		UsuarioDTO encontrado = null;
+		String jpql = "select u from UsuarioDTO u where u.email = :email";
+		TypedQuery<UsuarioDTO> query = entidade.createQuery(jpql, UsuarioDTO.class);
+		query.setParameter("email", dto.getEmail());
 		try {
-			registros = (ArrayList<UsuarioDTO>) entidade.createQuery("select u from UsuarioDTO u where u.email = '" + dto.getEmail() + "'").getResultList();
-			retorno.setUsuariosCadastrados(registros);
+			encontrado = query.getSingleResult();
+			return encontrado;
 		} catch (Exception e) {
-			throw new Exception("Erro ao buscar usuário por e-mail. " +e.getMessage());
-		}finally {
-			entidade.close();
+			throw new Exception(e.getMessage());
 		}
-		return filtrador(registros, dto);
 	}
-	
-	private UsuarioDTO filtrador(ArrayList<UsuarioDTO> registro, UsuarioDTO alvo) {
-		for(UsuarioDTO x : registro) {
-			if(x.getEmail().equalsIgnoreCase(alvo.getEmail())) {
-				return x;
-			}
-		}
-		return null;
-	}
+
 }

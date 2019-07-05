@@ -110,7 +110,7 @@ public class ControllerLogin implements Initializable {
 			}
 
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Erro ao entrar.  " + e.getMessage());
+			JOptionPane.showMessageDialog(null, "Usuário não encontrado.");
 		}
 	}
 
