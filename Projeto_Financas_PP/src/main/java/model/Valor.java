@@ -82,7 +82,7 @@ public class Valor {
 					try{
 						vdao.salvar(vdto);
 					}catch(Exception e) {
-						
+						e.getMessage();
 					}
 					break;
 				case"BitCoin":
@@ -93,7 +93,7 @@ public class Valor {
 					try{
 						vdao.salvar(bvdto);
 					}catch(Exception e) {
-						
+						e.getMessage();
 					}
 					break;
 				case"Dolar":
@@ -104,7 +104,7 @@ public class Valor {
 					try{
 						vdao.salvar(dvdto);
 					}catch(Exception e) {
-						
+						e.getMessage();
 					}
 					break;
 				
@@ -116,7 +116,7 @@ public class Valor {
 					try{
 						vdao.salvar(cvdto);
 					}catch(Exception e) {
-						
+						e.getMessage();
 					}
 					break;
 				
@@ -128,7 +128,7 @@ public class Valor {
 					try{
 						vdao.salvar(evdto);
 					}catch(Exception e) {
-						
+						e.getMessage();
 					}
 					break;
 				case"Euro":
@@ -139,7 +139,7 @@ public class Valor {
 					try{
 						vdao.salvar(euvdto);
 					}catch(Exception e) {
-						
+						e.getMessage();
 					}
 					break;
 				
@@ -151,7 +151,7 @@ public class Valor {
 					try{
 						vdao.salvar(lvdto);
 					}catch(Exception e) {
-						
+						e.getMessage();
 					}
 					break;
 				
@@ -163,7 +163,7 @@ public class Valor {
 					try{
 						vdao.salvar(lcvdto);
 					}catch(Exception e) {
-						
+						e.getMessage();
 					}
 					break;
 					
@@ -175,7 +175,7 @@ public class Valor {
 					try{
 						vdao.salvar(xvdto);
 					}catch(Exception e) {
-						
+						e.getMessage();
 					}
 					break;
 				}
