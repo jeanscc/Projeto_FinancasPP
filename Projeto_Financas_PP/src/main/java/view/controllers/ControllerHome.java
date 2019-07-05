@@ -6,12 +6,15 @@ import java.util.ResourceBundle;
 
 import control.ControlerInvestimento;
 import dto.InvestimentoDTO;
-
+import iterator.Iterator;
+import iterator.IteratorInvestimento;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.ComboBox;
@@ -85,6 +88,12 @@ public class ControllerHome implements Initializable {
 	@FXML
 	private TextField txPesquisaG;
 
+	 @FXML
+	 private PieChart grDivisao;
+	 
+	 @FXML
+	 private BarChart<?, ?> grLucro;
+
 	
 	@FXML
 	private Pane pnlConsultas;
@@ -148,10 +157,13 @@ public class ControllerHome implements Initializable {
 		}
 		
 		pnItems111.getChildren().clear();
+		Iterator it = new IteratorInvestimento (investimentos.getTodosInvetismento());
 		if(!investimentos.getTodosInvetismento().isEmpty()) {
 			Node[] nodes = new Node[investimentos.getTodosInvetismento().size()];
-			for (int i = 0; i < nodes.length; i++) {
-	            try {
+			int i = 0;
+			while(it.hasNext()) {
+				it.next();
+				try {
 
 	                final int j = i;
 	                FXMLLoader fxmlLoader = new FXMLLoader();
@@ -172,7 +184,8 @@ public class ControllerHome implements Initializable {
 	            } catch (IOException e) {
 	                e.printStackTrace();
 	            }
-	        }
+			}
+			
 		}
 	}
 

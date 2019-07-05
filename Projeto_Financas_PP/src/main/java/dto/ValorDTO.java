@@ -22,6 +22,7 @@ public class ValorDTO {
 
 	@Temporal(TemporalType.DATE)
 	private Date data;
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

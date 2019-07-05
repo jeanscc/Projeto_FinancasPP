@@ -23,7 +23,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="92.0" prefWidth="174.0">
                <children>
-                  <Label fx:id="lbBalanco" text="0" textFill="#2a73ff">
+                  <Label fx:id="lbBalanco" text="0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
@@ -33,7 +33,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="92.0" prefWidth="169.0">
                <children>
-                  <Label fx:id="lbRetorno" text="0" textFill="#ffec2b">
+                  <Label fx:id="lbRetorno" text="0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
@@ -43,7 +43,7 @@
             </VBox>
             <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="92.0" prefWidth="168.0">
                <children>
-                  <Label fx:id="lbLucro" text="0" textFill="#2bff6e">
+                  <Label fx:id="lbLucro" text="0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
@@ -53,7 +53,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="92.0" prefWidth="181.0">
                <children>
-                  <Label fx:id="lbInvestido" text="0" textFill="#26bfbc">
+                  <Label fx:id="lbInvestido" text="0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
@@ -63,7 +63,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="92.0" prefWidth="154.0">
                <children>
-                  <Label fx:id="lbPendentes" text="0" textFill="#fa5f7e">
+                  <Label fx:id="lbPendentes" text="0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
@@ -77,7 +77,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="92.0" prefWidth="169.0">
                <children>
-                  <Label fx:id="lbPercas" text="0" textFill="#de0000">
+                  <Label fx:id="lbPercas" text="0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>

@@ -5,11 +5,12 @@ import java.util.Date;
 import java.util.List;
 
 import daoJPA.ITinvestimento;
-import daoJPA.ITmoeda;
+
 import daoJPA.InvestimentoDaoJPA;
-import daoJPA.MoedaDaoJPA;
+
 import dto.InvestimentoDTO;
 import dto.LucroDTO;
+
 
 
 public class Investimento {
