@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import model.Status;
 
 public class ControllerItem implements Initializable{
 
@@ -52,7 +53,6 @@ public class ControllerItem implements Initializable{
     	alert.setTitle("Confirmação");
     	alert.setHeaderText("Deseja mesmo Excluir o Investimento.");
     	alert.setResizable(false);
-    	alert.setContentText("Select okay or cancel this alert.");
     	Optional<ButtonType> result = alert.showAndWait();
     	if(result.get() == ButtonType.OK) {
     		
@@ -67,6 +67,30 @@ public class ControllerItem implements Initializable{
 		}
     	con.carregarTabela();}
     }
+    
+    
+    @FXML
+    void lsFinalizar(ActionEvent event) {
+    	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    	alert.setTitle("Confirmação");
+    	alert.setHeaderText("Deseja mesmo Finalizar o Investimento?");
+    	alert.setResizable(false);
+    	Optional<ButtonType> result = alert.showAndWait();
+    	if(result.get() == ButtonType.OK) {
+    		
+    	
+    	ControlerInvestimento controler = new ControlerInvestimento();
+    	try {
+			dto.setStatus(Status.Finalizado);
+    		controler.atualizar(dto);
+			con.carregarTabela();
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+    	con.carregarTabela();}
+    }
+    
     
     public void carregar (InvestimentoDTO i) {
     	dto=i;

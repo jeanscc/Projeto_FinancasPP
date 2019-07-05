@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Valor;
 
 public class Main extends Application {
 
@@ -14,6 +15,9 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		Valor valor = new Valor();
+		valor.atualizarValores();
+		
 		Parent root = FXMLLoader.load(getClass().getResource("/view/fxmls/TelaLogin.fxml"));
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);

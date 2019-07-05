@@ -92,7 +92,11 @@ public class ControllerCadastro implements Initializable{
     }
 
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		String tx = new String("-fx-text-fill: lightgray; -fx-font-size: 12px;-fx-background-color:#14173d;");
+		txEmail.setStyle(tx);
+		txSenha.setStyle(tx);
+		txCpf.setStyle(tx);
+		txNome.setStyle(tx);
 		
 	}
 
