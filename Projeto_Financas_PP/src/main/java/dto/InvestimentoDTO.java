@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -23,6 +24,7 @@ import model.Status;
 @Entity
 @Table(name = "investimento")
 public class InvestimentoDTO {
+	
 	@Enumerated(EnumType.STRING)
 	private Status status;
 	
@@ -30,7 +32,7 @@ public class InvestimentoDTO {
 	private double margem;
 	private String nome;
 	
-	@OneToMany(mappedBy =  "lucro",cascade = CascadeType.ALL,orphanRemoval = true, targetEntity = InvestimentoDTO.class)	
+	@OneToMany(mappedBy =  "investimento",cascade = CascadeType.ALL,orphanRemoval = true)	
 	private List<LucroDTO> lucro;
 	
 	
@@ -42,14 +44,14 @@ public class InvestimentoDTO {
 	@Transient
 	private List<InvestimentoDTO> todosInvetismento;
 	
-	@OneToOne()
+	@ManyToOne
 	private MoedaDTO moeda;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@OneToOne()
+	@ManyToOne
 	private UsuarioDTO usuario;
 	
 	

@@ -17,8 +17,7 @@ import javax.persistence.TemporalType;
 @Table(name = "lucro")
 public class LucroDTO {
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_investimento")
+	@ManyToOne(fetch = FetchType.EAGER)
 	private InvestimentoDTO investimento;
 	
 	

@@ -17,9 +17,6 @@
 		</repository>
 	</repositories>
 
-
-
-
 	<dependencies>
 		<dependency>
 			<groupId>javax.mail</groupId>
