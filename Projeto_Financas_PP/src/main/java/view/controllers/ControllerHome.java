@@ -126,10 +126,7 @@ public class ControllerHome implements Initializable {
 			try {
 				
 				Pane pane = FXMLLoader.load(getClass().getResource("/view/fxmls/Metas.fxml"));
-				ControllerMetas conM = (ControllerMetas) pane.;
-				conM.setCon(this);
 				pnlMetas.getChildren().add(pane);
-				
 				pnlMetas.toFront();
 			} catch (IOException e3) {
 				// TODO Auto-generated catch block
@@ -147,6 +144,7 @@ public class ControllerHome implements Initializable {
 		} 
 		else if (event.getSource() == btInvestimentos)
 			pnlInvestimentos.toFront();
+		
 		else if (event.getSource() == btDeslogar) {
 			System.exit(0);
 		}

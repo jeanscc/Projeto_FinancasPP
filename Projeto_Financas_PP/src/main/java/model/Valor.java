@@ -69,7 +69,7 @@ public class Valor {
 			try {
 				moeda = mdao.listar();
 			}catch(Exception e) {
-				
+				e.getMessage();
 			}
 			
 			for(MoedaDTO m: moeda.getTodasMoedas()) {
