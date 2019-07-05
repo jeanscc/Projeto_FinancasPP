@@ -75,11 +75,12 @@ public class ControllerCadastro implements Initializable{
     }
     
     private void retornar(ActionEvent e) {
-    	Node node = (Node) e.getSource();
-	    Stage stage = (Stage) node.getScene().getWindow();
-	    stage.close();
-	    Scene scene;
+    	
 		try {
+			Node node = (Node) e.getSource();
+		    Stage stage = (Stage) node.getScene().getWindow();
+		    stage.close();
+		    Scene scene;
 			scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("/view/fxmls/TelaLogin.fxml")));
 			stage.setScene(scene);
 		    stage.show();
