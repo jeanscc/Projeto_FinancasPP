@@ -44,7 +44,8 @@ public class ControllerMetas implements Initializable{
     private Label lbCancelados;
 
     @FXML
-    private PieChart grResumo;
+    private Label lbTotal;
+
 
     @FXML
     private VBox pnItems111;
@@ -145,6 +146,24 @@ public class ControllerMetas implements Initializable{
 	        }
 		}
     }
+    
+    
+    public void carregarLb() {
+    	ControlerMeta controler = new ControlerMeta();
+    	try {
+			MetaDTO metas = controler.listar();
+    		int finalizadas = controler.metasFinalizadas();
+			int total = 0;
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    
+    
+    
 
 	public void initialize(URL location, ResourceBundle resources) {
 		ControlerMeta controler = new ControlerMeta();

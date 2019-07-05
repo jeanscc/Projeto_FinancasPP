@@ -56,8 +56,7 @@ public class ControllerHome implements Initializable {
 	@FXML
 	private Button btConsultas;
 
-	@FXML
-	private Button btPerfil;
+	
 
 	@FXML
 	private Button btDeslogar;
@@ -125,9 +124,9 @@ public class ControllerHome implements Initializable {
 			}
 		} else if (event.getSource() == btMetas) {
 			try {
-				FXMLLoader fxmlLoader = new FXMLLoader();
-				Pane pane = fxmlLoader.load(getClass().getResource("/view/fxmls/Metas.fxml").openStream());
-				ControllerMetas conM = (ControllerMetas) fxmlLoader.getController();
+				
+				Pane pane = FXMLLoader.load(getClass().getResource("/view/fxmls/Metas.fxml"));
+				ControllerMetas conM = (ControllerMetas) pane.;
 				conM.setCon(this);
 				pnlMetas.getChildren().add(pane);
 				
@@ -146,16 +145,7 @@ public class ControllerHome implements Initializable {
 				e2.printStackTrace();
 			}
 		} 
-		 else if (event.getSource() == btPerfil) {
-			try {
-				Pane pane = FXMLLoader.load(getClass().getResource("/view/fxmls/Perfil.fxml"));
-				pnlPerfil.getChildren().add(pane);
-				pnlPerfil.toFront();
-			} catch (IOException e) {
-
-				e.printStackTrace();
-			}
-		} else if (event.getSource() == btInvestimentos)
+		else if (event.getSource() == btInvestimentos)
 			pnlInvestimentos.toFront();
 		else if (event.getSource() == btDeslogar) {
 			System.exit(0);
