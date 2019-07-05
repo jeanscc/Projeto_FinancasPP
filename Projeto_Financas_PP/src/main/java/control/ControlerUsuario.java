@@ -42,7 +42,9 @@ public class ControlerUsuario{
 		return usuario.logar(dto);
 	}
 	
-	public void recuperarSenha(String email) throws Exception {
-		recuperador.enviarEmail(email);
+	public void recuperarSenha(UsuarioDTO dto) throws Exception {
+		recuperador.enviarEmail(dto);
 	}
+	
+
 }

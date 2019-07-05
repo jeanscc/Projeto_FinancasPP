@@ -28,14 +28,14 @@ public class RecuperarEmail {
 		}
 	}
 
-	public void enviarEmail(String destinatario) throws Exception {
+	public void enviarEmail(UsuarioDTO dto) throws Exception {
 		UsuarioDTO achado = null;
 		String username = "vain.suporte@gmail.com";
 		String password = "vaininvestimentos123";
 		String assunto = "Recuperação de senha";
 
-		if (validaEmail(destinatario)) {
-			achado = dao.buscarPorEmail(destinatario);
+		if (validaEmail(dto.getEmail())) {
+			achado = dao.buscarPorEmail(dto);
 			
 			String mensagemEmail = "Olá, aqui é do suport da Vain Investimentos. Sua senha recuperada é: "
 					+ achado.getSenha();
@@ -59,7 +59,7 @@ public class RecuperarEmail {
 				javax.mail.Message message = new MimeMessage(session);
 				message.setFrom(new InternetAddress(username)); // Remetente
 
-				javax.mail.Address[] toUser = InternetAddress.parse(destinatario);
+				javax.mail.Address[] toUser = InternetAddress.parse(dto.getEmail());
 
 				message.setRecipients(javax.mail.Message.RecipientType.TO, toUser);
 				message.setSubject(assunto);// Assunto
