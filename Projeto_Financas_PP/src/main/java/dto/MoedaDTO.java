@@ -27,6 +27,7 @@ public class MoedaDTO {
 	private ArrayList<ValorDTO> valores = new ArrayList<ValorDTO>();
 	
 	
+	
 	@Transient
 	private ArrayList<MoedaDTO> todasMoedas;
 	
@@ -34,6 +35,8 @@ public class MoedaDTO {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	
+
 	public int getId() {
 		return id;
 	}

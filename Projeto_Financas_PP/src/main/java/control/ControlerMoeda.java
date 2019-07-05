@@ -1,13 +1,15 @@
 package control;
 
 import dto.MoedaDTO;
-
+import dto.ValorAtualDTO;
 import model.Moeda;
+import model.requisicoes.FachadaRequisicoes;
 
 
 public class ControlerMoeda{
 
 	private Moeda moeda;
+	private FachadaRequisicoes fachada;
 	
 	public ControlerMoeda() {
 		moeda = new Moeda();
@@ -36,5 +38,9 @@ public class ControlerMoeda{
 //	public Object logar(MoedaDTO dto) throws Exception {
 //			return moeda.logar(dto);
 //	}
+	
+	public ValorAtualDTO recuperarRequisicoes() {
+		return fachada.recuperarRequisicoes();
+	}
 
 }

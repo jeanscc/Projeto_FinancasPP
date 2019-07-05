@@ -1,7 +1,9 @@
-package control;
+package model.requisicoes;
 
 import java.text.Format;
 
+import dto.MoedaDTO;
+import dto.ValorAtualDTO;
 import model.requisicoes.ITrequeste;
 import model.requisicoes.RequisicaoBCash;
 import model.requisicoes.RequisicaoBitCoin;
@@ -116,7 +118,7 @@ public class FachadaRequisicoes {
 	}
 	
 	
-	public String[] recuperarRequisicoes() {
+	public ValorAtualDTO recuperarRequisicoes() {
 		String[] requisicoes = new String[9];
 		requisicoes[0] = this.recuperarBCash();
 		requisicoes[1] = this.recuperarBitCoin();
@@ -127,6 +129,19 @@ public class FachadaRequisicoes {
 		requisicoes[6] = this.recuperarLibra();
 		requisicoes[7] = this.recuperarLiteCoin();
 		requisicoes[8] = this.recuperarXRP();
-		return requisicoes;
+		
+		ValorAtualDTO dto = new ValorAtualDTO();
+		
+		dto.setBCash(requisicoes[0]);
+		dto.setBitCoin(requisicoes[1]);
+		dto.setDolar(requisicoes[2]);
+		dto.setDolarCan(requisicoes[3]);
+		dto.setEthereum(requisicoes[4]);
+		dto.setEuro(requisicoes[5]);
+		dto.setLibra(requisicoes[6]);
+		dto.setLiteCoin(requisicoes[7]);
+		dto.setXRP(requisicoes[8]);
+		
+		return dto;
 	}
 }
