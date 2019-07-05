@@ -10,7 +10,7 @@ import dto.MoedaDTO;
 
 public class Moeda  {
 	private String nome;
-	private TipoMoeda tipo;
+	private String tipo;
 	private ArrayList<Valor> historico = new ArrayList<Valor>();
 	
 	private ITmoeda moedaDAO;
@@ -27,10 +27,10 @@ public class Moeda  {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public TipoMoeda getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
-	public void setTipo(TipoMoeda tipo) {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 	public ArrayList<Valor> getHistorico() {

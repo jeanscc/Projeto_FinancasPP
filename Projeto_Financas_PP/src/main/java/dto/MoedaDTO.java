@@ -11,15 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import model.TipoMoeda;
 
 @Entity
 @Table(name = "moeda")
 public class MoedaDTO {
 
 	private String nome;
-	@Enumerated(EnumType.STRING)
-	private TipoMoeda tipo;
+
+	private String tipo;
 	
 	private double valor;
 	
@@ -69,11 +68,11 @@ public class MoedaDTO {
 		this.valor = valor;
 	}
 
-	public TipoMoeda getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(TipoMoeda moeda) {
+	public void setTipo(String moeda) {
 		this.tipo = moeda;
 	}
 

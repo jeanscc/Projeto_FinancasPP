@@ -1,6 +1,5 @@
 package model;
 
-
 import java.util.Date;
 
 import daoJPA.ITvalor;
@@ -19,6 +18,7 @@ public class Valor {
 	public Valor() {
 		valordao = new ValorDaoJPA();
 	}
+
 	public double getValor() {
 		return valor;
 	}
@@ -34,155 +34,105 @@ public class Valor {
 	public void setData(Date data) {
 		this.data = data;
 	}
-	
+
 	public boolean salvar(ValorDTO obj) throws Exception {
 		return valordao.salvar(obj);
 	}
-	
+
 	public ValorDTO listar() throws Exception {
 		return valordao.listar();
 	}
-	
-	public void atualizarValores() {
+
+	public void atualizarValores() throws Exception {
 		Date data = new Date();
-		ValorDTO dto =  new ValorDTO();
-		try{
-			dto = this.listar();
-		
-			
-		
-		}catch(Exception e) {
-			e.getMessage();
-	}
-		if(!dto.getValoresCadastrados().isEmpty()) {
-		for(ValorDTO valor:dto.getValoresCadastrados()) {
-			this.data=valor.getData();
+		ValorDTO dto = new ValorDTO();
+		ValorDaoJPA vdao = new ValorDaoJPA();
+		MoedaDaoJPA mdao = new MoedaDaoJPA();
+		MoedaDTO moeda = null;
+		try {
+			dto = valordao.listar();
+		} catch (Exception e) {
+			throw new Exception("Erro o buscar moedas. " + e.getMessage());
 		}
-		
-		if(this.data != data) {
-			FachadaRequisicoes fachada = new FachadaRequisicoes();
-			ValorAtualDTO valor = fachada.recuperarRequisicoes();
-			
-			ValorDaoJPA vdao = new ValorDaoJPA();
-			MoedaDaoJPA mdao = new MoedaDaoJPA();
-			MoedaDTO moeda = null;
-			try {
+		if (!dto.getValoresCadastrados().isEmpty()) {
+			for (ValorDTO valor : dto.getValoresCadastrados()) {
+				this.data = valor.getData();
+			}
+
+			if (this.data != data) {
+				FachadaRequisicoes fachada = new FachadaRequisicoes();
+				ValorAtualDTO valor = fachada.recuperarRequisicoes();
+
 				moeda = mdao.listar();
-			}catch(Exception e) {
-				e.getMessage();
-			}
-			
-			for(MoedaDTO m: moeda.getTodasMoedas()) {
-				switch (m.getNome()) {
-				case"BCash":
-					ValorDTO vdto = new ValorDTO();
-					vdto.setData(data);
-					vdto.setMoeda(m);
-					vdto.setValor(Double.parseDouble(valor.getBCash()));
-					try{
-						vdao.salvar(vdto);
-					}catch(Exception e) {
-						e.getMessage();
-					}
-					break;
-				case"BitCoin":
-					ValorDTO bvdto = new ValorDTO();
-					bvdto.setData(data);
-					bvdto.setMoeda(m);
-					bvdto.setValor(Double.parseDouble(valor.getBitCoin()));
-					try{
-						vdao.salvar(bvdto);
-					}catch(Exception e) {
-						e.getMessage();
-					}
-					break;
-				case"Dolar":
-					ValorDTO dvdto = new ValorDTO();
-					dvdto.setData(data);
-					dvdto.setMoeda(m);
-					dvdto.setValor(Double.parseDouble(valor.getDolar()));
-					try{
-						vdao.salvar(dvdto);
-					}catch(Exception e) {
-						e.getMessage();
-					}
-					break;
 				
-				case"DolarCan":
-					ValorDTO cvdto = new ValorDTO();
-					cvdto.setData(data);
-					cvdto.setMoeda(m);
-					cvdto.setValor(Double.parseDouble(valor.getDolarCan()));
-					try{
-						vdao.salvar(cvdto);
-					}catch(Exception e) {
-						e.getMessage();
-					}
-					break;
-				
-				case"Ethereum":
-					ValorDTO evdto = new ValorDTO();
-					evdto.setData(data);
-					evdto.setMoeda(m);
-					evdto.setValor(Double.parseDouble(valor.getEthereum()));
-					try{
-						vdao.salvar(evdto);
-					}catch(Exception e) {
-						e.getMessage();
-					}
-					break;
-				case"Euro":
-					ValorDTO euvdto = new ValorDTO();
-					euvdto.setData(data);
-					euvdto.setMoeda(m);
-					euvdto.setValor(Double.parseDouble(valor.getEuro()));
-					try{
-						vdao.salvar(euvdto);
-					}catch(Exception e) {
-						e.getMessage();
-					}
-					break;
-				
-				case"Libra":
-					ValorDTO lvdto = new ValorDTO();
-					lvdto.setData(data);
-					lvdto.setMoeda(m);
-					lvdto.setValor(Double.parseDouble(valor.getLibra()));
-					try{
-						vdao.salvar(lvdto);
-					}catch(Exception e) {
-						e.getMessage();
-					}
-					break;
-				
-				case"LiteCoin":
-					ValorDTO lcvdto = new ValorDTO();
-					lcvdto.setData(data);
-					lcvdto.setMoeda(m);
-					lcvdto.setValor(Double.parseDouble(valor.getLiteCoin()));
-					try{
-						vdao.salvar(lcvdto);
-					}catch(Exception e) {
-						e.getMessage();
-					}
-					break;
+				for (MoedaDTO m : moeda.getTodasMoedas()) {
+					ValorDTO valorEscolhido;
 					
-				case"XRP":
-					ValorDTO xvdto = new ValorDTO();
-					xvdto.setData(data);
-					xvdto.setMoeda(m);
-					xvdto.setValor(Double.parseDouble(valor.getXRP()));
-					try{
-						vdao.salvar(xvdto);
-					}catch(Exception e) {
-						e.getMessage();
+					if (m.getNome().equalsIgnoreCase("bitcoin")) {
+						valorEscolhido = new ValorDTO();
+						valorEscolhido.setData(data);
+						valorEscolhido.setMoeda(m);
+						valorEscolhido.setValor(Double.parseDouble(valor.getBitCoin()));
+						vdao.salvar(valorEscolhido);
+						
+					} else if (m.getNome().equalsIgnoreCase("bcash")) {
+						valorEscolhido = new ValorDTO();
+						valorEscolhido.setData(data);
+						valorEscolhido.setMoeda(m);
+						valorEscolhido.setValor(Double.parseDouble(valor.getBCash()));
+						vdao.salvar(valorEscolhido);
+						
+					} else if (m.getNome().equalsIgnoreCase("dolar")) {
+						valorEscolhido = new ValorDTO();
+						valorEscolhido.setData(data);
+						valorEscolhido.setMoeda(m);
+						valorEscolhido.setValor(Double.parseDouble(valor.getDolar()));
+						vdao.salvar(valorEscolhido);
+						
+					} else if (m.getNome().equalsIgnoreCase("dolarcan")) {
+						valorEscolhido = new ValorDTO();
+						valorEscolhido.setData(data);
+						valorEscolhido.setMoeda(m);
+						valorEscolhido.setValor(Double.parseDouble(valor.getDolarCan()));
+						vdao.salvar(valorEscolhido);
+						
+					} else if(m.getNome().equalsIgnoreCase("ethereum")) {
+						valorEscolhido = new ValorDTO();
+						valorEscolhido.setData(data);
+						valorEscolhido.setMoeda(m);
+						valorEscolhido.setValor(Double.parseDouble(valor.getEthereum()));
+						vdao.salvar(valorEscolhido);
+						
+					} else if(m.getNome().equalsIgnoreCase("euro")) {
+						valorEscolhido = new ValorDTO();
+						valorEscolhido.setData(data);
+						valorEscolhido.setMoeda(m);
+						valorEscolhido.setValor(Double.parseDouble(valor.getEuro()));
+						vdao.salvar(valorEscolhido);
+						
+					} else if(m.getNome().equalsIgnoreCase("libra")) {
+						valorEscolhido = new ValorDTO();
+						valorEscolhido.setData(data);
+						valorEscolhido.setMoeda(m);
+						valorEscolhido.setValor(Double.parseDouble(valor.getLibra()));
+						vdao.salvar(valorEscolhido);
+					} else if(m.getNome().equalsIgnoreCase("litecoint")) {
+						valorEscolhido = new ValorDTO();
+						valorEscolhido.setData(data);
+						valorEscolhido.setMoeda(m);
+						valorEscolhido.setValor(Double.parseDouble(valor.getLiteCoin()));
+						vdao.salvar(valorEscolhido);
+						
+					} else if(m.getNome().equalsIgnoreCase("xrp")){
+						valorEscolhido = new ValorDTO();
+						valorEscolhido.setData(data);
+						valorEscolhido.setMoeda(m);
+						valorEscolhido.setValor(Double.parseDouble(valor.getXRP()));
+						vdao.salvar(valorEscolhido);
 					}
-					break;
 				}
+
 			}
-			
 		}
-	}
 	}
 }
-
