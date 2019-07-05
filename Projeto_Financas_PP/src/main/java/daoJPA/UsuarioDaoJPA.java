@@ -97,10 +97,10 @@ public class UsuarioDaoJPA extends FactoryEntity implements ITusuario {
 	}
 
 	@Override
-	public UsuarioDTO buscarPorEmail(String email) throws Exception {
+	public UsuarioDTO buscarPorEmail(UsuarioDTO dto) throws Exception {
 		entidade = super.getIntity();
 		try {
-			return entidade.find(UsuarioDTO.class, email);
+			return entidade.find(UsuarioDTO.class, dto.getEmail());
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}

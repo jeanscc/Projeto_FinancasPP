@@ -18,6 +18,6 @@ public interface ITusuario {
 	
 	public UsuarioDTO logar(UsuarioDTO usuario) throws Exception;
 	
-	public UsuarioDTO buscarPorEmail(String email) throws Exception;
+	public UsuarioDTO buscarPorEmail(UsuarioDTO dto) throws Exception;
 	
 }

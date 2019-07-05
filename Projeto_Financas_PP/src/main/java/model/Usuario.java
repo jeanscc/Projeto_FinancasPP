@@ -83,6 +83,10 @@ public class Usuario {
 	
 	public UsuarioDTO buscar(UsuarioDTO dto) throws Exception {
 		return usuarioDAO.buscar(dto);
-}
+	}
+	
+	public UsuarioDTO buscarPorEmail(UsuarioDTO dto) throws Exception {
+		return usuarioDAO.buscarPorEmail(dto);
+	}
 }
 
