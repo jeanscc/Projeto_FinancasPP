@@ -17,9 +17,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class ControllerCadastro implements Initializable{
 
@@ -40,6 +38,9 @@ public class ControllerCadastro implements Initializable{
 
     @FXML
     private Button btRetornar;
+    
+    @FXML
+    private TextField txTelefone;
 
     @FXML
     void lsCadastro(ActionEvent event) {
@@ -56,6 +57,7 @@ public class ControllerCadastro implements Initializable{
     		dto.setNome(txNome.getText());
     		dto.setEmail(txEmail.getText());
     		dto.setSenha(txSenha.getText());
+    		dto.setTelefone(txTelefone.getText());
     		try {
 				con.salvar(dto);
 			} catch (Exception e) {
@@ -98,6 +100,7 @@ public class ControllerCadastro implements Initializable{
 		txSenha.setStyle(tx);
 		txCpf.setStyle(tx);
 		txNome.setStyle(tx);
+		txTelefone.setStyle(tx);
 		
 	}
 
