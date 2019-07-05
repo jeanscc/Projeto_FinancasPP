@@ -39,8 +39,10 @@ public class ControlerMoeda{
 //			return moeda.logar(dto);
 //	}
 	
-	public ValorAtualDTO recuperarRequisicoes() {
-		return fachada.recuperarRequisicoes();
+	public MoedaDTO recuperarRequisicoes(MoedaDTO dto) {
+		return fachada.recuperarValor(dto);
 	}
+	
+	
 
 }

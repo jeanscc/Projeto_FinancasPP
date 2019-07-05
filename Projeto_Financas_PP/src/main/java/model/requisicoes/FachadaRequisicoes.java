@@ -18,101 +18,150 @@ import model.requisicoes.RequisicaoXRP;
 public class FachadaRequisicoes {
 	ITrequeste request;
 	
-	public String recuperarDolar() {
+	public MoedaDTO recuperarDolar() {
+		MoedaDTO moeda = new MoedaDTO();
 		request = new RequisicaoDolar();
 		try {
-			return request.consultarValor();
+		moeda.setValor(Double.parseDouble(request.consultarValor()));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return moeda;
+		
 	}
 	
-	public String recuperarBCash() {
+	public MoedaDTO recuperarBCash() {
+		MoedaDTO moeda = new MoedaDTO();
 		request = new RequisicaoBCash();
 		try {
-			return request.consultarValor();
+		moeda.setValor(Double.parseDouble(request.consultarValor()));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return moeda;
+		
 	}
 	
-	public String recuperarBitCoin() {
+	public MoedaDTO recuperarBitCoin() {
+		MoedaDTO moeda = new MoedaDTO();
 		request = new RequisicaoBitCoin();
 		try {
-			return request.consultarValor();
+		moeda.setValor(Double.parseDouble(request.consultarValor()));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return moeda;
+		
 	}
-	
-	public String recuperarDolarCan() {
+	public MoedaDTO recuperarDolarCan() {
+		MoedaDTO moeda = new MoedaDTO();
 		request = new RequisicaoDolarCan();
 		try {
-			return request.consultarValor();
+		moeda.setValor(Double.parseDouble(request.consultarValor()));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return moeda;
+		
 	}
 	
-	public String recuperarEthereum() {
+	public MoedaDTO recuperarEthereum() {
+		MoedaDTO moeda = new MoedaDTO();
 		request = new RequisicaoEthereum();
 		try {
-			return request.consultarValor();
+		moeda.setValor(Double.parseDouble(request.consultarValor()));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return moeda;
+		
 	}
 	
-	public String recuperarEuro() {
+	public MoedaDTO recuperarEuro() {
+		MoedaDTO moeda = new MoedaDTO();
 		request = new RequisicaoEuro();
 		try {
-			return request.consultarValor();
+		moeda.setValor(Double.parseDouble(request.consultarValor()));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return moeda;
+		
 	}
 	
-	public String recuperarLibra() {
+	public MoedaDTO recuperarLibra() {
+		MoedaDTO moeda = new MoedaDTO();
 		request = new RequisicaoLibra();
 		try {
-			return request.consultarValor();
+		moeda.setValor(Double.parseDouble(request.consultarValor()));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return moeda;
+		
 	}
 	
-	public String recuperarLiteCoin() {
+	public MoedaDTO recuperarLiteCoin() {
+		MoedaDTO moeda = new MoedaDTO();
 		request = new RequisicaoLiteCoin();
 		try {
-			return request.consultarValor();
+		moeda.setValor(Double.parseDouble(request.consultarValor()));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return moeda;
+		
 	}
-	
-	public String recuperarXRP() {
+	public MoedaDTO recuperarXRP() {
+		MoedaDTO moeda = new MoedaDTO();
 		request = new RequisicaoXRP();
 		try {
-			return request.consultarValor();
+		moeda.setValor(Double.parseDouble(request.consultarValor()));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		return moeda;
+		
+	}
+	
+	public MoedaDTO recuperarValor(MoedaDTO dto) {
+		switch(dto.getNome()){
+			case "Dolar":
+				return recuperarDolar();
+			
+			case "DolarCan":
+				return recuperarDolarCan();
+			
+			case "BCash":
+				return recuperarBCash();
+			
+			case "BitCoin":
+				return recuperarBitCoin();
+			
+			case "Ethereum":
+				return recuperarEthereum();
+			
+			case "Euro":
+				return recuperarEuro();
+			
+			case "Libra":
+				return recuperarLibra();
+			
+			case "LiteCoin":
+				return recuperarLiteCoin();
+			
+			case "XRP":
+				return recuperarXRP();
+			
 		}
 		return null;
 	}
@@ -120,15 +169,15 @@ public class FachadaRequisicoes {
 	
 	public ValorAtualDTO recuperarRequisicoes() {
 		String[] requisicoes = new String[9];
-		requisicoes[0] = this.recuperarBCash();
-		requisicoes[1] = this.recuperarBitCoin();
-		requisicoes[2] = this.recuperarDolar();
-		requisicoes[3] = this.recuperarDolarCan();
-		requisicoes[4] = this.recuperarEthereum();
-		requisicoes[5] = this.recuperarEuro();
-		requisicoes[6] = this.recuperarLibra();
-		requisicoes[7] = this.recuperarLiteCoin();
-		requisicoes[8] = this.recuperarXRP();
+		requisicoes[0] = String.valueOf(this.recuperarBCash().getValor());
+		requisicoes[1] = String.valueOf(this.recuperarBitCoin().getValor());
+		requisicoes[2] = String.valueOf(this.recuperarDolar().getValor());
+		requisicoes[3] = String.valueOf(this.recuperarDolarCan().getValor());
+		requisicoes[4] = String.valueOf(this.recuperarEthereum().getValor());
+		requisicoes[5] = String.valueOf(this.recuperarEuro().getValor());
+		requisicoes[6] = String.valueOf(this.recuperarLibra().getValor());
+		requisicoes[7] = String.valueOf(this.recuperarLiteCoin().getValor());
+		requisicoes[8] = String.valueOf(this.recuperarXRP().getValor());
 		
 		ValorAtualDTO dto = new ValorAtualDTO();
 		
