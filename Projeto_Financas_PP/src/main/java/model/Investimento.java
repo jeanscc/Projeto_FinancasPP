@@ -166,6 +166,7 @@ public class Investimento {
 		}catch(Exception e) {
 			
 		}
+		if(!investimento.getTodosInvetismento().isEmpty()) {
 		FachadaRequisicoes fachada = new FachadaRequisicoes();
 		ValorAtualDTO valor = fachada.recuperarRequisicoes();
 		Date data = new Date();
@@ -330,5 +331,6 @@ public class Investimento {
 			
 		}
 		
+	}
 	}
 }

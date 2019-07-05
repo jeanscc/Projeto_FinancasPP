@@ -45,16 +45,19 @@ public class Valor {
 	
 	public void atualizarValores() {
 		Date data = new Date();
-		ValorDTO dto;
+		ValorDTO dto =  new ValorDTO();
 		try{
 			dto = this.listar();
-			for(ValorDTO valor:dto.getValoresCadastrados()) {
-				this.data=valor.getData();
-			}
+		
+			
 		
 		}catch(Exception e) {
 			e.getMessage();
 	}
+		if(!dto.getValoresCadastrados().isEmpty()) {
+		for(ValorDTO valor:dto.getValoresCadastrados()) {
+			this.data=valor.getData();
+		}
 		
 		if(this.data != data) {
 			FachadaRequisicoes fachada = new FachadaRequisicoes();
@@ -179,6 +182,7 @@ public class Valor {
 			}
 			
 		}
+	}
 	}
 }
 
