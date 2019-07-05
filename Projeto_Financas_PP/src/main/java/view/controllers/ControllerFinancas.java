@@ -130,6 +130,7 @@ public class ControllerFinancas implements Initializable{
     	ObservableList <String> registro = FXCollections.observableArrayList();
     	registro.add("Geral");
     	registro.add("Intervalo de Datas");
+    	cbBalanco.setItems(registro);
     }
     
     private void carregarGrafico() {

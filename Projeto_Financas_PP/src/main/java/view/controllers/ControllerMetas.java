@@ -23,7 +23,8 @@ import javafx.scene.layout.VBox;
 import model.Status;
 
 public class ControllerMetas implements Initializable{
-
+	private ControllerHome con;
+	
     @FXML
     private Pane pnlInvestimentos;
 
@@ -81,6 +82,7 @@ public class ControllerMetas implements Initializable{
     	meta.setDescricao(txDescricao.getText());
     	meta.setStatus(Status.Ativo);
     	meta.setValor(Double.parseDouble(txValor11.getText()));
+    	meta.setUsuario(con.getDto());
     	
     	ControlerMeta con = new ControlerMeta();
     	try {
@@ -159,6 +161,16 @@ public class ControllerMetas implements Initializable{
 		
 		
 	}
+
+	public ControllerHome getCon() {
+		return con;
+	}
+
+	public void setCon(ControllerHome con) {
+		this.con = con;
+	}
+	
+	
 
 }
 

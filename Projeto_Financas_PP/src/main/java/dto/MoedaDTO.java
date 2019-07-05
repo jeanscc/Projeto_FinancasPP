@@ -86,6 +86,10 @@ public class MoedaDTO {
 	}
 	
 	
+	public String toString() {
+		return this.nome;
+	}
+	
 
 	
 }

@@ -2,12 +2,19 @@ package view.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import control.ControlerInvestimento;
+import control.ControlerMoeda;
 import dto.InvestimentoDTO;
+import dto.MoedaDTO;
+import dto.UsuarioDTO;
 import iterator.Iterator;
 import iterator.IteratorInvestimento;
+import iterator.IteratorMoeda;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.ComboBox;
@@ -23,11 +31,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import model.Status;
 
 
 
 public class ControllerHome implements Initializable {
 
+	private UsuarioDTO dto;
+	
+	
+	
 	@FXML
 	private Label lbUsuario;
 
@@ -68,10 +81,9 @@ public class ControllerHome implements Initializable {
 	private Pane pnlInvestimentos;
 
 	@FXML
-	private ComboBox<?> cbTtipo;
+	private ComboBox<MoedaDTO> cbTtipo;
 
-	@FXML
-	private ComboBox<?> cbFonte;
+	
 	
 	@FXML
     private TextField txNome;
@@ -97,6 +109,8 @@ public class ControllerHome implements Initializable {
 	
 	@FXML
 	private Pane pnlConsultas;
+	
+	
 
 	@FXML
 	void handleClicks(ActionEvent event) {
@@ -111,8 +125,12 @@ public class ControllerHome implements Initializable {
 			}
 		} else if (event.getSource() == btMetas) {
 			try {
-				Pane pane = FXMLLoader.load(getClass().getResource("/view/fxmls/Metas.fxml"));
+				FXMLLoader fxmlLoader = new FXMLLoader();
+				Pane pane = fxmlLoader.load(getClass().getResource("/view/fxmls/Metas.fxml").openStream());
+				ControllerMetas conM = (ControllerMetas) fxmlLoader.getController();
+				conM.setCon(this);
 				pnlMetas.getChildren().add(pane);
+				
 				pnlMetas.toFront();
 			} catch (IOException e3) {
 				// TODO Auto-generated catch block
@@ -143,6 +161,42 @@ public class ControllerHome implements Initializable {
 			System.exit(0);
 		}
 	}
+	
+	
+	
+	@FXML
+    void lsCadastrar(ActionEvent event) {
+		if(txNome.getText().isEmpty()||txValor.getText().isEmpty()||cbTtipo.getSelectionModel().getSelectedItem()==null) {
+    		Alert dialogoInfo = new Alert(Alert.AlertType.ERROR);
+            dialogoInfo.setTitle("Erro no cadastro");
+            dialogoInfo.setContentText("Preencha todos os campos!");
+            dialogoInfo.showAndWait();
+		}
+        else {
+            
+            try {
+			ControlerInvestimento controler = new ControlerInvestimento();
+			InvestimentoDTO iv = new InvestimentoDTO();
+			iv.setData_inicio(new Date());
+			iv.setMoeda(cbTtipo.getSelectionModel().getSelectedItem());
+			iv.setNome(txNome.getText());
+			iv.setStatus(Status.Ativo);
+			iv.setUsuario(dto);
+			iv.setValor(Double.parseDouble(txValor.getText()));
+			controler.salvar(iv);
+			limparCampos();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        }
+    }
+	public void limparCampos() {
+		txNome.clear();
+		txValor.clear();
+	}
+	
+	
 	
 	
 	public void carregarTabela() {
@@ -189,8 +243,45 @@ public class ControllerHome implements Initializable {
 		}
 	}
 
+	public void carregarGraficos() {
+		
+	}
+	
+	public void carregarCb() {
+		ControlerMoeda controler= new ControlerMoeda();
+		try {
+			MoedaDTO m = controler.listar();
+			ObservableList <MoedaDTO> registro = FXCollections.observableArrayList();
+			Iterator it = new IteratorMoeda(m.getTodasMoedas());
+			while(it.hasNext()) {
+				registro.add((MoedaDTO) it.next());
+			}
+		
+			cbTtipo.setItems(registro);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		carregarTabela();
 	}
 
+
+
+	public UsuarioDTO getDto() {
+		return dto;
+	}
+
+
+
+	public void setDto(UsuarioDTO dto) {
+		this.dto = dto;
+	}
+
+	
+	
 }
