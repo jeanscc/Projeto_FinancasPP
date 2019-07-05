@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
 
+import antlr.collections.List;
 import dto.UsuarioDTO;
 
 public class UsuarioDaoJPA extends FactoryEntity implements ITusuario {
@@ -74,7 +75,6 @@ public class UsuarioDaoJPA extends FactoryEntity implements ITusuario {
 
 	public UsuarioDTO buscar(UsuarioDTO obj) throws Exception {
 		UsuarioDTO retorno = null;
-		ArrayList<UsuarioDTO> lista;
 		entidade = super.getIntity();
 		try {
 			retorno = entidade.find(UsuarioDTO.class, obj.getId());
@@ -85,24 +85,36 @@ public class UsuarioDaoJPA extends FactoryEntity implements ITusuario {
 	}
 
 	public UsuarioDTO logar(UsuarioDTO usuario) throws Exception {
-		UsuarioDTO retorno = null;
-		ArrayList<UsuarioDTO> lista;
 		entidade = super.getIntity();
 		try {
-			retorno = entidade.find(UsuarioDTO.class, usuario.getEmail());
+			return entidade.find(UsuarioDTO.class, usuario.getEmail());
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		} 
-		return retorno;
 	}
 
 	@Override
 	public UsuarioDTO buscarPorEmail(UsuarioDTO dto) throws Exception {
 		entidade = super.getIntity();
+		ArrayList<UsuarioDTO> registros = null;
+		UsuarioDTO retorno = new UsuarioDTO();
 		try {
-			return entidade.find(UsuarioDTO.class, dto.getEmail());
+			registros = (ArrayList<UsuarioDTO>) entidade.createQuery("select u from UsuarioDTO u where u.email = '" + dto.getEmail() + "'").getResultList();
+			retorno.setUsuariosCadastrados(registros);
 		} catch (Exception e) {
-			throw new Exception(e.getMessage());
+			throw new Exception("Erro ao buscar usuário por e-mail. " +e.getMessage());
+		}finally {
+			entidade.close();
 		}
+		return filtrador(registros, dto);
+	}
+	
+	private UsuarioDTO filtrador(ArrayList<UsuarioDTO> registro, UsuarioDTO alvo) {
+		for(UsuarioDTO x : registro) {
+			if(x.getEmail().equalsIgnoreCase(alvo.getEmail())) {
+				return x;
+			}
+		}
+		return null;
 	}
 }

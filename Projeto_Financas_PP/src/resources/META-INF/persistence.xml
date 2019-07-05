@@ -16,7 +16,7 @@
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/banco_financas?useUnicode=true&amp;characterEncoding=utf8&amp;createDatabaseIfNotExist=true&amp;allowPublicKeyRetrieval=true&amp;useSSL=false&amp;serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="javax.persistence.jdbc.password" value="88035630"/>
+      <property name="javax.persistence.jdbc.password" value="root"/>
       <!-- Configurações do Hibernate -->
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect" />
       <property name="hibernate.hbm2ddl.auto" value="update"/>

@@ -61,7 +61,7 @@ public class ControllerConsultas implements Initializable{
     	int var = 10;
     	
     	final XYChart.Series<String, Number> series = new XYChart.Series<>();
-    	series.setName("Testando");
+    	series.setName("Consultando");
     	grConsulta.getData().add(series);
     	
     	

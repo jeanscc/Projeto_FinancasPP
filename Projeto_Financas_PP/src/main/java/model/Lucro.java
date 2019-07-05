@@ -2,9 +2,19 @@ package model;
 
 import java.util.Date;
 
+import daoJPA.ITlucro;
+import daoJPA.LucroDaoJPA;
+import dto.LucroDTO;
+
 public class Lucro {
 	private double valor;
 	private Date data;
+	
+	private ITlucro lucrodao;
+	
+	public Lucro() {
+		lucrodao = new LucroDaoJPA();
+	}
 	
 	public double getValor() {
 		return valor;
@@ -19,5 +29,11 @@ public class Lucro {
 		this.data = data;
 	}
 	
+	public boolean salvar(LucroDTO obj) throws Exception{
+		return lucrodao.salvar(obj);
+	}
 	
+	public LucroDTO listar() throws Exception {
+		return lucrodao.listar();
+	}
 }

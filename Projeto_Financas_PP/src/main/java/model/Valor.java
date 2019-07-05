@@ -2,10 +2,18 @@ package model;
 
 import java.util.Date;
 
+import daoJPA.ITvalor;
+import daoJPA.ValorDaoJPA;
+import dto.ValorDTO;
+
 public class Valor {
+	private ITvalor valordao;
 	private double valor;
 	private Date data;
 
+	public Valor() {
+		valordao = new ValorDaoJPA();
+	}
 	public double getValor() {
 		return valor;
 	}
@@ -22,7 +30,12 @@ public class Valor {
 		this.data = data;
 	}
 	
+	public boolean salvar(ValorDTO obj) throws Exception {
+		return valordao.salvar(obj);
+	}
 	
-	
+	public ValorDTO listar() throws Exception {
+		return valordao.listar();
+	}
 	
 }

@@ -103,7 +103,8 @@ public class ControllerLogin implements Initializable {
 				this.novaTela("Home", event);
 
 			} else {
-				if (controlerUs.logar(usuario) != null) {
+				usuario = controlerUs.logar(usuario);
+				if (usuario.getEmail().equalsIgnoreCase(email) && usuario.getSenha().equalsIgnoreCase(senha)) {
 					this.novaTela("Home", event);
 				}
 			}
@@ -118,8 +119,8 @@ public class ControllerLogin implements Initializable {
 			Stage stage = new Stage();
 			Parent root = FXMLLoader.load(getClass().getResource("/view/fxmls/" + tela + ".fxml"));
 			Scene scene = new Scene(root);
-
 			stage.setScene(scene);
+			stage.setResizable(false);
 			stage.show();
 
 			Node node = (Node) evento.getSource();

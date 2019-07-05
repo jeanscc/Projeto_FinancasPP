@@ -17,6 +17,7 @@ public class Main extends Application {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/fxmls/TelaLogin.fxml"));
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
+		primaryStage.setResizable(false);
 		primaryStage.show();
 
 	}
