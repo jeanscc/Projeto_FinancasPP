@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -17,6 +18,7 @@ import javax.persistence.Transient;
 import model.Status;
 
 @Entity
+@Table(name = "meta")
 public class MetaDTO {
 	@Temporal(TemporalType.DATE)
 	private Date data_inicio;

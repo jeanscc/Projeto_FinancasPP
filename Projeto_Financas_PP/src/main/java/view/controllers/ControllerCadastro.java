@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -79,7 +80,7 @@ public class ControllerCadastro implements Initializable{
 	    stage.close();
 	    Scene scene;
 		try {
-			scene = new Scene(FXMLLoader.load(getClass().getResource("/view/fxmls/TelaLogin.fxml")));
+			scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("/view/fxmls/TelaLogin.fxml")));
 			stage.setScene(scene);
 		    stage.show();
 		} catch (IOException e1) {
@@ -90,7 +91,6 @@ public class ControllerCadastro implements Initializable{
     	
     }
 
-	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		

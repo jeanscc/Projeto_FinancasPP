@@ -8,11 +8,13 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import model.TipoMoeda;
 
 @Entity
+@Table(name = "moeda")
 public class MoedaDTO {
 
 	private String nome;
@@ -22,7 +24,7 @@ public class MoedaDTO {
 	private double valor;
 	
 	@Transient
-	private ArrayList<ValorDto> valores = new ArrayList<ValorDto>();
+	private ArrayList<ValorDTO> valores = new ArrayList<ValorDTO>();
 	
 	
 	@Transient
@@ -72,11 +74,11 @@ public class MoedaDTO {
 		this.tipo = moeda;
 	}
 
-	public ArrayList<ValorDto> getValores() {
+	public ArrayList<ValorDTO> getValores() {
 		return valores;
 	}
 
-	public void setValores(ArrayList<ValorDto> valores) {
+	public void setValores(ArrayList<ValorDTO> valores) {
 		this.valores = valores;
 	}
 	

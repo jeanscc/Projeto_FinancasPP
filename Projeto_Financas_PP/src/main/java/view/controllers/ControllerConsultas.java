@@ -43,7 +43,7 @@ public class ControllerConsultas implements Initializable{
     private ComboBox<?> cbInvestimento;
 
     @FXML
-    private LineChart<String, Number> grConsulta = new LineChart<>(linhaX,linhaY);
+    private LineChart<String, Number> grConsulta = new LineChart<String, Number>(linhaX,linhaY);
 
     @FXML
     private Button btConsultar;
@@ -60,7 +60,7 @@ public class ControllerConsultas implements Initializable{
     void lsConsultar(ActionEvent event) {
     	int var = 10;
     	
-    	XYChart.Series<String, Number> series = new XYChart.Series<>();
+    	final XYChart.Series<String, Number> series = new XYChart.Series<>();
     	series.setName("Testando");
     	grConsulta.getData().add(series);
     	

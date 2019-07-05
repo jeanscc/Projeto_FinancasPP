@@ -9,9 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
+@Table(name = "usuario")
 public class UsuarioDTO {
 	
 	private String nome;
@@ -30,7 +32,6 @@ public class UsuarioDTO {
 	
 	@Transient
 	private ArrayList<UsuarioDTO> usuariosCadastrados;
-	private Random gerador = new Random();
 
 	
 	public String getSenha() {

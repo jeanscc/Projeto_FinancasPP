@@ -1,7 +1,7 @@
 package control;
 
 import dto.UsuarioDTO;
-
+import model.RecuperarEmail;
 import model.Usuario;
 
 
@@ -11,9 +11,11 @@ public class ControlerUsuario{
 	
 
 	private Usuario usuario;
+	private RecuperarEmail recuperador;
 
 	public ControlerUsuario() {
 		usuario = new Usuario();
+		recuperador = new RecuperarEmail();
 	}
 
 	public boolean salvar(UsuarioDTO dto) throws Exception {
@@ -38,5 +40,9 @@ public class ControlerUsuario{
 
 	public UsuarioDTO logar(UsuarioDTO dto) throws Exception {
 		return usuario.logar(dto);
+	}
+	
+	public void recuperarSenha(String email) throws Exception {
+		recuperador.enviarEmail(email);
 	}
 }

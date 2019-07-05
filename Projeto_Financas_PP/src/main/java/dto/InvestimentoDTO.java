@@ -1,7 +1,7 @@
 package dto;
 
-import java.util.List;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -12,15 +12,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import model.Lucro;
 import model.Status;
 
 
 @Entity
+@Table(name = "investimento")
 public class InvestimentoDTO {
 	@Enumerated(EnumType.STRING)
 	private Status status;
@@ -30,7 +31,7 @@ public class InvestimentoDTO {
 	private String nome;
 	
 	@OneToMany(mappedBy =  "lucro",cascade = CascadeType.ALL,orphanRemoval = true, targetEntity = InvestimentoDTO.class)	
-	private List<LucroDto> lucro;
+	private List<LucroDTO> lucro;
 	
 	
 	@Temporal(TemporalType.DATE)
@@ -98,11 +99,11 @@ public class InvestimentoDTO {
 		this.usuario = usuario;
 	}
 
-	public List<LucroDto> getLucro() {
+	public List<LucroDTO> getLucro() {
 		return lucro;
 	}
 
-	public void setLucro(List<LucroDto> lucro) {
+	public void setLucro(List<LucroDTO> lucro) {
 		this.lucro = lucro;
 	}
 

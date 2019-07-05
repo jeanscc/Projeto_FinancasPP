@@ -9,7 +9,7 @@ import daoJPA.ITmoeda;
 import daoJPA.InvestimentoDaoJPA;
 import daoJPA.MoedaDaoJPA;
 import dto.InvestimentoDTO;
-import dto.LucroDto;
+import dto.LucroDTO;
 
 
 public class Investimento {
@@ -143,7 +143,7 @@ public class Investimento {
         }
 
         double valorFinal = 0;
-        for( LucroDto lucros : investimento.getLucro()) {
+        for( LucroDTO lucros : investimento.getLucro()) {
             valorFinal = lucros.getValor();
         }
         valorFinal = valorFinal + investimento.getValor();

@@ -52,7 +52,6 @@ public class InvestimentoDaoJPA extends FactoryEntity implements ITinvestimento{
 		}
 	}
 
-	@Override
 	public InvestimentoDTO buscar(InvestimentoDTO obj) throws Exception {
 		try {
 			entidade = super.getIntity();
@@ -62,7 +61,6 @@ public class InvestimentoDaoJPA extends FactoryEntity implements ITinvestimento{
 		}
 	}
 
-	@Override
 	public boolean excluir(InvestimentoDTO obj) throws Exception {
 		entidade = super.getIntity();
 		entidade.getTransaction().begin();
