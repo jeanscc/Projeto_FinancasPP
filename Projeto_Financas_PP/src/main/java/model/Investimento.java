@@ -2,12 +2,14 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import daoJPA.ITinvestimento;
 import daoJPA.ITmoeda;
 import daoJPA.InvestimentoDaoJPA;
 import daoJPA.MoedaDaoJPA;
 import dto.InvestimentoDTO;
+import dto.LucroDto;
 
 
 public class Investimento {
@@ -131,5 +133,26 @@ public class Investimento {
 //			return investimentoDAO.logar(dto);
 //	
 //	}
+	
+	public InvestimentoDTO calcularMargemDeLucro(InvestimentoDTO dto) {
+		InvestimentoDTO investimento = null;
+        try {
+           investimento = investimentoDAO.buscar(dto);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        double valorFinal = 0;
+        for( LucroDto lucros : investimento.getLucro()) {
+            valorFinal = lucros.getValor();
+        }
+        valorFinal = valorFinal + investimento.getValor();
+        double valorInicial =  investimento.getValor();
+
+        investimento.setMargem(((valorFinal - valorInicial)/valorInicial)*100);
+
+        return investimento;
+
+    }
 	
 }
