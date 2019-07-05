@@ -47,5 +47,9 @@ public class ControlerInvestimento {
 //			return investimento.logar(dto);
 //		
 //	}
+	
+	public InvestimentoDTO calcularMargemDeLucro(InvestimentoDTO dto) {
+		return investimento.calcularMargemDeLucro(dto);
+	}
 
 }
