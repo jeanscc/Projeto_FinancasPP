@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.Valor;
 
 public class Main extends Application {
@@ -19,6 +20,7 @@ public class Main extends Application {
 		valor.atualizarValores();
 		
 		Parent root = FXMLLoader.load(getClass().getResource("/view/fxmls/Home.fxml"));
+		primaryStage.setResizable(false);
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
 		primaryStage.setResizable(false);

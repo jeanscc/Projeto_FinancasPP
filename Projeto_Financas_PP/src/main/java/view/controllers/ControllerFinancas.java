@@ -53,57 +53,14 @@ public class ControllerFinancas implements Initializable{
     @FXML
     private BarChart<String, Number> grFinancas = new BarChart<>(linhaX,linhaY);
 
-    @FXML
-    private DatePicker dtFinal;
+    
+ 
 
-    @FXML
-    private DatePicker dtInicial;
-
-    @FXML
-    private ComboBox<String> cbBalanco;
-
-    @FXML
-    private Button btBuscar;
-
-    @FXML
-    void lsBuscar(ActionEvent event) {
-    	LocalDate localDate = dtInicial.getValue();
-    	Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
-    	Date dateI = Date.from(instant);
-    	LocalDate localDate2 = dtInicial.getValue();
-    	Instant instant2 = Instant.from(localDate2.atStartOfDay(ZoneId.systemDefault()));
-    	Date dateF = Date.from(instant2);
-    	if(dateI.before(dateF) || dateF.after(dateI)) {
-    		Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
-            dialogoErro.setTitle("Erro");
-            dialogoErro.setHeaderText("Erro na Data");
-            dialogoErro.setContentText("Selecione um Intervalo Válido");
-            dialogoErro.showAndWait();
-    		
-    	}
-    	else {
-    	carregarData(dateI,dateF);
-    	}
-    }
-
-    @FXML
-    void lsCb(ActionEvent event) {
-    	if(cbBalanco.getSelectionModel().getSelectedItem().equals("Geral")) {
-    		carregarGeral();
-    	}
-    	else {
-    		dtFinal.setVisible(true);
-    		dtInicial.setVisible(true);
-    		btBuscar.setVisible(true);
-    	}
-    }
+   
     
     
     private void carregarGeral() {
     	//falta a fachada
-    	dtFinal.setVisible(false);
-		dtInicial.setVisible(false);
-		btBuscar.setVisible(false);
 		lbBalanco.setText(null);
 		lbInvestido.setText(null);
 		lbLucro.setText(null);
@@ -114,45 +71,36 @@ public class ControllerFinancas implements Initializable{
 		
     }
     
-    private void carregarData(Date inicial,Date dFinal) {
-		//falta fachada
-    	lbBalanco.setText(null);
-		lbInvestido.setText(null);
-		lbLucro.setText(null);
-		lbPendentes.setText(null);
-		lbPercas.setText(null);
-		lbRetorno.setText(null);
-		
-		
-    }
+   
     
-    private void carregarCb() {
-    	ObservableList <String> registro = FXCollections.observableArrayList();
-    	registro.add("Geral");
-    	registro.add("Intervalo de Datas");
-    	cbBalanco.setItems(registro);
-    }
+    
     
     private void carregarGrafico() {
+    	XYChart.Series<String, Number> series = new XYChart.Series<>();
     	//faltaFachada
-    	XYChart.Series <String, Number> balanco = new XYChart.Series<>();
-    	balanco.setName("Balanço Total");
-    	XYChart.Series <String, Number> retorno = new XYChart.Series<>();
-    	retorno.setName("Retorno Total");
-    	XYChart.Series <String, Number> lucro = new XYChart.Series<>();
-    	lucro.setName("Lucro Total");
-    	XYChart.Series <String, Number> investido = new XYChart.Series<>();
-    	investido.setName("Total Investido");
-    	XYChart.Series <String, Number> pendentes = new XYChart.Series<>();
-    	pendentes.setName("Investimentos Pendentes");
-    	XYChart.Series <String, Number> percas = new XYChart.Series<>();
-    	percas.setName("Percas");
+    	XYChart.Data <String, Number> balanco = new XYChart.Data<>();
+
+    	XYChart.Data <String, Number> retorno = new XYChart.Data<>();
+    	
+    	XYChart.Data <String, Number> lucro = new XYChart.Data<>();
+    
+    	XYChart.Data <String, Number> investido = new XYChart.Data<>();
+    	
+    	XYChart.Data <String, Number> pendentes = new XYChart.Data<>();
+    	
+    	XYChart.Data <String, Number> percas = new XYChart.Data<>();
+    	series.getData().add(percas);
+    	series.getData().add(balanco);
+    	series.getData().add(retorno);
+    	series.getData().add(lucro);
+    	series.getData().add(investido);
+    	series.getData().add(pendentes);
     	//balanco.getData().add("Balanço",fachada.getBalanco);
     	//retorno.getData().add("Retorno",fachada.getRetorno);
     	//lucro.getData().add("Lucro",fachada.getLucro);
     	//investido.getData().add("Investido",fachada.getInvestido);
     	//pendentes.getData().add("Balanço",fachada.getBalanco);
-    	
+    	grFinancas.getData().add(series);
     	
     }
     
@@ -160,7 +108,7 @@ public class ControllerFinancas implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		carregarCb();
+		carregarGrafico();
 		
 	}
 

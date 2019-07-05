@@ -53,17 +53,15 @@ public class ValorDaoJPA extends FactoryEntity implements ITvalor{
 		try {
 			String jpql = "select v from ValorDTO v where v.id_moeda = :id";
 			TypedQuery<ValorDTO> query = entidade.createQuery(jpql, ValorDTO.class);
-			query.setParameter("id", moeda.getNome());
-			try {
+			query.setParameter("id", moeda.getId());
+	
 				valores = (ArrayList<ValorDTO>) query.getResultList();
 				valor.setValoresCadastrados(valores);
 				return valor;
 			} catch (Exception e) {
-				throw new Exception(e.getMessage());
+				throw new Exception("Erro ao consultar valores. ");
 			}
-		}catch(Exception e) {
-			throw new Exception("Erro ao consultar valores. ");
 		}
 	}
 
-}
+

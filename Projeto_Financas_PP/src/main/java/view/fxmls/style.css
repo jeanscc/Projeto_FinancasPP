@@ -84,14 +84,16 @@
 }
 
 .combo-box .cell{
-    -fx-text-fill: lightgray;
+    -fx-text-fill: black;
     -fx-font: 14px "System";
 }
+
+
 .my-list-cell {
     -fx-text-fill: lightgray;
     -fx-font: 14px "System";
     /* No alternate highlighting */
-    -fx-background-color:   #02030A;
+   /* -fx-background-color:   #02030A;*/
 }
 
 .chart-plot-background {

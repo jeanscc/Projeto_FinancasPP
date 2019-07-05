@@ -10,9 +10,11 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
+import control.ControlRequest;
 import control.ControlerMoeda;
 import control.ValorControl;
 import dto.MoedaDTO;
+import dto.ValorDTO;
 import iterator.Iterator;
 import iterator.IteratorMoeda;
 import javafx.application.Platform;
@@ -34,8 +36,9 @@ import model.requisicoes.RequisicaoDolar;
 
 public class ControllerConsultas implements Initializable{
 	private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
-	private ScheduledExecutorService scheduledExecutorService;
-	private ITrequeste consulta = new RequisicaoDolar();
+	private ControlRequest con = new ControlRequest();
+	
+	private static ScheduledExecutorService scheduledExecutorService;
 	private Double num = new Double(0);
 	
 	@FXML
@@ -75,13 +78,27 @@ public class ControllerConsultas implements Initializable{
     
     @FXML
     void lsHistorico(ActionEvent event) {
+    	ValorControl con = new ValorControl();
+    	try {
+    		XYChart.Series<String, Number> series = new XYChart.Series<>();
+    		ValorDTO dto = con.listarValores(cbMoeda.getSelectionModel().getSelectedItem());
+			SimpleDateFormat formatador = new SimpleDateFormat();
+    		for(ValorDTO valor:dto.getValoresCadastrados()) {
+				series.getData().add(new XYChart.Data<>(formatador.format(valor.getData()), valor.getValor()));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
     }
     
     @FXML
     void lsConsultar(ActionEvent event) {
     	int var = 10;
-    	
+    	if(scheduledExecutorService!=null) {
+    	scheduledExecutorService.shutdownNow();
+    	}
     	final XYChart.Series<String, Number> series = new XYChart.Series<>();
     	series.setName("Valor");
     	grConsulta.getData().add(series);
@@ -94,7 +111,7 @@ public class ControllerConsultas implements Initializable{
         // put dummy data onto graph per second
         scheduledExecutorService.scheduleAtFixedRate(() -> {
 			try {
-				num = Double.parseDouble(consulta.consultarValor());
+				num = con.recuperarValor(cbInvestimento.getSelectionModel().getSelectedItem()).getValor();
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -124,7 +141,6 @@ public class ControllerConsultas implements Initializable{
 			while(it.hasNext()) {
 				registro.add((MoedaDTO) it.next());
 			}
-		
 			cbInvestimento.setItems(registro);
 			cbMoeda.setItems(registro);
 		} catch (Exception e) {
@@ -139,8 +155,18 @@ public class ControllerConsultas implements Initializable{
     	
     }
     
+    
+	public static ScheduledExecutorService getScheduledExecutorService() {
+		return scheduledExecutorService;
+	}
+
+	public static void setScheduledExecutorService(ScheduledExecutorService scheduledExecutorService) {
+		ControllerConsultas.scheduledExecutorService = scheduledExecutorService;
+	}
+
 	public void initialize(URL location, ResourceBundle resources) {
 		carregarCb();
+		btParar.setVisible(false);
 		
 	}
 

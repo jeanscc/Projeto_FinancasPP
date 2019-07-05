@@ -2,6 +2,7 @@ package view.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -10,6 +11,7 @@ import control.ControlerMoeda;
 import dto.InvestimentoDTO;
 import dto.MoedaDTO;
 import dto.UsuarioDTO;
+import dto.ValorDTO;
 import iterator.Iterator;
 import iterator.IteratorInvestimento;
 import iterator.IteratorMoeda;
@@ -22,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
@@ -98,12 +101,9 @@ public class ControllerHome implements Initializable {
 
 	@FXML
 	private TextField txPesquisaG;
-
-	 @FXML
-	 private PieChart grDivisao;
 	 
 	 @FXML
-	 private BarChart<?, ?> grLucro;
+	 private BarChart<String, Number> grLucro;
 
 	
 	@FXML
@@ -118,13 +118,16 @@ public class ControllerHome implements Initializable {
 				Pane pane = FXMLLoader.load(getClass().getResource("/view/fxmls/Financas.fxml"));
 				pnlFinancas.getChildren().add(pane);
 				pnlFinancas.toFront();
+				if(ControllerConsultas.getScheduledExecutorService()!=null)
+					ControllerConsultas.getScheduledExecutorService().shutdown();
 			} catch (IOException e4) {
 				// TODO Auto-generated catch block
 				e4.printStackTrace();
 			}
 		} else if (event.getSource() == btMetas) {
 			try {
-				
+				if(ControllerConsultas.getScheduledExecutorService()!=null)
+					ControllerConsultas.getScheduledExecutorService().shutdown();
 				Pane pane = FXMLLoader.load(getClass().getResource("/view/fxmls/Metas.fxml"));
 				pnlMetas.getChildren().add(pane);
 				pnlMetas.toFront();
@@ -134,6 +137,8 @@ public class ControllerHome implements Initializable {
 			}
 		} else if (event.getSource() == btConsultas) {
 			try {
+				if(ControllerConsultas.getScheduledExecutorService()!=null)
+					ControllerConsultas.getScheduledExecutorService().shutdown();
 				Pane pane = FXMLLoader.load(getClass().getResource("/view/fxmls/Consultas.fxml"));
 				pnlConsultas.getChildren().add(pane);
 				pnlConsultas.toFront();
@@ -142,10 +147,14 @@ public class ControllerHome implements Initializable {
 				e2.printStackTrace();
 			}
 		} 
-		else if (event.getSource() == btInvestimentos)
+		else if (event.getSource() == btInvestimentos) {
+			if(ControllerConsultas.getScheduledExecutorService()!=null)
+			ControllerConsultas.getScheduledExecutorService().shutdown();
 			pnlInvestimentos.toFront();
-		
+		}
 		else if (event.getSource() == btDeslogar) {
+			if(ControllerConsultas.getScheduledExecutorService()!=null)
+				ControllerConsultas.getScheduledExecutorService().shutdown();
 			System.exit(0);
 		}
 	}
@@ -173,6 +182,10 @@ public class ControllerHome implements Initializable {
 			iv.setValor(Double.parseDouble(txValor.getText()));
 			controler.salvar(iv);
 			limparCampos();
+			Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
+            dialogoInfo.setTitle("Cadastro Concluido");
+            dialogoInfo.setContentText("Investimento Cadastrado com Sucesso");
+            dialogoInfo.showAndWait();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -232,6 +245,10 @@ public class ControllerHome implements Initializable {
 	}
 
 	public void carregarGraficos() {
+		XYChart.Series<String, Number> series = new XYChart.Series<>();
+		grLucro.getData().add(series);
+		series.getData().add(new XYChart.Data<>("Julho",100));
+		
 		
 	}
 	
@@ -244,18 +261,20 @@ public class ControllerHome implements Initializable {
 			while(it.hasNext()) {
 				registro.add((MoedaDTO) it.next());
 			}
-		
 			cbTtipo.setItems(registro);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    }
 		
-	}
+	
 	
 	
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		carregarTabela();
+		carregarCb();
+		carregarGraficos();
 	}
 
 

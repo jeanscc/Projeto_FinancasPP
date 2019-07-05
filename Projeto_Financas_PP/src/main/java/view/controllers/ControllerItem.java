@@ -43,30 +43,26 @@ public class ControllerItem implements Initializable{
 
     @FXML
     private Label lbMargem;
+    
+    @FXML
+    private Label lbStatus;
 
     @FXML
     private Button btStatus;
 
     @FXML
     void lsExcluir(ActionEvent event) {
-    	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-    	alert.setTitle("Confirmação");
-    	alert.setHeaderText("Deseja mesmo Excluir o Investimento.");
-    	alert.setResizable(false);
-    	Optional<ButtonType> result = alert.showAndWait();
-    	if(result.get() == ButtonType.OK) {
-    		
-    	
-    	ControlerInvestimento controler = new ControlerInvestimento();
+
     	try {
-			controler.excluir(dto);
+    		ControlerInvestimento controler = new ControlerInvestimento();
+    		controler.excluir(dto);
 			con.carregarTabela();
 		} catch (Exception e) {
-			
 			e.printStackTrace();
 		}
-    	con.carregarTabela();}
     }
+    	
+    
     
     
     @FXML
@@ -97,10 +93,16 @@ public class ControllerItem implements Initializable{
     	SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
     	lbNome.setText(dto.getNome());
     	lbDataI.setText(s.format(dto.getData_inicio()));
-    	lbDataF.setText(s.format(dto.getData_fim()));
-    	lbLucro.setText(String.valueOf(dto.getLucro().get(0)));
+    	if(dto.getData_fim()!=null) {
+    		lbDataF.setText(s.format(dto.getData_fim()));
+    	}
+    	else {
+    		lbDataF.setText(" ");
+    	}
+    	lbLucro.setText(String.valueOf(dto.getLucro().get(0).getValor()));
     	lbMargem.setText(String.valueOf(dto.getMargem()));
     	lbValor.setText(String.valueOf(dto.getValor()));
+    	lbStatus.setText(dto.getStatus().name());
     }
 
     

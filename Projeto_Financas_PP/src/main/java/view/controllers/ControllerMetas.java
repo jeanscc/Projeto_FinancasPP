@@ -149,6 +149,16 @@ public class ControllerMetas implements Initializable {
 			MetaDTO metas = controler.listar();
 			int finalizadas = controler.metasFinalizadas();
 			int total = 0;
+			int faltando = 0;
+			for (MetaDTO m:metas.getTodasMetas()) {
+				if(m.getStatus()==Status.Ativo) {
+					faltando++;
+				}
+				total++;
+			}
+			lbConcluido.setText(String.valueOf(finalizadas));
+			lbTotal.setText(String.valueOf(total));
+			lbConcluir.setText(String.valueOf(faltando));
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
